@@ -10,6 +10,7 @@ public class Main {
 		// kkkkkkkkk
 		
 		int opcao;
+		int hotel;
 		
 		Scanner leitor = new Scanner (System.in);
 		
