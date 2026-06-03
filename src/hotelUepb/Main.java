@@ -9,6 +9,8 @@ public class Main {
 		
 		// kkkkkkkkk
 		
+		int opcao;
+		
 		Scanner leitor = new Scanner (System.in);
 		
 		leitor.close();
