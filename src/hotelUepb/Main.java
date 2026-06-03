@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		// jtdddddddddd7
 		
-		// kkkkkkkkk
+		// kkkkkkkkk triste
 		
 		int opcao;
 		
