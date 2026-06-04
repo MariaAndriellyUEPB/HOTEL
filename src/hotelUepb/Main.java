@@ -28,6 +28,12 @@ public class Main {
     }
     
     static void opcaoAnotarNovaReserva() {
+    	
+    	if(meuHotel.quantidadeAtual >= meuHotel.reservasAtivas.length){
+			System.out.println("Sem quartos disponíveis, impossível cadastrar novo hóspede.");
+			return;
+    	}
+    	
     	System.out.println("\n-- Cadastros --");
     	String codigo = lerTexto("Digite o código da reserva: ");
     	String tipoQuarto = lerTexto("Digite o tipo do quarto: ");
@@ -59,7 +65,13 @@ public class Main {
 	static void opcaoProcurarPorHospesde() {
 		System.out.println("\n-- Procurar por Convidado --");
 	    String nomeHospede = lerTexto("Digite o nome do hóspede: ");
-	    meuHotel.buscarReservasPorHospede(nomeHospede);
+	    Reserva[] encontradas = meuHotel.buscarReservasPorHospede(nomeHospede);
+
+	    if(encontradas != null) {
+	    	for(int i = 0; i < encontradas.length; i++) {
+	    		System.out.println(encontradas[i].toString());
+	    	}
+	    }
     }
 	
 	static void opcaoPatrimonioHotel() {
