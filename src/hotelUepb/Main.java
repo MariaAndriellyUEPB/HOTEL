@@ -4,16 +4,19 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
-		// jtdddddddddd7
-		
-		// kkkkkkkkk triste
+	static Scanner leitor = new Scanner (System.in);
+	
+	public static void main(String[] args) {	
+		int valor;
 		
 		int opcao;
+
 		
 		System.out.println("Digite a opção: ");
+
 			
 		Scanner leitor = new Scanner (System.in);
+
 		
 		leitor.close();
 	}
