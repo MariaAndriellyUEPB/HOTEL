@@ -71,4 +71,3 @@ public class Hotel
 		return soma;
 	}
 }
-
