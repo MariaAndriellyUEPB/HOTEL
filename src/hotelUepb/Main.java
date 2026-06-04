@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Main {
 
 	static Scanner leitor = new Scanner (System.in);
+	
+	static Hotel meuHotel;
 
 	static String lerTexto(String mensagem) {
 		System.out.print(mensagem);
@@ -17,6 +19,10 @@ public class Main {
         leitor.nextLine();
         return valor;
     }
+    
+    static void opcaoAnotarnovaReserva() {
+    	
+    }
 
 	public static void main(String[] args) {	
 
@@ -25,10 +31,6 @@ public class Main {
 		int opcao;
 
 		
-		System.out.println("Digite a opção: ");
-
-			
-		Scanner leitor = new Scanner (System.in);
 
 		
 		leitor.close();
