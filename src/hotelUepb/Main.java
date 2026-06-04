@@ -10,8 +10,7 @@ public class Main {
 		// kkkkkkkkk
 		
 		int opcao;
-		
-		// mudei 
+
 		
 		Scanner leitor = new Scanner (System.in);
 		
