@@ -93,4 +93,12 @@ public class Hotel
 		}
 	}
 	
+	double calcularPatrimonioTotal() {
+		double soma = 0;
+		for(int i = 0; i < reservasAtivas.length; i++) {
+			soma += reservasAtivas[i].calcularDiariaTotal();
+		}
+		return soma;
+	}
+	
 }
