@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
 	static Scanner leitor = new Scanner (System.in);
-	
+
 	static String lerTexto(String mensagem) {
 		System.out.print(mensagem);
         return leitor.nextLine();
@@ -17,21 +17,19 @@ public class Main {
         leitor.nextLine();
         return valor;
     }
-    
-    public static void main(String[] args) {
-		// jtdddddddddd7
-		
-		// kkkkkkkkk
-		
+
+	public static void main(String[] args) {	
+
 		int valor;
 		
 		int opcao;
 
 		
 		System.out.println("Digite a opção: ");
-		
-		
-		
+
+			
+		Scanner leitor = new Scanner (System.in);
+
 		
 		leitor.close();
 	}
