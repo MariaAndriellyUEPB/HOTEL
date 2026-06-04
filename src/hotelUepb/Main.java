@@ -45,7 +45,7 @@ public class Main {
 	}
 	
 	static void opcaoApagarReserva() {
-		String codigo = lerTexto("Digite o codigo do para remover: ");
+		String codigo = lerTexto("Digite o codigo para remover: ");
 		if(meuHotel.removerReservaPorCodigo(codigo)) {
 			System.out.println("Reserva removida com sucesso.");
 		} else {
