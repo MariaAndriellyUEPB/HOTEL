@@ -9,6 +9,8 @@ public class Main {
 		
 		// kkkkkkkkk
 		
+		int valor;
+		
 		int opcao;
 
 		
