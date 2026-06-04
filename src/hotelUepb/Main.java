@@ -14,6 +14,9 @@ public class Main {
 		int opcao;
 
 		
+		System.out.println("Digite a opção: ");
+		
+		
 		Scanner leitor = new Scanner (System.in);
 		
 		leitor.close();
