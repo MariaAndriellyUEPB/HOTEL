@@ -34,7 +34,6 @@ public class Hotel
 				quantidadeAtual--;
 				return true;
 			}
-			
 		}
 		
 		return false;
@@ -42,55 +41,41 @@ public class Hotel
 	
 	Reserva[] buscarReservasPorHospede(String nomeDoHospede)
 	{
-		if(quantidadeAtual == 0)
-		{
+		if(quantidadeAtual == 0){
 			System.out.println("Nenhum hóspede cadastrado.");
 			return null;
 		}
-		
 		int somaReservas = 0;
-		
-		for(int i = 0; i < quantidadeAtual; i++)
-		{
-			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede))
-			{
+		for(int i = 0; i < quantidadeAtual; i++){
+			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
 				somaReservas++;
 			}
 		}
-		
-		if(somaReservas == 0)
-		{
+		if(somaReservas == 0){
 			System.out.println("Nenhuma reserva com o nome de '" + nomeDoHospede + "' foi encontrada.");
 			return null;
 		}
-		
 		Reserva auxiliar[] = new Reserva[somaReservas];
-		
 		int j = 0;
-		for(int i = 0; i < quantidadeAtual; i++)
-		{
-			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede))
-			{
+		for(int i = 0; i < quantidadeAtual; i++){
+			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
 				auxiliar[j] = reservasAtivas[i];
 				j++;
 			}
 		}
-
 		return auxiliar;
 	}
 	
-	void exibirRelatorioDeReservas()
-	{
-		if(quantidadeAtual == 0)
-		{
+	void exibirRelatorioDeReservas(){
+		if(quantidadeAtual == 0){
 			System.out.println("Nenhum hóspede cadastrado.");
 			return;
 		}
 		
-		for(int i = 0; i < quantidadeAtual; i++)
-		{
+		for(int i = 0; i < quantidadeAtual; i++){
 			System.out.println(reservasAtivas[i]);
 		}
+<<<<<<< HEAD
 	}
 	
 	double calcularPatrimonioTotal() {
@@ -101,4 +86,7 @@ public class Hotel
 		return soma;
 	}
 	
+=======
+	}	
+>>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL.git
 }
