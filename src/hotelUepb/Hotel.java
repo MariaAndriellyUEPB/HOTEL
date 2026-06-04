@@ -3,10 +3,12 @@ package hotelUepb;
 public class Hotel 
 {
 	String nomeHotel;
+	double valorDiaria;
 	Reserva reservasAtivas[];
 	int quantidadeAtual;
 	
 	Hotel(String nomeHotel, double valorDiaria, int capacidadeMaxima){	
+		this.valorDiaria = valorDiaria;
 		this.nomeHotel = nomeHotel;
 		this.reservasAtivas = new Reserva[capacidadeMaxima];
 		this.quantidadeAtual = 0;
