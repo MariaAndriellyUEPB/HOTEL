@@ -57,16 +57,14 @@ public class Main {
 	}
 	
 	static void opcaoApagarReserva() {
-<<<<<<< HEAD
-		String codigo = lerTexto("Digite o codigo para remover: ");
-=======
+
 		if(meuHotel.quantidadeAtual == 0){
 			System.out.println("Nenhum hóspede cadastrado.");
 			return;
 		}
 		
-		String codigo = lerTexto("Digite o codigo do para remover: ");
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL.git
+		String codigo = lerTexto("Digite o codigo para remover: ");
+
 		if(meuHotel.removerReservaPorCodigo(codigo)) {
 			System.out.println("Reserva removida com sucesso.");
 		} else {
