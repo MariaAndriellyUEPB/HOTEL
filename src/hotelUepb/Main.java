@@ -28,6 +28,7 @@ public class Main {
     }
     
     static void opcaoAnotarNovaReserva() {
+    	System.out.println("\n-- Cadastros --");
     	String codigo = lerTexto("Digite o código do hotel: ");
     	String tipoQuarto = lerTexto("Digite o tipo do quarto: ");
     	String numeroQuarto = lerTexto("Digite o numero do quarto: ");
@@ -60,12 +61,18 @@ public class Main {
 	    meuHotel.buscarReservasPorHospede(nomeHospede);
     }
 	
+	static void opcaoPatrimonioHotel() {
+		System.out.println("\n-- Valor do patrimônio do Hotel --");
+	    meuHotel.calcularPatrimonioTotal();
+    }
+	
 	static void mostrarMenu() {
 		System.out.println("\n=== Menu do Hotel ===");
 		System.out.println("1 - Cadastrar reserva: ");
 		System.out.println("2 - Exibir reservas: ");
 		System.out.println("3 - Remover reserva: ");
 		System.out.println("4 - Buscar reserva por hóspede: ");
+		System.out.println("5 - Valor do patrimônio do hotel: ");
 		System.out.println("0 - Sair");
 		System.out.print("Escolha uma opcao: ");
 	}
@@ -73,12 +80,14 @@ public class Main {
 	public static void main(String[] args) {	
 
 		System.out.println("Bem-vindo ao Sistema de Reservas do Hotel!");
+		String nomeHotel = lerTexto("Nome do hotel: ");
+		double valorDiaria = lerDouble("Valor padrão da diária: ");
+		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
 
+		meuHotel = new Hotel(nomeHotel, valorDiaria, capacidadeMaxima);
 
-		
 		int opcao;
 
-	
 		do {
 			mostrarMenu();
 			opcao = leitor.nextInt();
@@ -102,6 +111,10 @@ public class Main {
 	
 	            	opcaoProcurarPorHospesde();
 	                break;
+	                
+	            case 5:
+	            	opcaoPatrimonioHotel();
+	            	break;
 	
 	            case 0:
 	
