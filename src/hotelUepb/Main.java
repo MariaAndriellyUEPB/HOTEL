@@ -8,7 +8,9 @@ public class Main {
 		// jtdddddddddd7
 		
 		// kkkkkkkkk
-
+		
+		int valor;
+		
 		int opcao;
 
 		
