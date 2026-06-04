@@ -20,16 +20,37 @@ public class Main {
         return valor;
     }
     
-    static void opcaoAnotarnovaReserva() {
-    	
+    static double lerDouble(String mensagem) {
+    	double valorDouble = leitor.nextDouble();
+        leitor.nextLine();
+        return valorDouble;
+    }
+    
+    static void opcaoAnotarNovaReserva() {
+    	String codigo = lerTexto("Digite o código do hotel: ");
+    	String tipoQuarto = lerTexto("Digite o tipo do quarto: ");
+    	String numeroQuarto = lerTexto("Digite o numero do quarto: ");
+    	String nomeHospede = lerTexto("Digite o nome do hóspede: ");
+    	String formaDePagamento = lerTexto("Digite a forma de pagamento: ");
+    	int quantidadeDias = lerInteiro("Digite a quantidade de dias: ");;
+    	double valorDiaria = lerDouble("Digite o valor da diária: ");
+    	Reserva novaReserva = new Reserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaDePagamento, quantidadeDias, valorDiaria);
+    	meuHotel.cadastrarReserva(novaReserva);
     }
     
 	static void opcaoVerLivroDeRegistro() {
-	    	
+		System.out.print("\n=== Caderno de Registros ===");
+		meuHotel.exibirRelatorioDeReservas(); 	
 	}
 	
 	static void opcaoApagarReserva() {
-		
+		String codigo = lerTexto("Digite o codigo do para remover: ");
+		if(meuHotel.removerReservaPorCodigo(codigo)) {
+			System.out.println("Reserva removida com sucesso.");
+		} else {
+
+            System.out.println("Reserva não encontrada.");
+        }
 	}
 	
 	static void opcaoProcurarPorHospesde() {
@@ -60,7 +81,7 @@ public class Main {
 			
 			switch(opcao) {
 				case 1:
-					opcaoAnotarnovaReserva();
+					opcaoAnotarNovaReserva();
 	                break;
 				case 2:
 	
