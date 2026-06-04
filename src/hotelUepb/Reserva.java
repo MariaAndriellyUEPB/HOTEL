@@ -24,7 +24,7 @@ public class Reserva {
 		return valorDiaria*quantidadeDias;
 	}
 	public String toString() {
-		return "\n---Dados do Hóspedes---" +
+		return "\n--- Dados do Hóspedes ---" +
 	"\n Código:  " + codigo +
 	"\n Nome do hóspede:  " + nomeHospede +
 	"\n Forma de pagamento: " + formaDePagamento +
