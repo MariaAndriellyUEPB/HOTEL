@@ -48,11 +48,20 @@ public class Main {
     }
     
 	static void opcaoVerLivroDeRegistro() {
+		if(meuHotel.quantidadeAtual == 0){
+			System.out.println("Nenhum hóspede cadastrado.");
+			return;
+		}
 		System.out.print("\n=== Caderno de Reservas ===");
 		meuHotel.exibirRelatorioDeReservas(); 	
 	}
 	
 	static void opcaoApagarReserva() {
+		if(meuHotel.quantidadeAtual == 0){
+			System.out.println("Nenhum hóspede cadastrado.");
+			return;
+		}
+		
 		String codigo = lerTexto("Digite o codigo do para remover: ");
 		if(meuHotel.removerReservaPorCodigo(codigo)) {
 			System.out.println("Reserva removida com sucesso.");
@@ -62,6 +71,10 @@ public class Main {
 	}
 	
 	static void opcaoProcurarPorHospesde() {
+		if(meuHotel.quantidadeAtual == 0){
+			System.out.println("Nenhum hóspede cadastrado.");
+			return;
+		}
 		System.out.println("\n-- Procurar por Convidado --");
 	    String nomeHospede = lerTexto("Digite o nome do hóspede: ");
 	    Reserva[] encontradas = meuHotel.buscarReservasPorHospede(nomeHospede);
@@ -75,7 +88,7 @@ public class Main {
 	
 	static void opcaoPatrimonioHotel() {
 		System.out.println("\n-- Valor do patrimônio do Hotel --");
-	    System.out.println(meuHotel.calcularPatrimonioTotal());
+	    System.out.println("R$ " + meuHotel.calcularPatrimonioTotal());
     }
 	
 	static void mostrarMenu() {

@@ -33,12 +33,7 @@ public class Hotel
 		return false;
 	}
 	
-	Reserva[] buscarReservasPorHospede(String nomeDoHospede)
-	{
-		if(quantidadeAtual == 0){
-			System.out.println("Nenhum hóspede cadastrado.");
-			return null;
-		}
+	Reserva[] buscarReservasPorHospede(String nomeDoHospede){
 		int somaReservas = 0;
 		for(int i = 0; i < quantidadeAtual; i++){
 			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
@@ -62,11 +57,6 @@ public class Hotel
 	}
 	
 	void exibirRelatorioDeReservas(){
-		if(quantidadeAtual == 0){
-			System.out.println("Nenhum hóspede cadastrado.");
-			return;
-		}
-		
 		for(int i = 0; i < quantidadeAtual; i++){
 			System.out.println(reservasAtivas[i]);
 		}
