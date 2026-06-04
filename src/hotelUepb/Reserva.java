@@ -24,13 +24,14 @@ public class Reserva {
 		return valorDiaria*quantidadeDias;
 	}
 	public String toString() {
-		return "---Reserva---" + "\n---Dados do Hóspedes---" + 
-	"\nCódigo:  " + codigo + 
-	"\nNome do hóspede:  " + nomeHospede + 
-	"\nForma de pagamento: " + formaDePagamento + 
-	"\nQuantidades de dias: " + quantidadeDias + 
-	"\n\n---Dados do Quarto---" + "\nTipo e Quarto: " + tipoQuarto + 
-	"\nNúmero do quarto: " + numeroQuarto + 
-	"\nValor da diária: " + calcularDiariaTotal()   ; 
+		return "---Reserva---" + "\n---Dados do Hóspedes---" +
+	"\nCódigo:  " + codigo +
+	"\nNome do hóspede:  " + nomeHospede +
+	"\nForma de pagamento: " + formaDePagamento +
+	"\nQuantidades de dias: " + quantidadeDias +
+	"\n\n---Dados do Quarto---" + "\nTipo e Quarto: " + tipoQuarto +
+	"\nNúmero do quarto: " + numeroQuarto +
+	"\nValor da diária: " + valorDiaria +
+	"\nTotal a pagar: " + calcularDiariaTotal();
 	}
 }
