@@ -81,10 +81,9 @@ public class Main {
 
 		System.out.println("Bem-vindo ao Sistema de Reservas do Hotel!");
 		String nomeHotel = lerTexto("Nome do hotel: ");
-		double valorDiaria = lerDouble("Valor padrão da diária: ");
 		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
 
-		meuHotel = new Hotel(nomeHotel, valorDiaria, capacidadeMaxima);
+		meuHotel = new Hotel(nomeHotel, capacidadeMaxima);
 
 		int opcao;
 

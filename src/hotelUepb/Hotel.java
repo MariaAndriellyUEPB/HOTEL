@@ -6,8 +6,7 @@ public class Hotel
 	Reserva reservasAtivas[];
 	int quantidadeAtual;
 	
-	Hotel(String nomeHotel, double valorDiaria, int capacidadeMaxima){	
-		this.valorDiaria = valorDiaria;
+	Hotel(String nomeHotel, int capacidadeMaxima){	
 		this.nomeHotel = nomeHotel;
 		this.reservasAtivas = new Reserva[capacidadeMaxima];
 		this.quantidadeAtual = 0;
