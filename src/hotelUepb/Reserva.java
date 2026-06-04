@@ -29,8 +29,7 @@ public class Reserva {
 	"\nForma de pagamento: " + formaDePagamento + 
 	"\nQuantidades de dias: " + quantidadeDias + 
 	"\n\n---Dados do Quarto---" + "\nTipo e Quarto: " + tipoQuarto + 
-	"\nNúmero do quarto: " + numeroQuarto + 
+	"\nNúmero do quarto: " + numeroQuarto +
 	"\nValor da diária: " + calcularDiariaTotal()   ; 
 	}
-
 }
