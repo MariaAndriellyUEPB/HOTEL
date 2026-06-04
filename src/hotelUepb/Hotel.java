@@ -1,5 +1,5 @@
 package hotelUepb;
 
-public class hotel {
+public class Hotel {
 
 }
