@@ -60,6 +60,7 @@ public class Hotel
 		for(int i = 0; i < quantidadeAtual; i++){
 			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
 				auxiliar[j] = reservasAtivas[i];
+				
 				j++;
 			}
 		}
