@@ -48,7 +48,7 @@ public class Main {
     }
     
 	static void opcaoVerLivroDeRegistro() {
-		System.out.print("\n=== Caderno de Registros ===");
+		System.out.print("\n=== Caderno de Reservas ===");
 		meuHotel.exibirRelatorioDeReservas(); 	
 	}
 	
