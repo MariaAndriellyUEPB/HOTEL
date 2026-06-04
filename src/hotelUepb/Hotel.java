@@ -29,4 +29,20 @@ public class Hotel
 		return true;
 	}
 	
+	boolean removerReservaPorCodigo (String codigo) {
+		for (int i = 0; i < quantidadeAtual; i++) {
+			if(reservasAtivas[i].codigo.equalsIgnoreCase(codigo)) {
+				for(int j = i; j < quantidadeAtual - 1; j++) {
+					reservasAtivas[j] = reservasAtivas[j + 1];	
+				}
+				reservasAtivas[quantidadeAtual -1] = null;
+				quantidadeAtual--;
+				return true;
+			}
+			
+		}
+		
+		return false;
+	}
+	
 }

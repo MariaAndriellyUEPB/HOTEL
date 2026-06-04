@@ -51,7 +51,8 @@ public class Main {
 		int valor;
 		
 		int opcao;
-		
+
+	
 		do {
 			mostrarMenu();
 			opcao = leitor.nextInt();

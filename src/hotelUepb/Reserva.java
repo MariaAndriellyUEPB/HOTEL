@@ -22,8 +22,15 @@ public class Reserva {
 	double calcularDiariaTotal() {
 		return valorDiaria*quantidadeDias;
 	}
-	public static String toString() {
-		return
+	public String toString() {
+		return "---Reserva---" + "\n---Dados do Hóspedes---" + 
+	"\nCódigo:  " + codigo + 
+	"\nNome do hóspede:  " + nomeHospede + 
+	"\nForma de pagamento: " + formaDePagamento + 
+	"\nQuantidades de dias: " + quantidadeDias + 
+	"\n---Dados do Quarto---" + "\nTipo e Quarto: " + tipoQuarto + 
+	"\nNúmero do quarto: " + numeroQuarto + 
+	"\nValor da diária: " + calcularDiariaTotal()   ; 
 	}
 
 }
