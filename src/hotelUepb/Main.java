@@ -29,7 +29,7 @@ public class Main {
     
     static void opcaoAnotarNovaReserva() {
     	System.out.println("\n-- Cadastros --");
-    	String codigo = lerTexto("Digite o código do hotel: ");
+    	String codigo = lerTexto("Digite o código da reserva: ");
     	String tipoQuarto = lerTexto("Digite o tipo do quarto: ");
     	String numeroQuarto = lerTexto("Digite o numero do quarto: ");
     	String nomeHospede = lerTexto("Digite o nome do hóspede: ");
@@ -38,6 +38,7 @@ public class Main {
     	double valorDiaria = lerDouble("Digite o valor da diária: ");
     	Reserva novaReserva = new Reserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaDePagamento, quantidadeDias, valorDiaria);
     	meuHotel.cadastrarReserva(novaReserva);
+    	System.out.println("Pronto! Reserva agendada com sucesso.");
     }
     
 	static void opcaoVerLivroDeRegistro() {
