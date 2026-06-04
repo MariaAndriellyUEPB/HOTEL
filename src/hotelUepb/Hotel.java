@@ -3,12 +3,10 @@ package hotelUepb;
 public class Hotel 
 {
 	String nomeHotel;
-	double valorDiaria;
 	Reserva reservasAtivas[];
 	int quantidadeAtual;
 	
 	Hotel(String nomeHotel, double valorDiaria, int capacidadeMaxima){	
-		this.valorDiaria = valorDiaria;
 		this.nomeHotel = nomeHotel;
 		this.reservasAtivas = new Reserva[capacidadeMaxima];
 		this.quantidadeAtual = 0;
@@ -81,7 +79,7 @@ public class Hotel
 	
 	double calcularPatrimonioTotal() {
 		double soma = 0;
-		for(int i = 0; i < reservasAtivas.length; i++) {
+		for(int i = 0; i < quantidadeAtual; i++) {
 			soma += reservasAtivas[i].calcularDiariaTotal();
 		}
 		return soma;
