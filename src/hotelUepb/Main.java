@@ -21,7 +21,8 @@ public class Main {
     }
     
     static double lerDouble(String mensagem) {
-    	double valorDouble = leitor.nextDouble();
+        System.out.print(mensagem);
+        double valorDouble = leitor.nextDouble();
         leitor.nextLine();
         return valorDouble;
     }
@@ -54,22 +55,26 @@ public class Main {
 	}
 	
 	static void opcaoProcurarPorHospesde() {
-    	
+		System.out.println("\n-- Procurar por Convidado --");
+	    String nomeHospede = lerTexto("Digite o nome do hóspede: ");
+	    meuHotel.buscarReservasPorHospede(nomeHospede);
     }
 	
 	static void mostrarMenu() {
 		System.out.println("\n=== Menu do Hotel ===");
-		System.out.println("1 - : ");
-		System.out.println("2 - : ");
-		System.out.println("3 - : ");
-		System.out.println("4 - : ");
-		System.out.println("0 - Sair: ");
+		System.out.println("1 - Cadastrar reserva: ");
+		System.out.println("2 - Exibir reservas: ");
+		System.out.println("3 - Remover reserva: ");
+		System.out.println("4 - Buscar reserva por hóspede: ");
+		System.out.println("0 - Sair");
 		System.out.print("Escolha uma opcao: ");
 	}
 
 	public static void main(String[] args) {	
 
-		int valor;
+		System.out.println("Bem-vindo ao Sistema de Reservas do Hotel!");
+
+
 		
 		int opcao;
 
@@ -109,8 +114,6 @@ public class Main {
 			}
 			
 		} while (opcao != 0);
-		
-
 		
 		leitor.close();
 	}
