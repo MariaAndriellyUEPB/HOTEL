@@ -11,6 +11,8 @@ public class Main {
 		
 		int opcao;
 		
+		// mudei 
+		
 		Scanner leitor = new Scanner (System.in);
 		
 		leitor.close();
