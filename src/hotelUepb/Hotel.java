@@ -76,5 +76,18 @@ public class Hotel
 		for(int i = 0; i < quantidadeAtual; i++){
 			System.out.println(reservasAtivas[i]);
 		}
+<<<<<<< HEAD
+	}
+	
+	double calcularPatrimonioTotal() {
+		double soma = 0;
+		for(int i = 0; i < reservasAtivas.length; i++) {
+			soma += reservasAtivas[i].calcularDiariaTotal();
+		}
+		return soma;
+	}
+	
+=======
 	}	
+>>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL.git
 }
