@@ -6,7 +6,19 @@ public class Main {
 
 	static Scanner leitor = new Scanner (System.in);
 	
-	public static void main(String[] args) {
+	static String lerTexto(String mensagem) {
+		System.out.print(mensagem);
+        return leitor.nextLine();
+    }
+
+    static int lerInteiro(String mensagem) {
+    	System.out.print(mensagem);
+        int valor = leitor.nextInt();
+        leitor.nextLine();
+        return valor;
+    }
+    
+    public static void main(String[] args) {
 		// jtdddddddddd7
 		
 		// kkkkkkkkk
