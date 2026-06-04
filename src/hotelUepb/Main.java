@@ -35,7 +35,7 @@ public class Main {
     	}
     	
     	System.out.println("\n-- Cadastros --");
-    	String codigo = lerTexto("Digite o código do hotel: ");
+    	String codigo = lerTexto("Digite o código da reserva: ");
     	String tipoQuarto = lerTexto("Digite o tipo do quarto: ");
     	String numeroQuarto = lerTexto("Digite o numero do quarto: ");
     	String nomeHospede = lerTexto("Digite o nome do hóspede: ");
@@ -44,10 +44,11 @@ public class Main {
     	double valorDiaria = lerDouble("Digite o valor da diária: ");
     	Reserva novaReserva = new Reserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaDePagamento, quantidadeDias, valorDiaria);
     	meuHotel.cadastrarReserva(novaReserva);
+    	System.out.println("Pronto! Reserva agendada com sucesso.");
     }
     
 	static void opcaoVerLivroDeRegistro() {
-		System.out.print("\n=== Caderno de Registros ===");
+		System.out.print("\n=== Caderno de Reservas ===");
 		meuHotel.exibirRelatorioDeReservas(); 	
 	}
 	
@@ -56,7 +57,6 @@ public class Main {
 		if(meuHotel.removerReservaPorCodigo(codigo)) {
 			System.out.println("Reserva removida com sucesso.");
 		} else {
-
             System.out.println("Reserva não encontrada.");
         }
 	}
