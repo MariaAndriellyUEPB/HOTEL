@@ -3,7 +3,6 @@ package hotelUepb;
 public class Hotel 
 {
 	String nomeHotel;
-	double valorDiaria;
 	Reserva reservasAtivas[];
 	int quantidadeAtual;
 	
