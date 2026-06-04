@@ -57,7 +57,6 @@ public class Main {
 		if(meuHotel.removerReservaPorCodigo(codigo)) {
 			System.out.println("Reserva removida com sucesso.");
 		} else {
-
             System.out.println("Reserva não encontrada.");
         }
 	}
