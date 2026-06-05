@@ -29,10 +29,7 @@ public class Main {
     
     static void opcaoAnotarNovaReserva() {
     	
-    	if(meuHotel.quantidadeAtual >= meuHotel.reservasAtivas.length){
-			System.out.println("Sem quartos disponíveis, impossível cadastrar novo hóspede.");
-			return;
-    	}
+    	
     	
     	System.out.println("\n-- Cadastros --");
     	String codigo = lerTexto("Digite o código da reserva: ");
@@ -48,49 +45,29 @@ public class Main {
     }
     
 	static void opcaoVerLivroDeRegistro() {
-		if(meuHotel.quantidadeAtual == 0){
-			System.out.println("\nNenhum hóspede cadastrado.");
-			return;
-		}
 		System.out.print("\n=== Caderno de Reservas ===");
 		meuHotel.exibirRelatorioDeReservas(); 	
 	}
 	
 	static void opcaoApagarReserva() {
-
-		if(meuHotel.quantidadeAtual == 0){
-			System.out.println("\nNenhum hóspede cadastrado.");
-			return;
-		}
-		
-		String codigo = lerTexto("Digite o codigo para remover: ");
-
+		String codigo = lerTexto("Digite o codigo do para remover: ");
 		if(meuHotel.removerReservaPorCodigo(codigo)) {
-			System.out.println("\nReserva removida com sucesso.");
+			System.out.println("Reserva removida com sucesso.");
 		} else {
-            System.out.println("\nReserva não encontrada.");
+            System.out.println("Reserva não encontrada.");
         }
 	}
 	
-	static void opcaoProcurarPorHospesde() {
-		if(meuHotel.quantidadeAtual == 0){
-			System.out.println("\nNenhum hóspede cadastrado.");
-			return;
-		}
+	static void opcaoProcurarPorHospede() {
 		System.out.println("\n-- Procurar por Convidado --");
 	    String nomeHospede = lerTexto("Digite o nome do hóspede: ");
-	    Reserva[] encontradas = meuHotel.buscarReservasPorHospede(nomeHospede);
+	    meuHotel.buscarReservasPorHospede(nomeHospede);
 
-	    if(encontradas != null) {
-	    	for(int i = 0; i < encontradas.length; i++) {
-	    		System.out.println(encontradas[i].toString());
-	    	}
-	    }
     }
 	
 	static void opcaoPatrimonioHotel() {
 		System.out.println("\n-- Valor do patrimônio do Hotel --");
-	    System.out.println("R$ " + meuHotel.calcularPatrimonioTotal());
+	    meuHotel.calcularPatrimonioTotal();
     }
 	
 	static void mostrarMenu() {
@@ -105,26 +82,20 @@ public class Main {
 	}
 
 	public static void main(String[] args) {	
-		
-		int opcao;
-
 
 		System.out.println("Bem-vindo ao Sistema de Reservas do Hotel!");
 		String nomeHotel = lerTexto("Nome do hotel: ");
-		
 		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
-
-		System.out.println("Digite a opção: ");
-
 
 		meuHotel = new Hotel(nomeHotel, capacidadeMaxima);
 
+		int opcao;
 
 		do {
 			mostrarMenu();
 			opcao = leitor.nextInt();
 			leitor.nextLine();
-
+			
 			switch(opcao) {
 				case 1:
 					opcaoAnotarNovaReserva();
@@ -141,7 +112,7 @@ public class Main {
 	
 	            case 4:
 	
-	            	opcaoProcurarPorHospesde();
+	            	opcaoProcurarPorHospede();
 	                break;
 	                
 	            case 5:
