@@ -49,7 +49,7 @@ public class Main {
     
 	static void opcaoVerLivroDeRegistro() {
 		if(meuHotel.quantidadeAtual == 0){
-			System.out.println("Nenhum hóspede cadastrado.");
+			System.out.println("\nNenhum hóspede cadastrado.");
 			return;
 		}
 		System.out.print("\n=== Caderno de Reservas ===");
@@ -59,22 +59,22 @@ public class Main {
 	static void opcaoApagarReserva() {
 
 		if(meuHotel.quantidadeAtual == 0){
-			System.out.println("Nenhum hóspede cadastrado.");
+			System.out.println("\nNenhum hóspede cadastrado.");
 			return;
 		}
 		
 		String codigo = lerTexto("Digite o codigo para remover: ");
 
 		if(meuHotel.removerReservaPorCodigo(codigo)) {
-			System.out.println("Reserva removida com sucesso.");
+			System.out.println("\nReserva removida com sucesso.");
 		} else {
-            System.out.println("Reserva não encontrada.");
+            System.out.println("\nReserva não encontrada.");
         }
 	}
 	
 	static void opcaoProcurarPorHospesde() {
 		if(meuHotel.quantidadeAtual == 0){
-			System.out.println("Nenhum hóspede cadastrado.");
+			System.out.println("\nNenhum hóspede cadastrado.");
 			return;
 		}
 		System.out.println("\n-- Procurar por Convidado --");
@@ -105,33 +105,26 @@ public class Main {
 	}
 
 	public static void main(String[] args) {	
-
-<<<<<<< HEAD
-		int valor;
 		
 		int opcao;
 
-		int hotel;
-=======
+
 		System.out.println("Bem-vindo ao Sistema de Reservas do Hotel!");
 		String nomeHotel = lerTexto("Nome do hotel: ");
+		
 		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
 
-<<<<<<< HEAD
 		System.out.println("Digite a opção: ");
 
-=======
+
 		meuHotel = new Hotel(nomeHotel, capacidadeMaxima);
 
-		int opcao;
 
 		do {
 			mostrarMenu();
 			opcao = leitor.nextInt();
 			leitor.nextLine();
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
-			
+
 			switch(opcao) {
 				case 1:
 					opcaoAnotarNovaReserva();

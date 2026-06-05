@@ -33,9 +33,7 @@ public class Hotel
 		return false;
 	}
 	
-<<<<<<< HEAD
-}
-=======
+
 	Reserva[] buscarReservasPorHospede(String nomeDoHospede){
 		int somaReservas = 0;
 		for(int i = 0; i < quantidadeAtual; i++){
@@ -52,7 +50,6 @@ public class Hotel
 		for(int i = 0; i < quantidadeAtual; i++){
 			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
 				auxiliar[j] = reservasAtivas[i];
-				
 				j++;
 			}
 		}
@@ -74,4 +71,3 @@ public class Hotel
 		return soma;
 	}
 }
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
