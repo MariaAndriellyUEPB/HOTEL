@@ -31,14 +31,10 @@ public class Main {
     
     static void opcaoAnotarNovaReserva() {
     	
-<<<<<<< HEAD
-    	
-=======
     	if(meuHotel.estaCheio(capacidadeMaxima)){
 			System.out.println("\nSem quartos disponíveis, impossível cadastrar novo hóspede.");
 			return;
     	}
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
     	
     	System.out.println("\n-- Cadastros --");
     	String codigo = lerTexto("Digite o código da reserva: ");
@@ -54,8 +50,6 @@ public class Main {
     }
     
 	static void opcaoVerLivroDeRegistro() {
-<<<<<<< HEAD
-=======
 		if(meuHotel.estaVazio()){
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
@@ -66,10 +60,6 @@ public class Main {
 	}
 	
 	static void opcaoApagarReserva() {
-
-		String codigo = lerTexto("Digite o codigo do para remover: ");
-
-
 		if(meuHotel.estaVazio()){
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
@@ -78,23 +68,17 @@ public class Main {
 		String codigo = lerTexto("Digite o código para remover: ");
 
 		if(meuHotel.removerReservaPorCodigo(codigo)) {
-
 			System.out.println("Reserva removida com sucesso.");
 
-			System.out.println("\nReserva removida com sucesso!!");
 
 		} else {
 
             System.out.println("Reserva não encontrada.");
-
-            System.out.println("\nReserva não encontrada!!");
         }
 	}
-	
 
-	static void opcaoProcurarPorHospede() {
 
-	static void opcaoBuscarPorHospesde() {
+	static void opcaoBuscarPorHospede() {
 		if(meuHotel.estaVazio()){
 			System.out.println("\nNenhum hóspede cadastrado!!!");
 			return;
@@ -155,7 +139,7 @@ public class Main {
 	                break;
 	
 	            case 4:
-	            	opcaoProcurarPorHospede();
+	            	opcaoBuscarPorHospede();
 
 	                break;
 	                
