@@ -33,6 +33,24 @@ public class Hotel
 		return false;
 	}
 	
+	boolean estaCheio(int capacidadeMaxima) {
+		if(quantidadeAtual>=capacidadeMaxima) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	boolean estaVazio() {
+		if(quantidadeAtual==0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 
 	Reserva[] buscarReservasPorHospede(String nomeDoHospede){
 		int somaReservas = 0;

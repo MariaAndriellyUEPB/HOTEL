@@ -29,8 +29,8 @@ public class Main {
     
     static void opcaoAnotarNovaReserva() {
     	
-    	if(meuHotel.quantidadeAtual >= meuHotel.reservasAtivas.length){
-			System.out.println("Sem quartos disponíveis, impossível cadastrar novo hóspede.");
+    	if(meuHotel.estaCheio(int capacidadeMaxima)){
+			System.out.println("\nSem quartos disponíveis, impossível cadastrar novo hóspede.");
 			return;
     	}
     	
@@ -48,7 +48,7 @@ public class Main {
     }
     
 	static void opcaoVerLivroDeRegistro() {
-		if(meuHotel.quantidadeAtual == 0){
+		if(meuHotel.estaVazio()){
 			System.out.println("\nNenhum hóspede cadastrado.");
 			return;
 		}
@@ -58,12 +58,12 @@ public class Main {
 	
 	static void opcaoApagarReserva() {
 
-		if(meuHotel.quantidadeAtual == 0){
+		if(meuHotel.estaVazio()){
 			System.out.println("\nNenhum hóspede cadastrado.");
 			return;
 		}
 		
-		String codigo = lerTexto("Digite o codigo para remover: ");
+		String codigo = lerTexto("Digite o código para remover: ");
 
 		if(meuHotel.removerReservaPorCodigo(codigo)) {
 			System.out.println("\nReserva removida com sucesso.");
@@ -72,8 +72,8 @@ public class Main {
         }
 	}
 	
-	static void opcaoProcurarPorHospesde() {
-		if(meuHotel.quantidadeAtual == 0){
+	static void opcaoBuscarPorHospesde() {
+		if(meuHotel.estaVazio()){
 			System.out.println("\nNenhum hóspede cadastrado.");
 			return;
 		}
