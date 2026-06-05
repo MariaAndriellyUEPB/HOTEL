@@ -23,12 +23,9 @@ public class Main {
 		int valor;
 		
 		int opcao;
-<<<<<<< HEAD
-		int hotel;
-=======
 
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL.git
-		
+		int hotel;
+
 		System.out.println("Digite a opção: ");
 
 			
