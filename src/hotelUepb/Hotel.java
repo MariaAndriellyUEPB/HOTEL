@@ -53,28 +53,23 @@ public class Hotel {
 	
 
 	boolean buscarReservasPorHospede(String nomeDoHospede){
-
-		int somaReservas = 0;
-		for(int i = 0; i < quantidadeAtual; i++){
-			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
-				somaReservas++;
-			}
-		}
-		if(somaReservas == 0){
-			System.out.println("Nenhuma reserva com o nome de '" + nomeDoHospede + "' foi encontrada.");
-			return false;
-		}
-		Reserva auxiliar[] = new Reserva[somaReservas];
-		int j = 0;
-		for(int i = 0; i < quantidadeAtual; i++){
-			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
-				auxiliar[j] = reservasAtivas[i];
-				System.out.println(auxiliar[j]);
-				j++;
-			}
-		}
-		return true;
-	}
+        boolean encontrou = false;
+        for(int i = 0; i < quantidadeAtual; i++){
+            if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
+                encontrou = true;
+            }
+        }
+        if(encontrou == false){
+            System.out.println("Nenhuma reserva com o nome de '" + nomeDoHospede + "' foi encontrada.");
+            return encontrou;
+        }
+        for(int i = 0; i < quantidadeAtual; i++){
+            if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
+                System.out.println(reservasAtivas[i]);
+            }
+        }
+        return encontrou = true;
+    }
 	
 	
 	void exibirRelatorioDeReservas(){
