@@ -52,7 +52,7 @@ public class Hotel
 	}
 	
 
-	Reserva[] buscarReservasPorHospede(String nomeDoHospede){
+	boolean buscarReservasPorHospede(String nomeDoHospede){
 		int somaReservas = 0;
 		for(int i = 0; i < quantidadeAtual; i++){
 			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
@@ -61,18 +61,20 @@ public class Hotel
 		}
 		if(somaReservas == 0){
 			System.out.println("Nenhuma reserva com o nome de '" + nomeDoHospede + "' foi encontrada.");
-			return null;
+			return false;
 		}
 		Reserva auxiliar[] = new Reserva[somaReservas];
 		int j = 0;
 		for(int i = 0; i < quantidadeAtual; i++){
 			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
 				auxiliar[j] = reservasAtivas[i];
+				System.out.println(auxiliar[j]);
 				j++;
 			}
 		}
-		return auxiliar;
+		return true;
 	}
+	
 	
 	void exibirRelatorioDeReservas(){
 		for(int i = 0; i < quantidadeAtual; i++){
