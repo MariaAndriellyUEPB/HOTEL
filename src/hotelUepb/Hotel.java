@@ -1,7 +1,6 @@
 package hotelUepb;
 
-public class Hotel 
-{
+public class Hotel {
 	String nomeHotel;
 	Reserva reservasAtivas[];
 	int quantidadeAtual;
@@ -32,10 +31,7 @@ public class Hotel
 		
 		return false;
 	}
-<<<<<<< HEAD
-	
-	Reserva[] buscarReservasPorHospede(String nomeDoHospede){
-=======
+
 	
 	boolean estaCheio(int capacidadeMaxima) {
 		if(quantidadeAtual>=capacidadeMaxima) {
@@ -57,7 +53,7 @@ public class Hotel
 	
 
 	boolean buscarReservasPorHospede(String nomeDoHospede){
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
+
 		int somaReservas = 0;
 		for(int i = 0; i < quantidadeAtual; i++){
 			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
