@@ -33,7 +33,6 @@ public class Hotel
 		return false;
 	}
 	
-
 	Reserva[] buscarReservasPorHospede(String nomeDoHospede){
 		int somaReservas = 0;
 		for(int i = 0; i < quantidadeAtual; i++){

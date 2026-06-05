@@ -100,18 +100,16 @@ public class Main {
 				case 1:
 					opcaoAnotarNovaReserva();
 	                break;
+	                
 				case 2:
-	
 					opcaoVerLivroDeRegistro();
 	                break;
 	
 	            case 3:
-	
 	            	opcaoApagarReserva();
 	                break;
 	
 	            case 4:
-	
 	            	opcaoProcurarPorHospede();
 	                break;
 	                
@@ -120,12 +118,10 @@ public class Main {
 	            	break;
 	
 	            case 0:
-	
 	                System.out.println("Encerrando sistema...");
 	                break;
 	
 	            default:
-	
 	                System.out.println("Opcao invalida.");
 			}
 			
