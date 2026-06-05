@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Main {
 
 	static Scanner leitor = new Scanner (System.in);
+	
+	static Hotel meuHotel;
 
 	static String lerTexto(String mensagem) {
 		System.out.print(mensagem);
@@ -17,20 +19,153 @@ public class Main {
         leitor.nextLine();
         return valor;
     }
+    
+    static double lerDouble(String mensagem) {
+        System.out.print(mensagem);
+        double valorDouble = leitor.nextDouble();
+        leitor.nextLine();
+        return valorDouble;
+    }
+    
+    static void opcaoAnotarNovaReserva() {
+    	
+    	if(meuHotel.quantidadeAtual >= meuHotel.reservasAtivas.length){
+			System.out.println("Sem quartos disponíveis, impossível cadastrar novo hóspede.");
+			return;
+    	}
+    	
+    	System.out.println("\n-- Cadastros --");
+    	String codigo = lerTexto("Digite o código da reserva: ");
+    	String tipoQuarto = lerTexto("Digite o tipo do quarto: ");
+    	String numeroQuarto = lerTexto("Digite o numero do quarto: ");
+    	String nomeHospede = lerTexto("Digite o nome do hóspede: ");
+    	String formaDePagamento = lerTexto("Digite a forma de pagamento: ");
+    	int quantidadeDias = lerInteiro("Digite a quantidade de dias: ");;
+    	double valorDiaria = lerDouble("Digite o valor da diária: ");
+    	Reserva novaReserva = new Reserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaDePagamento, quantidadeDias, valorDiaria);
+    	meuHotel.cadastrarReserva(novaReserva);
+    	System.out.println("Pronto! Reserva agendada com sucesso.");
+    }
+    
+	static void opcaoVerLivroDeRegistro() {
+		if(meuHotel.quantidadeAtual == 0){
+			System.out.println("Nenhum hóspede cadastrado.");
+			return;
+		}
+		System.out.print("\n=== Caderno de Reservas ===");
+		meuHotel.exibirRelatorioDeReservas(); 	
+	}
+	
+	static void opcaoApagarReserva() {
+
+		if(meuHotel.quantidadeAtual == 0){
+			System.out.println("Nenhum hóspede cadastrado.");
+			return;
+		}
+		
+		String codigo = lerTexto("Digite o codigo para remover: ");
+
+		if(meuHotel.removerReservaPorCodigo(codigo)) {
+			System.out.println("Reserva removida com sucesso.");
+		} else {
+            System.out.println("Reserva não encontrada.");
+        }
+	}
+	
+	static void opcaoProcurarPorHospesde() {
+		if(meuHotel.quantidadeAtual == 0){
+			System.out.println("Nenhum hóspede cadastrado.");
+			return;
+		}
+		System.out.println("\n-- Procurar por Convidado --");
+	    String nomeHospede = lerTexto("Digite o nome do hóspede: ");
+	    Reserva[] encontradas = meuHotel.buscarReservasPorHospede(nomeHospede);
+
+	    if(encontradas != null) {
+	    	for(int i = 0; i < encontradas.length; i++) {
+	    		System.out.println(encontradas[i].toString());
+	    	}
+	    }
+    }
+	
+	static void opcaoPatrimonioHotel() {
+		System.out.println("\n-- Valor do patrimônio do Hotel --");
+	    System.out.println("R$ " + meuHotel.calcularPatrimonioTotal());
+    }
+	
+	static void mostrarMenu() {
+		System.out.println("\n=== Menu do Hotel ===");
+		System.out.println("1 - Cadastrar reserva: ");
+		System.out.println("2 - Exibir reservas: ");
+		System.out.println("3 - Remover reserva: ");
+		System.out.println("4 - Buscar reserva por hóspede: ");
+		System.out.println("5 - Valor do patrimônio do hotel: ");
+		System.out.println("0 - Sair");
+		System.out.print("Escolha uma opcao: ");
+	}
 
 	public static void main(String[] args) {	
 
+<<<<<<< HEAD
 		int valor;
 		
 		int opcao;
 
 		int hotel;
+=======
+		System.out.println("Bem-vindo ao Sistema de Reservas do Hotel!");
+		String nomeHotel = lerTexto("Nome do hotel: ");
+		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
+>>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
 
+<<<<<<< HEAD
 		System.out.println("Digite a opção: ");
 
-			
-		Scanner leitor = new Scanner (System.in);
+=======
+		meuHotel = new Hotel(nomeHotel, capacidadeMaxima);
 
+		int opcao;
+
+		do {
+			mostrarMenu();
+			opcao = leitor.nextInt();
+			leitor.nextLine();
+>>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
+			
+			switch(opcao) {
+				case 1:
+					opcaoAnotarNovaReserva();
+	                break;
+				case 2:
+	
+					opcaoVerLivroDeRegistro();
+	                break;
+	
+	            case 3:
+	
+	            	opcaoApagarReserva();
+	                break;
+	
+	            case 4:
+	
+	            	opcaoProcurarPorHospesde();
+	                break;
+	                
+	            case 5:
+	            	opcaoPatrimonioHotel();
+	            	break;
+	
+	            case 0:
+	
+	                System.out.println("Encerrando sistema...");
+	                break;
+	
+	            default:
+	
+	                System.out.println("Opcao invalida.");
+			}
+			
+		} while (opcao != 0);
 		
 		leitor.close();
 	}
