@@ -7,6 +7,8 @@ public class Main {
 	static Scanner leitor = new Scanner (System.in);
 	
 	static Hotel meuHotel;
+	
+	static int capacidadeMaxima;
 
 	static String lerTexto(String mensagem) {
 		System.out.print(mensagem);
@@ -29,7 +31,14 @@ public class Main {
     
     static void opcaoAnotarNovaReserva() {
     	
+<<<<<<< HEAD
     	
+=======
+    	if(meuHotel.estaCheio(capacidadeMaxima)){
+			System.out.println("\nSem quartos disponíveis, impossível cadastrar novo hóspede.");
+			return;
+    	}
+>>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
     	
     	System.out.println("\n-- Cadastros --");
     	String codigo = lerTexto("Digite o código da reserva: ");
@@ -41,24 +50,56 @@ public class Main {
     	double valorDiaria = lerDouble("Digite o valor da diária: ");
     	Reserva novaReserva = new Reserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaDePagamento, quantidadeDias, valorDiaria);
     	meuHotel.cadastrarReserva(novaReserva);
-    	System.out.println("Pronto! Reserva agendada com sucesso.");
+    	System.out.println("\nPronto! Reserva agendada com sucesso!!");
     }
     
 	static void opcaoVerLivroDeRegistro() {
+<<<<<<< HEAD
+=======
+		if(meuHotel.estaVazio()){
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return;
+		}
+
 		System.out.print("\n=== Caderno de Reservas ===");
 		meuHotel.exibirRelatorioDeReservas(); 	
 	}
 	
 	static void opcaoApagarReserva() {
+
 		String codigo = lerTexto("Digite o codigo do para remover: ");
+
+
+		if(meuHotel.estaVazio()){
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return;
+		}
+	
+		String codigo = lerTexto("Digite o código para remover: ");
+
 		if(meuHotel.removerReservaPorCodigo(codigo)) {
+
 			System.out.println("Reserva removida com sucesso.");
+
+			System.out.println("\nReserva removida com sucesso!!");
+
 		} else {
+
             System.out.println("Reserva não encontrada.");
+
+            System.out.println("\nReserva não encontrada!!");
         }
 	}
 	
+
 	static void opcaoProcurarPorHospede() {
+
+	static void opcaoBuscarPorHospesde() {
+		if(meuHotel.estaVazio()){
+			System.out.println("\nNenhum hóspede cadastrado!!!");
+			return;
+		}
+		
 		System.out.println("\n-- Procurar por Convidado --");
 	    String nomeHospede = lerTexto("Digite o nome do hóspede: ");
 	    meuHotel.buscarReservasPorHospede(nomeHospede);
@@ -85,7 +126,11 @@ public class Main {
 
 		System.out.println("Bem-vindo ao Sistema de Reservas do Hotel!");
 		String nomeHotel = lerTexto("Nome do hotel: ");
+
 		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
+		capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
+
+		System.out.println("Digite a opção: ");
 
 		meuHotel = new Hotel(nomeHotel, capacidadeMaxima);
 
@@ -111,6 +156,7 @@ public class Main {
 	
 	            case 4:
 	            	opcaoProcurarPorHospede();
+
 	                break;
 	                
 	            case 5:
