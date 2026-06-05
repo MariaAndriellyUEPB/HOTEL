@@ -152,7 +152,7 @@ public class Main {
 	
 	            default:
 	
-	                System.out.println("Opcao invalida.");
+	                System.out.println("Opção inválida!! ");
 			}
 			
 		} while (opcao != 0);
