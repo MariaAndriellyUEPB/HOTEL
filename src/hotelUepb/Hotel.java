@@ -51,7 +51,6 @@ public class Hotel
 		}
 	}
 	
-
 	boolean buscarReservasPorHospede(String nomeDoHospede){
 		boolean encontrou = false;
 		for(int i = 0; i < quantidadeAtual; i++){
@@ -70,6 +69,7 @@ public class Hotel
 		}
 		return encontrou = true;
 	}
+	
 	
 	
 	void exibirRelatorioDeReservas(){
