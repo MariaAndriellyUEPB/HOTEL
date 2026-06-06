@@ -66,8 +66,6 @@ public class Hotel
 		return encontrou;
 	}
 	
-	
-	
 	void exibirRelatorioDeReservas(){
 		for(int i = 0; i < quantidadeAtual; i++){
 			System.out.println(reservasAtivas[i]);
