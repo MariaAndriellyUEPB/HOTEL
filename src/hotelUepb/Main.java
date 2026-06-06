@@ -139,7 +139,7 @@ public class Main {
 	                break;
 	
 	            case 4:
-	            	opcaoBuscarPorHospede();
+	            	opcaoBuscarReservaPorHospede();
 
 	                break;
 	                
