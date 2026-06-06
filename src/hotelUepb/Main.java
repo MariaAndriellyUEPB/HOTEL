@@ -84,7 +84,6 @@ public class Main {
 			return;
 		}
 		System.out.println("\n-- Procurar por Hóspede --");
-		
 	    String nomeHospede = lerTexto("Digite o nome do hóspede: ");
 	    meuHotel.buscarReservasPorHospede(nomeHospede);
 
