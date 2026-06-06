@@ -140,7 +140,6 @@ public class Main {
 	
 	            case 4:
 	            	opcaoBuscarReservaPorHospede();
-
 	                break;
 	                
 	            case 5:
@@ -152,7 +151,6 @@ public class Main {
 	                break;
 	
 	            default:
-	
 	                System.out.println("Opção inválida!! ");
 			}
 			
