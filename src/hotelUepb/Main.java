@@ -114,8 +114,6 @@ public class Main {
 		
 		capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
 
-		System.out.println("Digite a opção: ");
-
 		meuHotel = new Hotel(nomeHotel, capacidadeMaxima);
 
 		int opcao;
