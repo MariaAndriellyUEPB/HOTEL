@@ -53,11 +53,6 @@ public class Hotel
 	
 	boolean buscarReservasPorHospede(String nomeDoHospede){
 		boolean encontrou = false;
-		for(int i = 0; i < quantidadeAtual; i++){
-			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
-				encontrou = true;
-			}
-		}
 		if(encontrou == false){
 			System.out.println("Nenhuma reserva com o nome de '" + nomeDoHospede + "' foi encontrada.");
 			return encontrou;
@@ -65,9 +60,10 @@ public class Hotel
 		for(int i = 0; i < quantidadeAtual; i++){
 			if(reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)){
 				System.out.println(reservasAtivas[i]);
+				encontrou = true;
 			}
 		}
-		return encontrou = true;
+		return encontrou;
 	}
 	
 	
