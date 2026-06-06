@@ -111,8 +111,7 @@ public class Main {
 
 		System.out.println("Bem-vindo ao Sistema de Reservas do Hotel!");
 		String nomeHotel = lerTexto("Nome do hotel: ");
-
-		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
+		
 		capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
 
 		System.out.println("Digite a opção: ");
