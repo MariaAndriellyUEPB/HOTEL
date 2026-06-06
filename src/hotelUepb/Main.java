@@ -35,7 +35,6 @@ public class Main {
 			System.out.println("\nSem quartos disponíveis, impossível cadastrar novo hóspede.");
 			return;
     	}
-    	
     	System.out.println("\n-- Cadastros --");
     	String codigo = lerTexto("Digite o código da reserva: ");
     	String tipoQuarto = lerTexto("Digite o tipo do quarto: ");
@@ -55,7 +54,7 @@ public class Main {
 			return;
 		}
 
-		System.out.print("\n=== Caderno de Reservas ===");
+		System.out.print("\n=== Caderno de Reservas do Hotel " + meuHotel.nomeHotel +" ===");
 		meuHotel.exibirRelatorioDeReservas(); 	
 	}
 	
@@ -97,7 +96,7 @@ public class Main {
     }
 	
 	static void mostrarMenu() {
-		System.out.println("\n=== Menu do Hotel ===");
+		System.out.println("\n=== Menu do Hotel " + meuHotel.nomeHotel + " ===");
 		System.out.println("1 - Cadastrar reserva: ");
 		System.out.println("2 - Exibir reservas: ");
 		System.out.println("3 - Remover reserva: ");
