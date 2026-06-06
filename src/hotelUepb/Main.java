@@ -80,7 +80,7 @@ public class Main {
 
 	static void opcaoBuscarReservaPorHospede() {
 		if(meuHotel.estaVazio()){
-			System.out.println("\nNenhum hóspede cadastrado!!!");
+			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
 		}
 		System.out.println("\n-- Buscar reserva por Hóspede --");
