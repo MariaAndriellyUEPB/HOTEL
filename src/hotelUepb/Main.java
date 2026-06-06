@@ -78,12 +78,12 @@ public class Main {
 	}
 
 
-	static void opcaoBuscarPorHospede() {
+	static void opcaoBuscarReservaPorHospede() {
 		if(meuHotel.estaVazio()){
 			System.out.println("\nNenhum hóspede cadastrado!!!");
 			return;
 		}
-		System.out.println("\n-- Procurar por Hóspede --");
+		System.out.println("\n-- Buscar reserva por Hóspede --");
 		
 	    String nomeHospede = lerTexto("Digite o nome do hóspede: ");
 	    meuHotel.buscarReservasPorHospede(nomeHospede);
