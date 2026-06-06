@@ -12,7 +12,6 @@ public class Reserva {
 	
 	Reserva(String codigo, String tipoQuarto, String numeroQuarto, String nomeHospede, 	String formaDePagamento, int quantidadeDias, double valorDiaria){
 		this.codigo = codigo;
-		
 		this.tipoQuarto = tipoQuarto;
 		this.numeroQuarto = numeroQuarto;
 		this.nomeHospede = nomeHospede;
