@@ -79,7 +79,7 @@ public class Main {
 			System.out.println("\nNenhum hóspede cadastrado!!!");
 			return;
 		}
-		System.out.println("\n-- Procurar por Convidado --");
+		System.out.println("\n-- Procurar por Hóspede --");
 	    String nomeHospede = lerTexto("Digite o nome do hóspede: ");
 	    meuHotel.buscarReservasPorHospede(nomeHospede);
 	    
