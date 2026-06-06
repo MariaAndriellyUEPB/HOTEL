@@ -1,7 +1,6 @@
 package hotelUepb;
 
-public class Hotel 
-{
+public class Hotel {
 	String nomeHotel;
 	Reserva reservasAtivas[];
 	int quantidadeAtual;
@@ -32,6 +31,7 @@ public class Hotel
 		
 		return false;
 	}
+
 	
 	boolean estaCheio(int capacidadeMaxima) {
 		if(quantidadeAtual>=capacidadeMaxima) {
@@ -65,6 +65,7 @@ public class Hotel
 		}
 		return encontrou;
 	}
+
 	
 	void exibirRelatorioDeReservas(){
 		for(int i = 0; i < quantidadeAtual; i++){
