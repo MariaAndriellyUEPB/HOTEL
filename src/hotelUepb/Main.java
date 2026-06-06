@@ -93,7 +93,7 @@ public class Main {
 	
 	static void opcaoPatrimonioHotel() {
 		System.out.println("\n-- Valor do patrimônio do Hotel --");
-	    System.out.print(meuHotel.calcularPatrimonioTotal());
+	    System.out.println(meuHotel.calcularPatrimonioTotal());
     }
 	
 	static void mostrarMenu() {
