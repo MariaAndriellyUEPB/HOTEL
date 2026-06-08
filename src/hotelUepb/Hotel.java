@@ -58,11 +58,13 @@ public class Hotel {
 				System.out.println(reservasAtivas[i]);
 				encontrou = true;
 			}
+		}
+		
 		if(encontrou == false){
 			System.out.println("Nenhuma reserva com o nome de '" + nomeDoHospede + "' foi encontrada.");
 			return encontrou;
-			}
 		}
+		
 		return encontrou;
 	}
 	
