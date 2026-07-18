@@ -12,6 +12,10 @@ public class Hotel {
 
 	}
 
+	public String getNomeHotel() {
+		return nomeHotel;
+	}
+
 	public boolean cadastrarReserva(Reserva novaReserva) {
 		return reservasAtivas.add(novaReserva);
 	}
@@ -26,51 +30,46 @@ public class Hotel {
 
 	}
 
-	//===============================
-	boolean estaCheio(int capacidadeMaxima) {
-		if (quantidadeAtual >= capacidadeMaxima) {
+	public boolean estaCheio(int capacidadeMaxima) {
+		if (reservasAtivas.size() >= capacidadeMaxima) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	boolean estaVazio() {
-		if (quantidadeAtual == 0) {
+	public boolean estaVazio() {
+		if (reservasAtivas.size() == 0) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	boolean buscarReservasPorHospede(String nomeDoHospede) {
-		boolean encontrou = false;
-		for (int i = 0; i < quantidadeAtual; i++) {
-			if (reservasAtivas[i].nomeHospede.equalsIgnoreCase(nomeDoHospede)) {
-				System.out.println(reservasAtivas[i]);
-				encontrou = true;
+	public String buscarReservasPorHospede(String nomeDoHospede) {
+		for (Reserva minhaReserva : reservasAtivas) {
+			if (minhaReserva.getCodigo().equals(nomeDoHospede)) {
+				return minhaReserva.toString();
 			}
 		}
-
-		if (encontrou == false) {
-			System.out.println("Nenhuma reserva com o nome de '" + nomeDoHospede + "' foi encontrada.");
-			return encontrou;
-		}
-
-		return encontrou;
+		return "Nenhuma reserva com o nome de '" + nomeDoHospede + "' foi encontrada.";
 	}
 
-	void exibirRelatorioDeReservas() {
-		for (int i = 0; i < quantidadeAtual; i++) {
-			System.out.println(reservasAtivas[i]);
+	public String exibirRelatorioDeReservas() {
+		String info = "";
+		for (Reserva minhaReserva : reservasAtivas) {
+			info += minhaReserva.toString();
 		}
+		return info;
 
 	}
 
-	double calcularPatrimonioTotal() {
+	// =============================
+	// alterar o calculor pois ele ira ser da classe quarto
+	public double calcularPatrimonioTotal() {
 		double soma = 0;
-		for (int i = 0; i < quantidadeAtual; i++) {
-			soma += reservasAtivas[i].calcularDiariaTotal();
+		for (Reserva minhaReserva : reservasAtivas) {
+			soma += minhaReserva.calcularDiariaTotal();
 		}
 		return soma;
 	}
