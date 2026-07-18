@@ -1,5 +1,7 @@
 package hotelUepb;
 
+import java.util.Objects;
+
 public class Reserva {
 	private String codigo;
 	private String tipoQuarto;
@@ -48,12 +50,29 @@ public class Reserva {
 	public double getValorDiaria() {
 		return valorDiaria;
 	}
-	
+
 	private double validarDados(double valor) {
-		if(valor > 0) {
+		if (valor > 0) {
 			return valor;
 		}
 		return 0.0;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Reserva other = (Reserva) obj;
+		return Objects.equals(codigo, other.codigo);
 	}
 
 	public double calcularDiariaTotal() {
