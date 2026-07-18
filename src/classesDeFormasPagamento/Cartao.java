@@ -1,7 +1,7 @@
 package classesDeFormasPagamento;
 
 public class Cartao extends FormaDePagamento {
-	private static double Taxa = 0.03; // 3%
+	private static final double Taxa = 0.03; // 3%
 	
 	public Cartao(String nome) {
 		super(nome);
@@ -11,5 +11,4 @@ public class Cartao extends FormaDePagamento {
 	public double aplicarTaxa(double valor) {
 		return valor + (valor * Taxa);
 	}
-
 }
