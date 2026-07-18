@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Reserva {
 	private String codigo;
-	private String tipoQuarto;
+	private String tipoQuarto; // mudar para classe
 	private String numeroQuarto;
 	private String nomeHospede;
-	private String formaDePagamento;
+	private String formaDePagamento; // muda para classe
 	private int quantidadeDias;
 	private double valorDiaria;
 
