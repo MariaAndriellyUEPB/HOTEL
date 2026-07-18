@@ -1,16 +1,16 @@
 package hotelUepb;
 
 public class Reserva {
-	String codigo;
-	String tipoQuarto;
-	String numeroQuarto;
-	String nomeHospede;
-	String formaDePagamento;
-	int quantidadeDias;
-	double valorDiaria;
+	private String codigo;
+	private String tipoQuarto;
+	private String numeroQuarto;
+	private String nomeHospede;
+	private String formaDePagamento;
+	private int quantidadeDias;
+	private double valorDiaria;
 	
 	
-	Reserva(String codigo, String tipoQuarto, String numeroQuarto, String nomeHospede, 	String formaDePagamento, int quantidadeDias, double valorDiaria){
+	public Reserva(String codigo, String tipoQuarto, String numeroQuarto, String nomeHospede, 	String formaDePagamento, int quantidadeDias, double valorDiaria){
 		this.codigo = codigo;
 		this.tipoQuarto = tipoQuarto;
 		this.numeroQuarto = numeroQuarto;
@@ -20,7 +20,7 @@ public class Reserva {
 		this.valorDiaria = valorDiaria;
 		
 	}
-	double calcularDiariaTotal() {
+	public double calcularDiariaTotal() {
 		return valorDiaria*quantidadeDias;
 	}
 	public String toString() {
