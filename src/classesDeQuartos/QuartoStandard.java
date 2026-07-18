@@ -1,4 +1,4 @@
-package hotelUepb;
+package classesDeQuartos;
 
 public class QuartoStandard extends Quartos{
 

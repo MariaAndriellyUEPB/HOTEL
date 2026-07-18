@@ -1,4 +1,4 @@
-package hotelUepb;
+package classesDeFormasPagamento;
 
 public class Cartao extends FormaDePagamento {
 	private static double Taxa = 0.03; // 3%

@@ -2,6 +2,9 @@ package hotelUepb;
 
 import java.util.Objects;
 
+import classesDeFormasPagamento.FormaDePagamento;
+import classesDeQuartos.Quartos;
+
 public class Reserva {
 	private String codigo;
 	private Quartos tipoQuarto; // mudar para classe

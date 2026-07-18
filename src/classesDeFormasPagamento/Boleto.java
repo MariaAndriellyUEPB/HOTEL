@@ -1,4 +1,4 @@
-package hotelUepb;
+package classesDeFormasPagamento;
 
 public class Boleto extends FormaDePagamento {
 	private static double taxaFixa = 2.00;

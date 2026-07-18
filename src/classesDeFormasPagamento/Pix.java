@@ -1,4 +1,4 @@
-package hotelUepb;
+package classesDeFormasPagamento;
 
 public class Pix extends FormaDePagamento {
 	private static double DESCONTO = 0.05; // 

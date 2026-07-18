@@ -1,4 +1,4 @@
-package hotelUepb;
+package classesDeFormasPagamento;
 
 public class FormaDePagamento { // classe abstract???
 	private String nome;

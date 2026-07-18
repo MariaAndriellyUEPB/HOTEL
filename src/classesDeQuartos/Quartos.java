@@ -1,4 +1,4 @@
-package hotelUepb;
+package classesDeQuartos;
 
 public class Quartos {
 	private String nomeDoQuarto;
