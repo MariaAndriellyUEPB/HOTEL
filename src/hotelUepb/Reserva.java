@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Reserva {
 	private String codigo;
-	private String tipoQuarto; // mudar para classe
+	private Quartos tipoQuarto; // mudar para classe
 	private String numeroQuarto;
 	private String nomeHospede;
-	private String formaDePagamento; // muda para classe
+	private FormaDePagamento formaDePagamento; // muda para classe
 	private int quantidadeDias;
 	private double valorDiaria;
 
-	public Reserva(String codigo, String tipoQuarto, String numeroQuarto, String nomeHospede, String formaDePagamento,
+	public Reserva(String codigo, Quartos tipoQuarto, String numeroQuarto, String nomeHospede, FormaDePagamento formaDePagamento,
 			int quantidadeDias, double valorDiaria) {
 		this.codigo = codigo;
 		this.tipoQuarto = tipoQuarto;
@@ -27,7 +27,7 @@ public class Reserva {
 		return codigo;
 	}
 
-	public String getTipoQuarto() {
+	public Quartos getTipoQuarto() {
 		return tipoQuarto;
 	}
 
@@ -39,7 +39,7 @@ public class Reserva {
 		return nomeHospede;
 	}
 
-	public String getFormaDePagamento() {
+	public FormaDePagamento getFormaDePagamento() {
 		return formaDePagamento;
 	}
 
@@ -74,7 +74,7 @@ public class Reserva {
 		Reserva other = (Reserva) obj;
 		return Objects.equals(codigo, other.codigo);
 	}
-
+	
 	public double calcularDiariaTotal() {
 		return valorDiaria * quantidadeDias;
 	}
