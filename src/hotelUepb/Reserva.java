@@ -11,8 +11,8 @@ public class Reserva {
 	private int quantidadeDias;
 	private double valorDiaria;
 
-	public Reserva(String codigo, Quartos tipoQuarto, String numeroQuarto, String nomeHospede, FormaDePagamento formaDePagamento,
-			int quantidadeDias, double valorDiaria) {
+	public Reserva(String codigo, Quartos tipoQuarto, String numeroQuarto, String nomeHospede,
+			FormaDePagamento formaDePagamento, int quantidadeDias, double valorDiaria) {
 		this.codigo = codigo;
 		this.tipoQuarto = tipoQuarto;
 		this.numeroQuarto = numeroQuarto;
@@ -74,9 +74,16 @@ public class Reserva {
 		Reserva other = (Reserva) obj;
 		return Objects.equals(codigo, other.codigo);
 	}
-	
+
+	// verificar dias da semana ou n????
 	public double calcularDiariaTotal() {
-		return valorDiaria * quantidadeDias;
+		double total = 0;
+
+		for (int i = 0; i < quantidadeDias; i++) {
+			double valorBase = tipoQuarto.calcularValorBase(valorDiaria);
+			total+= valorBase;
+		}
+		return formaDePagamento.aplicarTaxa(total);
 	}
 
 	public String toString() {

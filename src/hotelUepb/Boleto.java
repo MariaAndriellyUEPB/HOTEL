@@ -5,7 +5,6 @@ public class Boleto extends FormaDePagamento {
 	
 	public Boleto(String nome) {
 		super(nome);
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
