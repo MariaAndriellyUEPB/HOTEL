@@ -1,6 +1,6 @@
 package classesDeQuartos;
 
-public class QuartoStandard extends Quartos{
+public class QuartoStandard extends Quarto{
 
 	public QuartoStandard(String nomeDoQuarto) {
 		super(nomeDoQuarto); // pode colocar o nome direto

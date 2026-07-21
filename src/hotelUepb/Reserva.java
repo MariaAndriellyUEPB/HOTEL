@@ -3,24 +3,26 @@ package hotelUepb;
 import java.util.Objects;
 
 import classesDeFormasPagamento.FormaDePagamento;
-import classesDeQuartos.Quartos;
+import classesDeQuartos.Quarto;
 
 public class Reserva {
 	private String codigo;
-	private Quartos tipoQuarto; // mudar para classe
+	private Quarto tipoQuarto; // mudar para classe
 	private String numeroQuarto;
 	private String nomeHospede;
 	private FormaDePagamento formaDePagamento; // muda para classe
+	private DiaSemana diaEntrada;
 	private int quantidadeDias;
 	private double valorDiaria;
 
-	public Reserva(String codigo, Quartos tipoQuarto, String numeroQuarto, String nomeHospede,
-			FormaDePagamento formaDePagamento, int quantidadeDias, double valorDiaria) {
+	public Reserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede,
+			FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) {
 		this.codigo = codigo;
 		this.tipoQuarto = tipoQuarto;
 		this.numeroQuarto = numeroQuarto;
 		this.nomeHospede = nomeHospede;
 		this.formaDePagamento = formaDePagamento;
+		this.diaEntrada = diaEntrada;
 		this.quantidadeDias = quantidadeDias;
 		this.valorDiaria = validarDados(valorDiaria);
 
@@ -30,7 +32,7 @@ public class Reserva {
 		return codigo;
 	}
 
-	public Quartos getTipoQuarto() {
+	public Quarto getTipoQuarto() {
 		return tipoQuarto;
 	}
 
@@ -45,6 +47,10 @@ public class Reserva {
 	public FormaDePagamento getFormaDePagamento() {
 		return formaDePagamento;
 	}
+	
+	public DiaSemana getDiaEntrada() {
+		return diaEntrada;
+	}
 
 	public int getQuantidadeDias() {
 		return quantidadeDias;
@@ -53,7 +59,7 @@ public class Reserva {
 	public double getValorDiaria() {
 		return valorDiaria;
 	}
-
+	// tratamento try cash
 	private double validarDados(double valor) {
 		if (valor > 0) {
 			return valor;
@@ -81,10 +87,20 @@ public class Reserva {
 	// verificar dias da semana ou n????
 	public double calcularDiariaTotal() {
 		double total = 0;
+		DiaSemana [] dias = DiaSemana.values(); //
+		
+		int indice = diaEntrada.ordinal();
 
 		for (int i = 0; i < quantidadeDias; i++) {
-			double valorBase = tipoQuarto.calcularValorBase(valorDiaria);
-			total+= valorBase;
+			DiaSemana diaAtual = dias[(indice + i) % 7];
+			// um objeto do tipo diasemana, que vai receber a quantidade de dias que o vetor esta!
+			double diaria = tipoQuarto.calcularValorBase(valorDiaria);
+			total += diaria;
+			
+			if(diaAtual.getTaxa() > 0) {
+				total += diaAtual.getTaxa();
+			}
+			total += diaria;
 		}
 		return formaDePagamento.aplicarTaxa(total);
 	}

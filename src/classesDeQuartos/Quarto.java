@@ -1,9 +1,9 @@
 package classesDeQuartos;
 
-public class Quartos {
+public abstract class Quarto {
 	private String nomeDoQuarto;
 
-	public Quartos(String nomeDoQuarto) {
+	public Quarto(String nomeDoQuarto) {
 		this.nomeDoQuarto = nomeDoQuarto;
 	}
 
@@ -11,9 +11,7 @@ public class Quartos {
 		return nomeDoQuarto;
 	}
 
-	public double calcularValorBase(double valorDiaria) {
-		return 0;
-	}
+	public abstract double calcularValorBase();
 
 
 }

@@ -1,17 +1,15 @@
 package classesDeFormasPagamento;
 
-public class FormaDePagamento { // classe abstract???
+public abstract class FormaDePagamento { 
 	private String nome;
-	
+
 	public FormaDePagamento(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
-	public double aplicarTaxa(double valor) {
-		return valor;
-	}
+
+	public abstract double aplicarTaxa();
 }

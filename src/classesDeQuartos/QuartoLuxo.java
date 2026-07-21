@@ -1,6 +1,6 @@
 package classesDeQuartos;
 
-public class QuartoLuxo extends Quartos {
+public class QuartoLuxo extends Quarto {
 
 	private static double ACRESCIMO = 0.30; // atributo estatico
 
