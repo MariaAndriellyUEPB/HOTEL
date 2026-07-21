@@ -18,6 +18,12 @@ public class SistemaHotel {
 	}
 
 	public boolean cadastrarReserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede, FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) {
+		for(Reserva reserva: reservasAtivas) {
+			if(reserva.getCodigo().equals(codigo)) {
+				return false;
+			}
+		}
+		
 		try {
 			Reserva novaReserva = new Reserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaDePagamento, diaEntrada, quantidadeDias, valorDiaria);
 			reservasAtivas.add(novaReserva);
@@ -39,8 +45,8 @@ public class SistemaHotel {
 
 	public String buscarReservasPorHospede(String nomeDoHospede) {
 		for (Reserva minhaReserva : reservasAtivas) {
-			if (minhaReserva.getCodigo().equals(nomeDoHospede)) {
-				return minhaReserva.toString();
+			if (minhaReserva.getNomeHospede().equals(nomeDoHospede)) {
+			    return minhaReserva.toString();
 			}
 		}
 		return "Nenhuma reserva com o nome de '" + nomeDoHospede + "' foi encontrada.";

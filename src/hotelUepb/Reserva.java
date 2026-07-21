@@ -69,26 +69,9 @@ public class Reserva {
 	}
 	
 	private void validaNomeHospede(String nome, String mensagem) throws Exception {
-		if(nome.equals("")) {
+		if(nome.isBlank()) {
 			throw new Exception(mensagem);
 		}
-	}
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(codigo);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Reserva other = (Reserva) obj;
-		return Objects.equals(codigo, other.codigo);
 	}
 
 	// verificar dias da semana ou n????
