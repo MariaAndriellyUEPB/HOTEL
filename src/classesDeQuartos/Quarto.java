@@ -1,6 +1,6 @@
 package classesDeQuartos;
 
-public abstract class Quarto {
+public abstract class Quarto {  
 	private String nomeDoQuarto;
 
 	public Quarto(String nomeDoQuarto) {

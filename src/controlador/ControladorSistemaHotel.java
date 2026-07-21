@@ -38,5 +38,5 @@ public class ControladorSistemaHotel {
 	
 	public boolean estaVazio() {
 		return sistema.estaVazio();
-	}
-}
+	} 
+} 

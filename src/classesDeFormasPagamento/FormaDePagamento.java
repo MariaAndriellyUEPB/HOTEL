@@ -7,7 +7,7 @@ public abstract class FormaDePagamento { // classe abstract???
 		this.nome = nome;
 	}
 
-	public String getNome() {
+	public String getNome() { 
 		return nome;
 	}
 

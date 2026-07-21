@@ -12,3 +12,4 @@ public class Cartao extends FormaDePagamento {
 		return valor + (valor * Taxa);
 	}
 }
+ 
