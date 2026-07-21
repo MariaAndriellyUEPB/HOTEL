@@ -2,14 +2,12 @@ package hotelUepb;
 
 import java.util.ArrayList;
 
-public class Hotel {
+public class SistemaHotel {
 	private String nomeHotel;
 	private ArrayList<Reserva> reservasAtivas;
 
-	Hotel(String nomeHotel, int capacidadeMaxima) {
-		this.nomeHotel = nomeHotel;
+	SistemaHotel() {
 		this.reservasAtivas = new ArrayList<Reserva>();
-
 	}
 
 	public String getNomeHotel() {
@@ -30,22 +28,6 @@ public class Hotel {
 
 	}
 
-	public boolean estaCheio(int capacidadeMaxima) {
-		if (reservasAtivas.size() >= capacidadeMaxima) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean estaVazio() {
-		if (reservasAtivas.size() == 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	public String buscarReservasPorHospede(String nomeDoHospede) {
 		for (Reserva minhaReserva : reservasAtivas) {
 			if (minhaReserva.getCodigo().equals(nomeDoHospede)) {
@@ -61,7 +43,6 @@ public class Hotel {
 			info += minhaReserva.toString();
 		}
 		return info;
-
 	}
 
 	// =============================
@@ -72,5 +53,21 @@ public class Hotel {
 			soma += minhaReserva.calcularDiariaTotal();
 		}
 		return soma;
+	}
+	
+	public boolean estaCheio(int capacidadeMaxima) {
+		if (reservasAtivas.size() >= capacidadeMaxima) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean estaVazio() {
+		if (reservasAtivas.size() == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

@@ -16,15 +16,17 @@ public class Reserva {
 	private double valorDiaria;
 
 	public Reserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede,
-			FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) {
+			FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) throws Exception {
 		this.codigo = codigo;
 		this.tipoQuarto = tipoQuarto;
 		this.numeroQuarto = numeroQuarto;
+		validaNomeHospede(nomeHospede, "Nenhum nome foi digitado.");
 		this.nomeHospede = nomeHospede;
 		this.formaDePagamento = formaDePagamento;
 		this.diaEntrada = diaEntrada;
 		this.quantidadeDias = quantidadeDias;
-		this.valorDiaria = validarDados(valorDiaria);
+		validaValorDiaria(valorDiaria, "Valor da diária inválido");
+		this.valorDiaria = valorDiaria;
 
 	}
 
@@ -59,14 +61,19 @@ public class Reserva {
 	public double getValorDiaria() {
 		return valorDiaria;
 	}
-	// tratamento try cash
-	private double validarDados(double valor) {
-		if (valor > 0) {
-			return valor;
+	
+	private void validaValorDiaria(double valor, String mensagem) throws Exception {
+		if(valor < 0) {
+			throw new Exception(mensagem);
 		}
-		return 0.0;
 	}
-
+	
+	private void validaNomeHospede(String nome, String mensagem) throws Exception {
+		if(nome.equals("")) {
+			throw new Exception(mensagem);
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(codigo);

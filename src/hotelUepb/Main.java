@@ -6,7 +6,7 @@ public class Main {
 
 	static Scanner leitor = new Scanner (System.in);
 	
-	static Hotel meuHotel;
+	static SistemaHotel meuHotel;
 	
 	static int capacidadeMaxima;
 
@@ -113,7 +113,7 @@ public class Main {
 		
 		capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
 
-		meuHotel = new Hotel(nomeHotel, capacidadeMaxima);
+		meuHotel = new SistemaHotel(nomeHotel, capacidadeMaxima);
 
 		int opcao;
 
