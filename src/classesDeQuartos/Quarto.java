@@ -11,7 +11,7 @@ public abstract class Quarto {
 		return nomeDoQuarto;
 	}
 
-	public abstract double calcularValorBase();
+	public abstract double calcularValorBase(double valor);
 
 
 }
