@@ -40,20 +40,21 @@ public class ControladorSistemaHotelTest {
 	}
 	
 	@Test
-	public void deveBuscarReservaPorHospede() {
+	public void deveBuscarReservaPorCodigo() {
 		Quarto quarto = new QuartoLuxo("Luxo");
 		FormaDePagamento formaDePagamento = new Cartao("Cartão");
 		assertTrue(controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0));
 		
-		controlador.buscarReservasPorHospede("Maria");
+		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 		
-		
-		String esperado = "\n================================================================\n--- Dados do Hóspedes ---"
-		+ "\n Código:  " + "100" + "\n Nome do hóspede:  " + "Maria" + "\n Forma de pagamento: "
-		+ "Cartão" + "\n Quantidades de dias: " + "1" + "\n\n---Dados do Quarto---"
-		+ "\n Tipo do Quarto: " + "Luxo" + "\n Número do quarto: " + "1"
-		+ "\n Valor da diária: R$ " + "100.0" + "\n Total a pagar: R$ " + calcularDiariaTotal()
-		+ "\n================================================================";
+		assertNotNull(reserva);
+		assertEquals("100", reserva.getCodigo());
+		assertEquals("Luxo", reserva.getTipoQuarto().getNomedoquarto());
+		assertEquals(1, reserva.getQuantidadeDias());
+		assertEquals("Maria", reserva.getNomeHospede());
+		assertEquals("Cartão", reserva.getFormaDePagamento().getNome());
+		assertEquals(DiaSemana.SEGUNDA, reserva.getDiaEntrada());
+		assertEquals("1", reserva.getNumeroQuarto());
+		assertEquals(100.0, reserva.getValorDiaria(), 0.001);
 	}
-
 }

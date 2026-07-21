@@ -43,13 +43,14 @@ public class SistemaHotel {
 		return false;
 	}
 
-	public String buscarReservasPorHospede(String nomeDoHospede) {
+	public Reserva buscarReservasPorCodigo(String codigo) {
 		for (Reserva minhaReserva : reservasAtivas) {
-			if (minhaReserva.getNomeHospede().equals(nomeDoHospede)) {
-			    return minhaReserva.toString();
+			if (minhaReserva.getCodigo().equals(codigo)) {
+			    return minhaReserva;
 			}
 		}
-		return "Nenhuma reserva com o nome de '" + nomeDoHospede + "' foi encontrada.";
+		System.out.println("Nenhuma reserva com o nome de '" + codigo + " foi encontrada.");
+		return null;
 	}
 
 	public String exibirRelatorioDeReservas() {

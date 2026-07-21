@@ -3,6 +3,7 @@ package controlador;
 import classesDeFormasPagamento.FormaDePagamento;
 import classesDeQuartos.Quarto;
 import hotelUepb.DiaSemana;
+import hotelUepb.Reserva;
 import hotelUepb.SistemaHotel;
 
 public class ControladorSistemaHotel {
@@ -20,8 +21,8 @@ public class ControladorSistemaHotel {
 		return sistema.removerReservaPorCodigo(codigo);
 	}
 	
-	public String buscarReservasPorHospede(String nomeDoHospede) {
-		return sistema.buscarReservasPorHospede(nomeDoHospede);
+	public Reserva buscarReservasPorCodigo(String codigo) {
+		return sistema.buscarReservasPorCodigo(codigo);
 	}
 	
 	public String exibirRelatorioDeReservas() {
