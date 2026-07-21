@@ -5,7 +5,7 @@ public enum DiaSemana {
 	
 	private double Taxa;
 	
-	DiaSemana(double Taxa){
+	private DiaSemana(double Taxa){
 		this.Taxa = Taxa;
 	}
 
