@@ -2,11 +2,14 @@ package hotelUepb;
 
 import java.util.ArrayList;
 
+import classesDeFormasPagamento.FormaDePagamento;
+import classesDeQuartos.Quarto;
+
 public class SistemaHotel {
 	private String nomeHotel;
 	private ArrayList<Reserva> reservasAtivas;
 
-	SistemaHotel() {
+	public SistemaHotel() {
 		this.reservasAtivas = new ArrayList<Reserva>();
 	}
 
@@ -14,8 +17,15 @@ public class SistemaHotel {
 		return nomeHotel;
 	}
 
-	public boolean cadastrarReserva(Reserva novaReserva) {
-		return reservasAtivas.add(novaReserva);
+	public boolean cadastrarReserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede, FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) {
+		try {
+			Reserva novaReserva = new Reserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaDePagamento, diaEntrada, quantidadeDias, valorDiaria);
+			reservasAtivas.add(novaReserva);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
 	}
 
 	public boolean removerReservaPorCodigo(String codigo) {
@@ -25,7 +35,6 @@ public class SistemaHotel {
 			}
 		}
 		return false;
-
 	}
 
 	public String buscarReservasPorHospede(String nomeDoHospede) {

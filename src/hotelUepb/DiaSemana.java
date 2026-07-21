@@ -12,5 +12,4 @@ public enum DiaSemana {
 	public double getTaxa() {
 		return Taxa;
 	}
-	
 }

@@ -1,4 +1,4 @@
-package hotelUepb;
+package console;
 
 public class Console {
 

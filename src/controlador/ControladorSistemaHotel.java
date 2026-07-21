@@ -1,4 +1,9 @@
-package hotelUepb;
+package controlador;
+
+import classesDeFormasPagamento.FormaDePagamento;
+import classesDeQuartos.Quarto;
+import hotelUepb.DiaSemana;
+import hotelUepb.SistemaHotel;
 
 public class ControladorSistemaHotel {
 	private SistemaHotel sistema;
@@ -7,8 +12,8 @@ public class ControladorSistemaHotel {
 		this.sistema = new SistemaHotel();
 	}
 	
-	public boolean cadastrarReserva(Reserva novaReserva) {
-		return sistema.cadastrarReserva(novaReserva);
+	public boolean cadastrarReserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede, FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) {
+		return sistema.cadastrarReserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaDePagamento, diaEntrada, quantidadeDias, valorDiaria);
 	}
 	
 	public boolean removerReservaPorCodigo(String codigo) {
