@@ -8,6 +8,7 @@ import hotelUepb.SistemaHotel;
 
 public class ControladorSistemaHotel {
 	private SistemaHotel sistema;
+	
 
 	public ControladorSistemaHotel() {
 		this.sistema = new SistemaHotel(); //DARIA ERRO POIS TERIA QUE PASSAR PARAMETROS
