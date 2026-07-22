@@ -7,9 +7,25 @@ import classesDeQuartos.Quarto;
 
 public class SistemaHotel {
 	private ArrayList<Reserva> reservasAtivas;
+	private String nomeHotel;
+	private int capacidadeMaxima;
+	
+	public SistemaHotel(String nomeHotel, int capacidadeMaxima) {
+		this.nomeHotel = nomeHotel;
+		this.capacidadeMaxima = capacidadeMaxima;
+		
+	}
 
 	public SistemaHotel() {
 		this.reservasAtivas = new ArrayList<Reserva>();
+	}
+	
+	public String getNomeHotel() {
+		return nomeHotel;
+	}
+
+	public int getCapacidadeMaxima() {
+		return capacidadeMaxima;
 	}
 
 	public boolean cadastrarReserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede, FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) {
