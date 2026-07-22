@@ -58,6 +58,7 @@ public class ControladorSistemaHotelTest {
 		assertEquals(DiaSemana.SEGUNDA, reserva.getDiaEntrada());
 		assertEquals("1", reserva.getNumeroQuarto());
 		assertEquals(100.0, reserva.getValorDiaria(), 0.001); //verifica três casas após a vírgula
+		//PODEMOS USAR PARA COMPARAR? NÃO SE PODE COMPARAR DOUBLE SEM DIZER A QUANTIDADE DE CASAS DECIMAIS QUE QUER COMPARAR
 	}
 	
 	@Test

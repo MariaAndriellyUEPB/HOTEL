@@ -71,33 +71,13 @@ public class Reserva {
 			throw new Exception(mensagem);
 		}
 	}
-
-	// verificar dias da semana ou n????
-	public double calcularDiariaTotal() {
-		double total = 0;
-		DiaSemana [] dias = DiaSemana.values(); //
-		
-		int indice = diaEntrada.ordinal();
-
-		for (int i = 0; i < quantidadeDias; i++) {
-			DiaSemana diaAtual = dias[(indice + i) % 7];
-			// um objeto do tipo diasemana, que vai receber a quantidade de dias que o vetor esta!
-			double diaria = tipoQuarto.calcularValorBase(valorDiaria);
-			total += diaria;
-			
-			if(diaAtual.getTaxa() > 0) {
-				total += diaAtual.getTaxa();
-			}
-		}
-		return formaDePagamento.aplicarTaxa(total);
-	}
 	
-	public double calcularDiariaTotalSemVetor() {
+	public double calcularDiariaTotal() {
 	    double total = 0;
 	    int indice = diaEntrada.ordinal(); //retorna a posicao do enum, exemplo se a reserva comeca na terca o indice vai ser 1
 
 	    for (int i = 0; i < quantidadeDias; i++) {
-	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7]; 
+	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7]; //PODEMOS USAR O MÉTODO PRONTO PARA ENUM .values? TENDO EM VISTA QUE ELE MEIO QUE CRIA UM VETOR COM TODOS OS ATRIBUTOS DE ENUM
 
 	        double diaria = tipoQuarto.calcularValorBase(valorDiaria);
 	        total += diaria;
@@ -115,6 +95,6 @@ public class Reserva {
 				+ formaDePagamento + "\n Quantidades de dias: " + quantidadeDias + "\n\n---Dados do Quarto---"
 				+ "\n Tipo do Quarto: " + tipoQuarto + "\n Número do quarto: " + numeroQuarto
 				+ "\n Valor da diária: R$ " + valorDiaria + "\n Total a pagar: R$ " + calcularDiariaTotal()
-				+ "\n================================================================";
+				+ "\n================================================================\n";
 	}
 }

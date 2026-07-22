@@ -9,7 +9,7 @@ public class SistemaHotel {
 	private String nomeHotel;
 	private ArrayList<Reserva> reservasAtivas;
 
-	public SistemaHotel() {
+	public SistemaHotel() { //CONTRUTOR SEM PARAMETRO POIS DAVA ERRO NO CONTROLADOR, MAS COMO PODEMOS IMPLEMENTAR A CAPACIDADE MÁXIMA E O NOME DO HOTEL?
 		this.reservasAtivas = new ArrayList<Reserva>();
 	}
 
@@ -61,8 +61,6 @@ public class SistemaHotel {
 		return info;
 	}
 
-	// =============================
-	// alterar o calculor pois ele ira ser da classe quarto
 	public double calcularPatrimonioTotal() {
 		double soma = 0;
 		for (Reserva minhaReserva : reservasAtivas) {

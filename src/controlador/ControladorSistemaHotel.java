@@ -10,7 +10,7 @@ public class ControladorSistemaHotel {
 	private SistemaHotel sistema;
 
 	public ControladorSistemaHotel() {
-		this.sistema = new SistemaHotel();
+		this.sistema = new SistemaHotel(); //DARIA ERRO POIS TERIA QUE PASSAR PARAMETROS
 	}
 	
 	public boolean cadastrarReserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede, FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) {
