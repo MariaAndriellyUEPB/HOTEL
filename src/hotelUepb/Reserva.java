@@ -5,25 +5,26 @@ import classesDeQuartos.Quarto;
 
 public class Reserva {
 	private String codigo;
-	private Quarto tipoQuarto; // mudar para classe
+	private Quarto tipoQuarto;
 	private String numeroQuarto;
 	private String nomeHospede;
-	private FormaDePagamento formaDePagamento; // muda para classe
+	private FormaDePagamento formaDePagamento;
 	private DiaSemana diaEntrada;
 	private int quantidadeDias;
 	private double valorDiaria;
 
 	public Reserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede,
 			FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) throws Exception {
+		validaNomeHospede(nomeHospede, "Nenhum nome foi digitado.");
+		validaValorDiaria(valorDiaria, "Valor da diária inválido");
+
 		this.codigo = codigo;
 		this.tipoQuarto = tipoQuarto;
 		this.numeroQuarto = numeroQuarto;
-		validaNomeHospede(nomeHospede, "Nenhum nome foi digitado.");
 		this.nomeHospede = nomeHospede;
 		this.formaDePagamento = formaDePagamento;
 		this.diaEntrada = diaEntrada;
 		this.quantidadeDias = quantidadeDias;
-		validaValorDiaria(valorDiaria, "Valor da diária inválido");
 		this.valorDiaria = valorDiaria;
 
 	}
@@ -74,10 +75,10 @@ public class Reserva {
 	
 	public double calcularDiariaTotal() {
 	    double total = 0;
-	    int indice = diaEntrada.ordinal(); // q - 4 //retorna a posicao do enum, exemplo se a reserva comeca na terca o indice vai ser 1
+	    int indice = diaEntrada.ordinal(); //retorna a posicao do enum, exemplo se a reserva comeca na terca o indice vai ser 1
 
 	    for (int i = 0; i < quantidadeDias; i++) {
-	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7]; // //PODEMOS USAR O MÉTODO PRONTO PARA ENUM .values? TENDO EM VISTA QUE ELE MEIO QUE CRIA UM VETOR COM TODOS OS ATRIBUTOS DE ENUM
+	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7];
 
 	        double diaria = tipoQuarto.calcularValorBase(valorDiaria);
 	        total += diaria;

@@ -6,21 +6,11 @@ import classesDeFormasPagamento.FormaDePagamento;
 import classesDeQuartos.Quarto;
 
 public class SistemaHotel {
-	private String nomeHotel;
-	//private final int capacidadeMaxima;
 	private ArrayList<Reserva> reservasAtivas;
 
-	public SistemaHotel() { //CONTRUTOR SEM PARAMETRO POIS DAVA ERRO NO CONTROLADOR, MAS COMO PODEMOS IMPLEMENTAR A CAPACIDADE MÁXIMA E O NOME DO HOTEL?
+	public SistemaHotel() {
 		this.reservasAtivas = new ArrayList<Reserva>();
 	}
-
-	public String getNomeHotel() {
-		return nomeHotel;
-	}
-	
-	/*public int getCapacidade() {
-		return capacidadeMaxima;
-	}*/
 
 	public boolean cadastrarReserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede, FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) {
 		for(Reserva reserva: reservasAtivas) {
