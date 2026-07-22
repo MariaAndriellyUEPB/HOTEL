@@ -10,8 +10,3 @@ public class Main {
 	}
 
 }
-//static Scanner leitor = new Scanner(System.in);
-
-//static SistemaHotel meuHotel;
-
-
