@@ -9,21 +9,17 @@ public class SistemaHotel {
 	private ArrayList<Reserva> reservasAtivas;
 	private String nomeHotel;
 	private int capacidadeMaxima;
-	
-	public SistemaHotel(String nomeHotel, int capacidadeMaxima) {
-		this.nomeHotel = nomeHotel;
-		this.capacidadeMaxima = capacidadeMaxima;
-		
-	}
 
 	public SistemaHotel() {
 		this.reservasAtivas = new ArrayList<Reserva>();
+		this.nomeHotel = "Hotel Raio de Sol";
+		this.capacidadeMaxima = 3; 
 	}
 	
 	public String getNomeHotel() {
 		return nomeHotel;
 	}
-
+	
 	public int getCapacidadeMaxima() {
 		return capacidadeMaxima;
 	}
