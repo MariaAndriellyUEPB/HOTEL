@@ -35,9 +35,10 @@ public class SistemaHotel {
 	}
 
 	public boolean removerReservaPorCodigo(String codigo) {
-		for (Reserva minhaReserva : reservasAtivas) {
-			if (minhaReserva.getCodigo().equals(codigo)) {
-				return reservasAtivas.remove(codigo);
+		for(int i = 0; i < reservasAtivas.size(); i++) {
+			if(reservasAtivas.get(i).getCodigo().equals(codigo)) {
+				reservasAtivas.remove(i);
+				return true;
 			}
 		}
 		return false;
@@ -66,6 +67,14 @@ public class SistemaHotel {
 		double soma = 0;
 		for (Reserva minhaReserva : reservasAtivas) {
 			soma += minhaReserva.calcularDiariaTotal();
+		}
+		return soma;
+	}
+	
+	public int contarReservas() {
+		int soma = 0;
+		for(Reserva reserva: reservasAtivas) {
+			soma++;
 		}
 		return soma;
 	}

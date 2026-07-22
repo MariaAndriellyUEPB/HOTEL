@@ -33,6 +33,10 @@ public class ControladorSistemaHotel {
 		return sistema.calcularPatrimonioTotal();
 	}
 	
+	public int contarReservas() {
+		return sistema.contarReservas();
+	}
+	
 	public boolean estaCheio(int capacidadeMaxima) {
 		return sistema.estaCheio(capacidadeMaxima);
 	}
