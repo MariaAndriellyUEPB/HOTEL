@@ -49,7 +49,6 @@ public class SistemaHotel {
 			    return minhaReserva;
 			}
 		}
-		System.out.println("Nenhuma reserva com o nome de '" + codigo + " foi encontrada.");
 		return null;
 	}
 

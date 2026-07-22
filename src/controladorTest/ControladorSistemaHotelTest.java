@@ -10,6 +10,7 @@ import classesDeFormasPagamento.Cartao;
 import classesDeFormasPagamento.FormaDePagamento;
 import classesDeQuartos.Quarto;
 import classesDeQuartos.QuartoLuxo;
+import classesDeQuartos.QuartoStandard;
 import controlador.ControladorSistemaHotel;
 import hotelUepb.DiaSemana;
 import hotelUepb.Reserva;
@@ -43,7 +44,7 @@ public class ControladorSistemaHotelTest {
 	public void deveBuscarReservaPorCodigo() {
 		Quarto quarto = new QuartoLuxo("Luxo");
 		FormaDePagamento formaDePagamento = new Cartao("Cartão");
-		assertTrue(controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0));
+		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 		
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 		
@@ -55,6 +56,26 @@ public class ControladorSistemaHotelTest {
 		assertEquals("Cartão", reserva.getFormaDePagamento().getNome());
 		assertEquals(DiaSemana.SEGUNDA, reserva.getDiaEntrada());
 		assertEquals("1", reserva.getNumeroQuarto());
-		assertEquals(100.0, reserva.getValorDiaria(), 0.001);
+		assertEquals(100.0, reserva.getValorDiaria(), 0.001); //verifica três casas após a vírgula
+	}
+	
+	@Test
+	public void deveRetornarNullAoBuscarCodigoInexistente() {
+		Quarto quarto = new QuartoLuxo("Luxo");
+		FormaDePagamento formaDePagamento = new Cartao("Cartão");
+		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
+		
+		assertNull(controlador.buscarReservasPorCodigo("999"));
+	}
+	
+	@Test
+	public void deveRetornarCalculoDiariaTotal() {
+		Quarto quarto = new QuartoStandard("Quarto Standard");
+		FormaDePagamento formaDePagamento = new Cartao("Cartão");
+		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
+		
+		Reserva reserva = controlador.buscarReservasPorCodigo("100");
+		
+		assertEquals(103.0, reserva.calcularDiariaTotal(), 0.001);
 	}
 }
