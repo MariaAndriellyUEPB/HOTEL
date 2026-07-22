@@ -160,7 +160,4 @@ public class ControladorSistemaHotelTest {
 		
 		assertEquals(2, controlador.contarReservas());
 	}
-	
-	
-	
 }
