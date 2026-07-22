@@ -72,11 +72,7 @@ public class SistemaHotel {
 	}
 	
 	public int contarReservas() {
-		int soma = 0;
-		for(Reserva reserva: reservasAtivas) {
-			soma++;
-		}
-		return soma;
+		return reservasAtivas.size();
 	}
 	
 	public boolean estaCheio(int capacidadeMaxima) {

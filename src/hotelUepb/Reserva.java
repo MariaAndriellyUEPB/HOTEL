@@ -97,7 +97,7 @@ public class Reserva {
 	    int indice = diaEntrada.ordinal(); //retorna a posicao do enum, exemplo se a reserva comeca na terca o indice vai ser 1
 
 	    for (int i = 0; i < quantidadeDias; i++) {
-	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7];
+	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7]; 
 
 	        double diaria = tipoQuarto.calcularValorBase(valorDiaria);
 	        total += diaria;

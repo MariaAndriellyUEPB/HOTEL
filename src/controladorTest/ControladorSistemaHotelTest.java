@@ -27,6 +27,7 @@ public class ControladorSistemaHotelTest {
 		Quarto quarto = new QuartoLuxo("Luxo");
 		FormaDePagamento formaDePagamento = new Cartao("Cartão");
 		assertTrue(controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0));
+		assertEquals(1, controlador.contarReservas());
 	}
 	
 	@Test
