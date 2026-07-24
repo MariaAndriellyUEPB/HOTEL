@@ -1,25 +1,31 @@
 package hotelUepb;
 
-import java.util.Objects;
+import classesDeFormasPagamento.FormaDePagamento;
+import classesDeQuartos.Quarto;
 
 public class Reserva {
 	private String codigo;
-	private Quartos tipoQuarto; // mudar para classe
+	private Quarto tipoQuarto;
 	private String numeroQuarto;
 	private String nomeHospede;
-	private FormaDePagamento formaDePagamento; // muda para classe
+	private FormaDePagamento formaDePagamento;
+	private DiaSemana diaEntrada;
 	private int quantidadeDias;
 	private double valorDiaria;
 
-	public Reserva(String codigo, Quartos tipoQuarto, String numeroQuarto, String nomeHospede,
-			FormaDePagamento formaDePagamento, int quantidadeDias, double valorDiaria) {
+	public Reserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede,
+			FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) throws Exception {
+		validaNomeHospede(nomeHospede, "Nenhum nome foi digitado.");
+		validaValorDiaria(valorDiaria, "Valor da diária inválido");
+
 		this.codigo = codigo;
 		this.tipoQuarto = tipoQuarto;
 		this.numeroQuarto = numeroQuarto;
 		this.nomeHospede = nomeHospede;
 		this.formaDePagamento = formaDePagamento;
+		this.diaEntrada = diaEntrada;
 		this.quantidadeDias = quantidadeDias;
-		this.valorDiaria = validarDados(valorDiaria);
+		this.valorDiaria = valorDiaria;
 
 	}
 
@@ -27,7 +33,7 @@ public class Reserva {
 		return codigo;
 	}
 
-	public Quartos getTipoQuarto() {
+	public Quarto getTipoQuarto() {
 		return tipoQuarto;
 	}
 
@@ -42,6 +48,10 @@ public class Reserva {
 	public FormaDePagamento getFormaDePagamento() {
 		return formaDePagamento;
 	}
+	
+	public DiaSemana getDiaEntrada() {
+		return diaEntrada;
+	}
 
 	public int getQuantidadeDias() {
 		return quantidadeDias;
@@ -50,40 +60,34 @@ public class Reserva {
 	public double getValorDiaria() {
 		return valorDiaria;
 	}
-
-	private double validarDados(double valor) {
-		if (valor > 0) {
-			return valor;
+	
+	private void validaValorDiaria(double valor, String mensagem) throws Exception {
+		if(valor < 0) {
+			throw new Exception(mensagem);
 		}
-		return 0.0;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(codigo);
+	
+	private void validaNomeHospede(String nome, String mensagem) throws Exception {
+		if(nome.isBlank()) {
+			throw new Exception(mensagem);
+		}
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Reserva other = (Reserva) obj;
-		return Objects.equals(codigo, other.codigo);
-	}
-
-	// verificar dias da semana ou n????
+	
 	public double calcularDiariaTotal() {
-		double total = 0;
+	    double total = 0;
+	    int indice = diaEntrada.ordinal(); //retorna a posicao do enum, exemplo se a reserva comeca na terca o indice vai ser 1
 
-		for (int i = 0; i < quantidadeDias; i++) {
-			double valorBase = tipoQuarto.calcularValorBase(valorDiaria);
-			total+= valorBase;
-		}
-		return formaDePagamento.aplicarTaxa(total);
+	    for (int i = 0; i < quantidadeDias; i++) {
+	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7];
+
+	        double diaria = tipoQuarto.calcularValorBase(valorDiaria);
+	        total += diaria;
+
+	        if (diaAtual.getTaxa() > 0) {
+	            total += diaAtual.getTaxa();
+	        }
+	    }
+	    return formaDePagamento.aplicarTaxa(total);
 	}
 
 	public String toString() {
@@ -92,6 +96,6 @@ public class Reserva {
 				+ formaDePagamento + "\n Quantidades de dias: " + quantidadeDias + "\n\n---Dados do Quarto---"
 				+ "\n Tipo do Quarto: " + tipoQuarto + "\n Número do quarto: " + numeroQuarto
 				+ "\n Valor da diária: R$ " + valorDiaria + "\n Total a pagar: R$ " + calcularDiariaTotal()
-				+ "\n================================================================";
+				+ "\n================================================================\n";
 	}
 }
