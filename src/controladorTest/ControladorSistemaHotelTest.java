@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
  
 import classesDeFormasPagamento.Cartao;
 import classesDeFormasPagamento.FormaDePagamento;
+import classesDeFormasPagamento.Pix;
 import classesDeQuartos.Quarto;
 import classesDeQuartos.QuartoLuxo;
 import classesDeQuartos.QuartoStandard;
@@ -161,5 +162,16 @@ public class ControladorSistemaHotelTest {
 		controlador.cadastrarReserva("101", quarto2, "12", "Amalia", formaDePagamento2, DiaSemana.TERCA, 1, 100.0);
 		
 		assertEquals(2, controlador.contarReservas());
+	}
+	
+	@Test
+	public void deveAplicarDescontoNoPix() {
+		FormaDePagamento formaDePagamento = new Pix("Pix");
+		assertEquals(95.0, formaDePagamento.aplicarTaxa(100), 0.001);
+	}
+	
+	public void deveAplicarTaxaNoCartao() {
+		FormaDePagamento formaDePagamento = new Pix("Pix");
+		assertEquals(95.0, formaDePagamento.aplicarTaxa(100), 0.001);
 	}
 }

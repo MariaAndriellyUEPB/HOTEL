@@ -1,7 +1,6 @@
 package hotelUepb;
 
 import java.util.ArrayList;
-
 import classesDeFormasPagamento.FormaDePagamento;
 import classesDeQuartos.Quarto;
 
