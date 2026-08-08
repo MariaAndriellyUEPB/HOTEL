@@ -1,8 +1,9 @@
 package hotelUepb;
 
 import java.util.ArrayList;
-import classesDeFormasPagamento.FormaDePagamento;
+
 import classesDeQuartos.Quarto;
+import classesPagaveis.FormaDePagamento;
 
 public class SistemaHotel {
 	private ArrayList<Reserva> reservasAtivas;

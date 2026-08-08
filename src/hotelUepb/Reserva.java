@@ -1,7 +1,7 @@
 package hotelUepb;
 
-import classesDeFormasPagamento.FormaDePagamento;
 import classesDeQuartos.Quarto;
+import classesPagaveis.FormaDePagamento;
 
 public class Reserva {
 	private String codigo;

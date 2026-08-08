@@ -5,13 +5,13 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
- 
-import classesDeFormasPagamento.Cartao;
-import classesDeFormasPagamento.FormaDePagamento;
-import classesDeFormasPagamento.Pix;
+
 import classesDeQuartos.Quarto;
 import classesDeQuartos.QuartoLuxo;
 import classesDeQuartos.QuartoStandard;
+import classesPagaveis.Cartao;
+import classesPagaveis.FormaDePagamento;
+import classesPagaveis.Pix;
 import controlador.ControladorSistemaHotel;
 import hotelUepb.DiaSemana;
 import hotelUepb.Reserva;

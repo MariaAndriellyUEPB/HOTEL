@@ -1,7 +1,7 @@
 package controlador;
 
-import classesDeFormasPagamento.FormaDePagamento;
 import classesDeQuartos.Quarto;
+import classesPagaveis.FormaDePagamento;
 import hotelUepb.DiaSemana;
 import hotelUepb.Reserva;
 import hotelUepb.SistemaHotel;
