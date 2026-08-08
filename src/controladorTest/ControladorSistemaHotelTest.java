@@ -11,6 +11,7 @@ import classesDeQuartos.QuartoLuxo;
 import classesDeQuartos.QuartoStandard;
 import classesPagaveis.Cartao;
 import classesPagaveis.FormaDePagamento;
+import classesPagaveis.PagamentoViaPix;
 import classesPagaveis.Pix;
 import controlador.ControladorSistemaHotel;
 import hotelUepb.DiaSemana;
@@ -166,7 +167,7 @@ public class ControladorSistemaHotelTest {
 	
 	@Test
 	public void deveAplicarDescontoNoPix() {
-		FormaDePagamento formaDePagamento = new Pix("Pix");
+		FormaDePagamento
 		assertEquals(95.0, formaDePagamento.aplicarTaxa(100), 0.001);
 	}
 	
