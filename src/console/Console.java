@@ -1,6 +1,11 @@
 package console;
 
 import java.util.Scanner;
+
+import classesDeQuartos.Quarto;
+import classesDeQuartos.QuartoComum;
+import classesDeQuartos.QuartoLuxo;
+import classesDeQuartos.QuartoStandard;
 import controlador.ControladorSistemaHotel;
 
 public class Console {
@@ -44,6 +49,7 @@ public class Console {
 		} while (opcao != 0);
 
 		leitor.close();
+	}
 
 	private void exibirMenu() {
 		System.out.println("\n=== Menu do Hotel ===");
@@ -125,6 +131,44 @@ public class Console {
 		System.out.println("\n-- Valor do patrimônio do Hotel --");
 		System.out.println("R$ " + controlador.calcularPatrimonioTotal());
 	}
+=======
+	
+	public String cadastrarReserva() {
+		String codigo = lerTexto("Codigo: ");
+		
+
+		String numeroQuarto = lerTexto("Numero do quarto: ");
+		String nomeHospede = lerTexto("Nome Hospede: ");
+		int quantidadeDias = lerInteiro("Quantidade de dias");
+		double valorDiaria = lerDouble("Valor diaria");
+	}
+	
+	
+	public void tipoQuarto() {
+		System.out.println("Tipo do Quarto");
+	    System.out.println("1 - Luxo");
+	    System.out.println("2 - Standard");
+	    
+	    int opcao = lerInteiro("");
+	    
+	    Quarto tipoQuarto = null;
+	    
+	    switch (opcao) {
+		case 1: {
+			tipoQuarto = new QuartoLuxo("Quarto Luxo");
+			break;
+		}
+		case 2:
+			tipoQuarto = new QuartoComum("Quarto Standard");
+			break;	
+		default:
+			System.out.println("tipo invalido");
+		}
+	    
+	}
+	
+	
+>>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL.git
 }
 // REUTILIZEM COM SABEDORIAAAAAAAAAAAAA
 /*
