@@ -134,7 +134,11 @@ public class Console {
 		System.out.println("\n-- Buscar reserva Do Hóspede --");
 
 		String codigo = lerTexto("Digite o código da reserva que deseja buscar: ");
-		controlador.buscarReservasPorCodigo(codigo);
+		if (controlador.buscarReservasPorCodigo(codigo)!=null) {
+			System.out.println(controlador.buscarReservasPorCodigo(codigo));
+		} else {
+			System.out.println("Reserva não encontrada.");
+		}
 	}
 
 	public void opcaoPatrimonioHotel() {
