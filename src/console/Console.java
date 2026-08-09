@@ -5,7 +5,10 @@ import java.util.Scanner;
 import classesDeQuartos.Quarto;
 import classesDeQuartos.QuartoComum;
 import classesDeQuartos.QuartoLuxo;
-import classesDeQuartos.QuartoStandard;
+import classesPagaveis.FormaDePagamento;
+import classesPagaveis.PagamentoViaBoleto;
+import classesPagaveis.PagamentoViaCartao;
+import classesPagaveis.PagamentoViaPix;
 import controlador.ControladorSistemaHotel;
 
 public class Console {
@@ -64,8 +67,7 @@ public class Console {
 	
 	public String cadastrarReserva() {
 		String codigo = lerTexto("Codigo: ");
-		
-
+		Quarto tipoQuarto = tipoQuarto();
 		String numeroQuarto = lerTexto("Numero do quarto: ");
 		String nomeHospede = lerTexto("Nome Hospede: ");
 		int quantidadeDias = lerInteiro("Quantidade de dias");
@@ -73,26 +75,54 @@ public class Console {
 	}
 	
 	
-	public void tipoQuarto() {
+	public Quarto tipoQuarto() {
 		System.out.println("Tipo do Quarto");
 	    System.out.println("1 - Luxo");
 	    System.out.println("2 - Standard");
 	    
-	    int opcao = lerInteiro("");
+	    int opcao = lerInteiro("Quarto: ");
 	    
 	    Quarto tipoQuarto = null;
 	    
 	    switch (opcao) {
-		case 1: {
+		case 1: 
 			tipoQuarto = new QuartoLuxo("Quarto Luxo");
 			break;
-		}
+			
 		case 2:
 			tipoQuarto = new QuartoComum("Quarto Standard");
 			break;	
+			
 		default:
 			System.out.println("tipo invalido");
 		}
+		return tipoQuarto;
+	}
+	
+	public FormaDePagamento formaPagamento() {
+		System.out.println("Tipo do Quarto");
+	    System.out.println("1 - Cartao");
+	    System.out.println("2 - Boleto");
+	    System.out.println("3 - Pix");
+	    int opcao = lerInteiro("Pagamento: ");
+	    
+	    FormaDePagamento formaPagamento = null;
+	    switch (opcao) {
+		case 1: 
+			formaPagamento = new PagamentoViaCartao();
+			break;
+		
+		case 2:
+			formaPagamento = new PagamentoViaBoleto();
+			break;
+		
+		case 3:
+			formaPagamento = new PagamentoViaPix();
+			
+		default:
+			System.out.println("tipo invalido");
+		}
+		return formaPagamento;
 	    
 	}
 	
