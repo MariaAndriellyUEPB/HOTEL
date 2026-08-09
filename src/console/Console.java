@@ -27,7 +27,32 @@ public class Console {
 	}
 
 	public void iniciar() {
+		int opcao;
+
 		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
+
+		do {
+			exibirMenu();
+			opcao = lerInteiro("Opcao: ");
+
+			executarOpcao(opcao);
+
+			if (opcao != 0) {
+				System.out.println();
+			}
+
+		} while (opcao != 0);
+
+		leitor.close();
+
+	private void exibirMenu() {
+		System.out.println("\n=== Menu do Hotel ===");
+		System.out.println("1 - Cadastrar reserva: ");
+		System.out.println("2 - Exibir reservas: ");
+		System.out.println("3 - Remover reserva: ");
+		System.out.println("4 - Buscar reserva por hóspede: ");
+		System.out.println("5 - Valor do patrimônio do hotel: ");
+		System.out.println("0 - Sair");
 	}
 
 	private void executarOpcao(int opcao) {
@@ -61,6 +86,45 @@ public class Console {
 		}
 
 	}
+
+	public void opcaoApagarReserva() {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return;
+		}
+
+		String codigo = lerTexto("Digite o código para remover: ");
+
+		if (controlador.removerReservaPorCodigo(codigo)) {
+			System.out.println("Reserva removida com sucesso.");
+		} else {
+			System.out.println("Reserva não encontrada.");
+		}
+	}
+
+	public void opcaoVerLivroDeRegistro() {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return;
+		}
+	}
+
+	public void opcaoBuscarReservaPorHospede() {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return;
+		}
+
+		System.out.println("\n-- Buscar reserva por Hóspede --");
+
+		String nomeHospede = lerTexto("Digite o nome do hóspede: ");
+		controlador.buscarReservasPorCodigo(nomeHospede);
+	}
+
+	public void opcaoPatrimonioHotel() {
+		System.out.println("\n-- Valor do patrimônio do Hotel --");
+		System.out.println("R$ " + controlador.calcularPatrimonioTotal());
+	}
 }
 // REUTILIZEM COM SABEDORIAAAAAAAAAAAAA
 /*
@@ -91,40 +155,15 @@ public class Console {
  * quantidadeDias, valorDiaria); meuHotel.cadastrarReserva(novaReserva);
  * System.out.println("\nPronto! Reserva agendada com sucesso!!"); }
  * 
- * static void opcaoVerLivroDeRegistro() { if(meuHotel.estaVazio()){
- * System.out.println("\nNenhum hóspede cadastrado!!"); return; }
+ *
  * 
  * System.out.print("\n=== Caderno de Reservas do Hotel " + meuHotel.nomeHotel
  * +" ==="); meuHotel.exibirRelatorioDeReservas(); }
  * 
- * static void opcaoApagarReserva() { if(meuHotel.estaVazio()){
- * System.out.println("\nNenhum hóspede cadastrado!!"); return; }
- * 
- * String codigo = lerTexto("Digite o código para remover: ");
- * 
- * if(meuHotel.removerReservaPorCodigo(codigo)) {
- * System.out.println("Reserva removida com sucesso.");
+ *
  * 
  * 
- * } else {
- * 
- * System.out.println("Reserva não encontrada."); } }
- * 
- * 
- * static void opcaoBuscarReservaPorHospede() { if(meuHotel.estaVazio()){
- * System.out.println("\nNenhum hóspede cadastrado!!"); return; }
- * 
- * System.out.println("\n-- Buscar reserva por Hóspede --");
- * 
- * String nomeHospede = lerTexto("Digite o nome do hóspede: ");
- * meuHotel.buscarReservasPorHospede(nomeHospede);
- * 
- * }
- * 
- * static void opcaoPatrimonioHotel() {
- * System.out.println("\n-- Valor do patrimônio do Hotel --");
- * System.out.println("R$ " + meuHotel.calcularPatrimonioTotal()); }
- * 
+ *
  *
  * 
  * public static void main(String[] args) {
