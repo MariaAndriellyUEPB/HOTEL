@@ -65,6 +65,7 @@ public class Console {
 		case 1:
 			opcaoAnotarNovaReserva();
 			break;
+			
 
 		case 2:
 			opcaoVerLivroDeRegistro();
