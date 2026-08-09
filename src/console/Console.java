@@ -7,10 +7,12 @@ import classesDeQuartos.QuartoComum;
 import classesDeQuartos.QuartoLuxo;
 import classesDeQuartos.QuartoStandard;
 import controlador.ControladorSistemaHotel;
+import hotelUepb.SistemaHotel;
 
 public class Console {
 	private Scanner leitor = new Scanner(System.in);
 	private ControladorSistemaHotel controlador = new ControladorSistemaHotel();
+	private SistemaHotel sistema = new SistemaHotel();
 
 	public String lerTexto(String mensagem) {
 		System.out.print(mensagem);
@@ -93,7 +95,7 @@ public class Console {
 
 	}
 
-	public void opcaoApagarReserva() {
+	public void opcaoApagarReserva() { // OK
 		if (controlador.estaVazio()) {
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
@@ -108,42 +110,43 @@ public class Console {
 		}
 	}
 
-	public void opcaoVerLivroDeRegistro() {
+	public void opcaoVerLivroDeRegistro() { //OK
 		if (controlador.estaVazio()) {
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
 		}
+
+		System.out.print("\n=== Caderno de Reservas do Hotel " + sistema.getNomeHotel() + " ===\n"
+				+ controlador.exibirRelatorioDeReservas());
+
 	}
 
-	public void opcaoBuscarReservaPorHospede() {
+	public void opcaoBuscarReservaPorHospede() { //Ok
 		if (controlador.estaVazio()) {
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
 		}
 
-		System.out.println("\n-- Buscar reserva por Hóspede --");
+		System.out.println("\n-- Buscar reserva Do Hóspede --");
 
-		String nomeHospede = lerTexto("Digite o nome do hóspede: ");
-		controlador.buscarReservasPorCodigo(nomeHospede);
+		String codigo = lerTexto("Digite o código da reserva que deseja buscar: ");
+		controlador.buscarReservasPorCodigo(codigo);
 	}
 
 	public void opcaoPatrimonioHotel() {
 		System.out.println("\n-- Valor do patrimônio do Hotel --");
 		System.out.println("R$ " + controlador.calcularPatrimonioTotal());
 	}
-=======
-	
+
 	public String cadastrarReserva() {
 		String codigo = lerTexto("Codigo: ");
-		
 
 		String numeroQuarto = lerTexto("Numero do quarto: ");
 		String nomeHospede = lerTexto("Nome Hospede: ");
 		int quantidadeDias = lerInteiro("Quantidade de dias");
 		double valorDiaria = lerDouble("Valor diaria");
 	}
-	
-	
+
 	public void tipoQuarto() {
 		System.out.println("Tipo do Quarto");
 	    System.out.println("1 - Luxo");
@@ -166,9 +169,10 @@ public class Console {
 		}
 	    
 	}
-	
-	
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL.git
+
+	>>>>>>>branch'master'
+
+	of https:// github.com/MariaAndriellyUEPB/HOTEL.git
 }
 // REUTILIZEM COM SABEDORIAAAAAAAAAAAAA
 /*
@@ -201,8 +205,7 @@ public class Console {
  * 
  *
  * 
- * System.out.print("\n=== Caderno de Reservas do Hotel " + meuHotel.nomeHotel
- * +" ==="); meuHotel.exibirRelatorioDeReservas(); }
+ *
  * 
  *
  * 
