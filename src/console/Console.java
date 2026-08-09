@@ -29,6 +29,38 @@ public class Console {
 	public void iniciar() {
 		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
 	}
+
+	private void executarOpcao(int opcao) {
+		switch (opcao) {
+		case 1:
+			opcaoAnotarNovaReserva();
+			break;
+
+		case 2:
+			opcaoVerLivroDeRegistro();
+			break;
+
+		case 3:
+			opcaoApagarReserva();
+			break;
+
+		case 4:
+			opcaoBuscarReservaPorHospede();
+			break;
+
+		case 5:
+			opcaoPatrimonioHotel();
+			break;
+
+		case 0:
+			System.out.println("Encerrando sistema...");
+			break;
+
+		default:
+			System.out.println("Opção inválida!! ");
+		}
+
+	}
 }
 // REUTILIZEM COM SABEDORIAAAAAAAAAAAAA
 /*
@@ -93,13 +125,7 @@ public class Console {
  * System.out.println("\n-- Valor do patrimônio do Hotel --");
  * System.out.println("R$ " + meuHotel.calcularPatrimonioTotal()); }
  * 
- * static void mostrarMenu() { System.out.println("\n=== Menu do Hotel " +
- * meuHotel.nomeHotel + " ==="); System.out.println("1 - Cadastrar reserva: ");
- * System.out.println("2 - Exibir reservas: ");
- * System.out.println("3 - Remover reserva: ");
- * System.out.println("4 - Buscar reserva por hóspede: ");
- * System.out.println("5 - Valor do patrimônio do hotel: ");
- * System.out.println("0 - Sair"); System.out.print("Escolha uma opcao: "); }
+ *
  * 
  * public static void main(String[] args) {
  * 
@@ -110,25 +136,7 @@ public class Console {
  * 
  * meuHotel = new SistemaHotel(nomeHotel, capacidadeMaxima);
  * 
- * int opcao;
- * 
- * do { mostrarMenu(); opcao = leitor.nextInt(); leitor.nextLine();
- * 
- * switch(opcao) { case 1: opcaoAnotarNovaReserva(); break;
- * 
- * case 2: opcaoVerLivroDeRegistro(); break;
- * 
- * case 3: opcaoApagarReserva(); break;
- * 
- * case 4: opcaoBuscarReservaPorHospede(); break;
- * 
- * case 5: opcaoPatrimonioHotel(); break;
- * 
- * case 0: System.out.println("Encerrando sistema..."); break;
- * 
- * default: System.out.println("Opção inválida!! "); }
- * 
- * } while (opcao != 0);
+ *
  * 
  * leitor.close(); }
  */
