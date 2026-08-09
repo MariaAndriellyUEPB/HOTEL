@@ -9,7 +9,6 @@ import static org.junit.Assert.assertTrue;
 import classesDeQuartos.Quarto;
 import classesDeQuartos.QuartoComum;
 import classesDeQuartos.QuartoLuxo;
-import classesDeQuartos.QuartoStandard;
 import classesPagaveis.FormaDePagamento;
 import classesPagaveis.PagamentoViaCartao;
 import classesPagaveis.PagamentoViaPix;

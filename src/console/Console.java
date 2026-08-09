@@ -3,6 +3,8 @@ package console;
 import java.util.Scanner;
 
 import classesDeQuartos.Quarto;
+import classesDeQuartos.QuartoComum;
+import classesDeQuartos.QuartoLuxo;
 import classesDeQuartos.QuartoStandard;
 import controlador.ControladorSistemaHotel;
 
@@ -82,11 +84,11 @@ public class Console {
 	    
 	    switch (opcao) {
 		case 1: {
-			tipoQuarto = new QuartoStandard("Quarto Luxo");
+			tipoQuarto = new QuartoLuxo("Quarto Luxo");
 			break;
 		}
 		case 2:
-			tipoQuarto = new QuartoStandard("Quarto Standard");
+			tipoQuarto = new QuartoComum("Quarto Standard");
 			break;	
 		default:
 			System.out.println("tipo invalido");
