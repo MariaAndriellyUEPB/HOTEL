@@ -5,7 +5,6 @@ import java.util.Scanner;
 import classesDeQuartos.Quarto;
 import classesDeQuartos.QuartoComum;
 import classesDeQuartos.QuartoLuxo;
-import classesDeQuartos.QuartoStandard;
 import controlador.ControladorSistemaHotel;
 import hotelUepb.SistemaHotel;
 
