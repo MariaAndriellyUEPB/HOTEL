@@ -11,7 +11,7 @@ import classesPagaveis.PagamentoViaCartao;
 import classesPagaveis.PagamentoViaPix;
 import controlador.ControladorSistemaHotel;
 import hotelUepb.DiaSemana;
-
+import hotelUepb.Reserva;
 import hotelUepb.SistemaHotel;
 
 public class Console {
@@ -134,11 +134,13 @@ public class Console {
 		System.out.println("\n-- Buscar reserva Do Hóspede --");
 
 		String codigo = lerTexto("Digite o código da reserva que deseja buscar: ");
-		if (controlador.buscarReservasPorCodigo(codigo)!=null) {
-			System.out.println(controlador.buscarReservasPorCodigo(codigo));
-		} else {
-			System.out.println("Reserva não encontrada.");
-		}
+		Reserva reserva = controlador.buscarReservasPorCodigo(codigo);
+
+	    if (reserva != null) {
+	        System.out.println(reserva);
+	    } else {
+	        System.out.println("Reserva não encontrada.");
+	    }
 	}
 
 	public void opcaoPatrimonioHotel() {
@@ -167,7 +169,7 @@ public class Console {
 	public Quarto tipoQuarto() {
 		System.out.println("\nTipo do Quarto");
 	    System.out.println("1 - Luxo");
-	    System.out.println("2 - Standard");
+	    System.out.println("2 - Comum");
 	    
 	    int opcao = lerInteiro("Quarto: ");
 	    
@@ -179,7 +181,7 @@ public class Console {
 			break;
 			
 		case 2:
-			tipoQuarto = new QuartoComum("Quarto Standard");
+			tipoQuarto = new QuartoComum("Quarto Comum");
 			break;	
 			
 		default:
