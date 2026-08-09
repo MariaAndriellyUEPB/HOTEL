@@ -1,6 +1,9 @@
 package console;
 
 import java.util.Scanner;
+
+import classesDeQuartos.Quarto;
+import classesDeQuartos.QuartoStandard;
 import controlador.ControladorSistemaHotel;
 
 public class Console {
@@ -55,6 +58,40 @@ public class Console {
 		System.out.println("4 - Buscar reserva por hóspede: ");
 		System.out.println("5 - Valor do patrimônio do hotel: ");
 		System.out.println("0 - Sair");
+	}
+	
+	public String cadastrarReserva() {
+		String codigo = lerTexto("Codigo: ");
+		
+
+		String numeroQuarto = lerTexto("Numero do quarto: ");
+		String nomeHospede = lerTexto("Nome Hospede: ");
+		int quantidadeDias = lerInteiro("Quantidade de dias");
+		double valorDiaria = lerDouble("Valor diaria");
+	}
+	
+	
+	public void tipoQuarto() {
+		System.out.println("Tipo do Quarto");
+	    System.out.println("1 - Luxo");
+	    System.out.println("2 - Standard");
+	    
+	    int opcao = lerInteiro("");
+	    
+	    Quarto tipoQuarto = null;
+	    
+	    switch (opcao) {
+		case 1: {
+			tipoQuarto = new QuartoStandard("Quarto Luxo");
+			break;
+		}
+		case 2:
+			tipoQuarto = new QuartoStandard("Quarto Standard");
+			break;	
+		default:
+			System.out.println("tipo invalido");
+		}
+	    
 	}
 	
 	

@@ -7,6 +7,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import classesDeQuartos.Quarto;
+import classesDeQuartos.QuartoComum;
 import classesDeQuartos.QuartoLuxo;
 import classesDeQuartos.QuartoStandard;
 import classesPagaveis.FormaDePagamento;
@@ -73,7 +74,7 @@ public class ControladorSistemaHotelTest {
 	
 	@Test
 	public void deveRetornarCalculoDiariaTotal() {
-		Quarto quarto = new QuartoStandard("Quarto Standard");
+		Quarto quarto = new QuartoComum("Quarto Comum");
 		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 		
@@ -141,11 +142,11 @@ public class ControladorSistemaHotelTest {
 	
 	@Test
 	public void deveCalcularPatrimonioTotal() {
-		Quarto quarto = new QuartoStandard("Quarto Standard");
+		Quarto quarto = new QuartoComum("Quarto Comum");
 		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 		
-		Quarto quarto2 = new QuartoStandard("Quarto Standard");
+		Quarto quarto2 = new QuartoComum("Quarto Comum");
 		FormaDePagamento formaDePagamento2 = new PagamentoViaCartao();
 		controlador.cadastrarReserva("101", quarto2, "12", "Amalia", formaDePagamento2, DiaSemana.TERCA, 1, 100.0);
 		
@@ -156,11 +157,11 @@ public class ControladorSistemaHotelTest {
 	
 	@Test
 	public void deveContarReservas() {
-		Quarto quarto = new QuartoStandard("Quarto Standard");
+		Quarto quarto = new QuartoComum("Quarto Comum");
 		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 		
-		Quarto quarto2 = new QuartoStandard("Quarto Standard");
+		Quarto quarto2 = new QuartoComum("Quarto Comum");
 		FormaDePagamento formaDePagamento2 = new PagamentoViaCartao();
 		controlador.cadastrarReserva("101", quarto2, "12", "Amalia", formaDePagamento2, DiaSemana.TERCA, 1, 100.0);
 		
