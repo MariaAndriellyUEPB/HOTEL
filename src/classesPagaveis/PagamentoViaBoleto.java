@@ -6,4 +6,11 @@ public class PagamentoViaBoleto implements FormaDePagamento {
 	public double aplicarTaxa(double valor) {
 		return valor + (valor * 0.02);
 	}
+
+	@Override
+	public String toString() {
+		return "Boleto";
+	}
+	
+	
 }

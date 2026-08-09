@@ -7,4 +7,11 @@ public class PagamentoViaPix implements FormaDePagamento{
 		return valor - (valor * 0.05);
 	}
 
+	@Override
+	public String toString() {
+		return "Pix";
+	}
+	
+	
+
 }

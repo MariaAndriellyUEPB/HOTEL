@@ -150,8 +150,8 @@ public class Console {
 		String nomeHospede = lerTexto("Nome Hospede: ");
 		FormaDePagamento formaPagamento = formaPagamento();
 		DiaSemana diaSemana = diaEntrada();
-		int quantidadeDias = lerInteiro("Quantidade de dias");
-		double valorDiaria = lerDouble("Valor diaria");
+		int quantidadeDias = lerInteiro("Quantidade de dias: ");
+		double valorDiaria = lerDouble("Valor diaria: ");
 		
 		boolean resultado = controlador.cadastrarReserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaPagamento, diaSemana, quantidadeDias, valorDiaria);
 		if(resultado) {
@@ -161,7 +161,7 @@ public class Console {
 	}
 	
 	public Quarto tipoQuarto() {
-		System.out.println("Tipo do Quarto");
+		System.out.println("\nTipo do Quarto");
 	    System.out.println("1 - Luxo");
 	    System.out.println("2 - Standard");
 	    
@@ -185,7 +185,7 @@ public class Console {
 	}
 	
 	public FormaDePagamento formaPagamento() {
-		System.out.println("Tipo do Quarto");
+		System.out.println("\nForma de pagamento");
 	    System.out.println("1 - Cartao");
 	    System.out.println("2 - Boleto");
 	    System.out.println("3 - Pix");
@@ -203,6 +203,7 @@ public class Console {
 		
 		case 3:
 			formaPagamento = new PagamentoViaPix();
+			break;
 			
 		default:
 			System.out.println("tipo invalido");
@@ -212,7 +213,7 @@ public class Console {
 	}
 	
 	public DiaSemana diaEntrada() {
-		System.out.println("Dia da Entrada");
+		System.out.println("\nDia da Entrada");
 	    System.out.println("1 - Domingo");
 	    System.out.println("2 - Segunda");
 	    System.out.println("3 - Terca");
