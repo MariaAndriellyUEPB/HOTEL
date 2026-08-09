@@ -12,7 +12,7 @@ public class SistemaHotel {
 
 	public SistemaHotel() {
 		this.reservasAtivas = new ArrayList<Reserva>();
-		this.nomeHotel = "Hotel Raio de Sol";
+		this.nomeHotel = "Raio de Sol";
 		this.capacidadeMaxima = 3; 
 	}
 	

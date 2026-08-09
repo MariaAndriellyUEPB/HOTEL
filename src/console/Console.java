@@ -35,8 +35,6 @@ public class Console {
 	public void iniciar() {
 		int opcao;
 
-		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
-
 		do {
 			exibirMenu();
 			opcao = lerInteiro("Opcao: ");
