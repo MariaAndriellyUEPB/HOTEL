@@ -27,8 +27,37 @@ public class Console {
 	}
 
 	public void iniciar() {
+		int opcao;
+		
 		int capacidadeMaxima = lerInteiro("Qual a capacidade maxima de hóspedes? ");
+
+		do {
+			exibirMenu();
+			opcao = lerInteiro("Opcao: ");
+
+			executarOpcao(opcao);
+
+			if (opcao != 0) {
+				System.out.println();
+			}
+
+		} while (opcao != 0);
+
+		leitor.close();
+		
 	}
+	
+	private void exibirMenu() {
+		System.out.println("\n=== Menu do Hotel ==="); 
+		System.out.println("1 - Cadastrar reserva: ");
+		System.out.println("2 - Exibir reservas: ");
+		System.out.println("3 - Remover reserva: ");
+		System.out.println("4 - Buscar reserva por hóspede: ");
+		System.out.println("5 - Valor do patrimônio do hotel: ");
+		System.out.println("0 - Sair");
+	}
+	
+	
 }
 // REUTILIZEM COM SABEDORIAAAAAAAAAAAAA
 /*
