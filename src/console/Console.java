@@ -10,6 +10,7 @@ import classesPagaveis.PagamentoViaBoleto;
 import classesPagaveis.PagamentoViaCartao;
 import classesPagaveis.PagamentoViaPix;
 import controlador.ControladorSistemaHotel;
+import hotelUepb.DiaSemana;
 
 public class Console {
 	private Scanner leitor = new Scanner(System.in);
@@ -70,8 +71,16 @@ public class Console {
 		Quarto tipoQuarto = tipoQuarto();
 		String numeroQuarto = lerTexto("Numero do quarto: ");
 		String nomeHospede = lerTexto("Nome Hospede: ");
+		FormaDePagamento formaPagamento = formaPagamento();
+		DiaSemana diaSemana = diaEntrada();
 		int quantidadeDias = lerInteiro("Quantidade de dias");
 		double valorDiaria = lerDouble("Valor diaria");
+		
+		boolean resultado = controlador.cadastrarReserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaPagamento, diaSemana, quantidadeDias, valorDiaria);
+		if(resultado) {
+			return "Reserva cadastrada";
+		}
+		return "Nao foi possivel cadastrar reserva";
 	}
 	
 	
@@ -124,6 +133,55 @@ public class Console {
 		}
 		return formaPagamento;
 	    
+	}
+	
+	public DiaSemana diaEntrada() {
+		System.out.println("Dia da Entrada");
+	    System.out.println("1 - Domingo");
+	    System.out.println("2 - Segunda");
+	    System.out.println("3 - Terca");
+	    System.out.println("4 - Quarta");
+	    System.out.println("5 - Quinta");
+	    System.out.println("6 - Sexta");
+	    System.out.println("7 - Sabado");
+	    int opcao = lerInteiro("Pagamento: ");
+	    
+	    DiaSemana diaEntrada = null;
+	    
+	    switch (opcao) {
+		case 1: 
+			diaEntrada = DiaSemana.DOMINGO;
+			break;
+		
+		case 2:
+			diaEntrada = DiaSemana.SEGUNDA;
+			break;
+			
+		case 3: 
+			diaEntrada = DiaSemana.TERCA;
+			break;
+		
+		case 4:
+			diaEntrada = DiaSemana.QUARTA;
+			break;
+			
+		case 5: 
+			diaEntrada = DiaSemana.QUINTA;
+			break;
+		
+		case 6:
+			diaEntrada = DiaSemana.SEXTA;
+			break;
+			
+		case 7:
+			diaEntrada = DiaSemana.SABADO;
+			break;
+		
+		default:
+			System.out.println("Dia invalido");
+		}
+	    
+	    return diaEntrada;
 	}
 	
 	
