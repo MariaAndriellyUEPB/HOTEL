@@ -120,7 +120,7 @@ public class Console {
 		}
 
 		System.out.print("\n=== Caderno de Reservas do Hotel " + sistema.getNomeHotel() + " ===\n"
-				+ controlador.exibirRelatorioDeReservas());
+				+ "\nQuantidade de Reservas: " + controlador.contarReservas() + controlador.exibirRelatorioDeReservas());
 
 	}
 
@@ -169,6 +169,7 @@ public class Console {
 		int quantidadeDias = lerInteiro("Quantidade de dias: ");
 		double valorDiaria = lerDouble("Valor diaria: ");
 
+<<<<<<< HEAD
 
 		boolean resultado = controlador.cadastrarReserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaPagamento, diaSemana, quantidadeDias, valorDiaria);
 		if(resultado) {
@@ -177,6 +178,18 @@ public class Console {
 		System.out.println("\nNao foi possivel cadastrar reserva!!!");;
 			}
 		}
+=======
+		
+		boolean resultado = controlador.cadastrarReserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaPagamento,
+				diaSemana, quantidadeDias, valorDiaria);
+	
+		if (resultado) {
+			System.out.println("Reserva cadastrada");
+		}else {
+		System.out.println("Nao foi possivel cadastrar reserva");
+		}
+	}
+>>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
 
 	public Quarto tipoQuarto() {
 		
