@@ -258,8 +258,8 @@ public class ControladorSistemaHotelTest {
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 		String esperada = "\n================================================================\n"
 				+ "--- Dados do Hóspedes ---" + "\nCódigo: 100" + "\nNome do hóspede: Maria"
-				+ "\n Forma de pagamento: Cartao" + "\nQuantidades de dias: 1" + "\n\n---Dados do Quarto---"
-				+ "\n Tipo do Quarto: Quarto Comum" + "\nNúmero do quarto: 1" + "\nValor da diária: R$ 100.0"
+				+ "\nForma de pagamento: Cartao" + "\nQuantidades de dias: 1" + "\n\n---Dados do Quarto---"
+				+ "\nTipo do Quarto: Quarto Comum" + "\nNúmero do quarto: 1" + "\nValor da diária: R$ 100.0"
 				+ "\n Total a pagar: R$ 105.0" + "\n================================================================\n";
 		assertEquals(esperada, controlador.exibirRelatorioDeReservas());
 	}
