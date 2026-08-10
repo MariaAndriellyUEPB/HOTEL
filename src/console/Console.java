@@ -162,8 +162,10 @@ public class Console {
 		int quantidadeDias = lerInteiro("Quantidade de dias: ");
 		double valorDiaria = lerDouble("Valor diaria: ");
 
+		
 		boolean resultado = controlador.cadastrarReserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaPagamento,
 				diaSemana, quantidadeDias, valorDiaria);
+	
 		if (resultado) {
 			return "Reserva cadastrada";
 		}
