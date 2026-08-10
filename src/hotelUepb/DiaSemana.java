@@ -1,7 +1,13 @@
 package hotelUepb;
 
 public enum DiaSemana {
-	SEGUNDA("Segunda", 0), TERCA("Terça", 0), QUARTA("Quarta", 0), QUINTA("Quinta", 0), SEXTA("Sexta", 25), SABADO("Sábado", 50), DOMINGO("Domingo", 50);
+	SEGUNDA("Segunda", 0), 
+	TERCA("Terça", 0), 
+	QUARTA("Quarta", 0), 
+	QUINTA("Quinta", 0), 
+	SEXTA("Sexta", 25), 
+	SABADO("Sábado", 50), 
+	DOMINGO("Domingo", 50);
 	
 	private String diaSemana;
 	private double Taxa;

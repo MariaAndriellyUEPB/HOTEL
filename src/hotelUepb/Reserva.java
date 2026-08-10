@@ -17,7 +17,6 @@ public class Reserva {
 			FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) throws Exception {
 		validaNomeHospede(nomeHospede, "Nenhum nome foi digitado.");
 		validaValorMenorQueZero(valorDiaria, "Valor da diária inválido");
-		validaValorMenorQueZero(valorDiaria, "Valor da diária inválido");
         validaValorMenorQueZero(quantidadeDias, "Valor de quantidade de dias.");
 
 		this.codigo = codigo;
@@ -74,7 +73,7 @@ public class Reserva {
 			throw new Exception(mensagem);
 		}
 	}
-	
+		
 	public double calcularDiariaTotal() {
 	    double total = 0;
 	    int indice = diaEntrada.ordinal(); //retorna a posicao do enum, exemplo se a reserva comeca na terca o indice vai ser 1
@@ -84,9 +83,10 @@ public class Reserva {
 
 	        double diaria = tipoQuarto.calcularValorBase(valorDiaria);
 	        total += (diaria + diaAtual.getTaxa());
-
 	    }
+
 	    return formaDePagamento.aplicarTaxa(total);
+	    
 	}
 
 	public String toString() {
