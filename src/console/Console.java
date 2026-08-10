@@ -148,33 +148,36 @@ public class Console {
 		System.out.println("R$ " + controlador.calcularPatrimonioTotal());
 	}
 
-	public String opcaoAnotarNovaReserva() {
+	public void opcaoAnotarNovaReserva() {
+		
+		System.out.println("======= Cadastrando nova reserava =======");
 		String codigo = lerTexto("Codigo: ");
 
 		Quarto tipoQuarto = tipoQuarto();
-		String numeroQuarto = lerTexto("Numero do quarto: ");
-		String nomeHospede = lerTexto("Nome Hospede: ");
+		String numeroQuarto = lerTexto("\nNumero do quarto: ");
+		String nomeHospede = lerTexto("\nNome Hospede: ");
 		FormaDePagamento formaPagamento = formaPagamento();
 		DiaSemana diaSemana = diaEntrada();
-		int quantidadeDias = lerInteiro("Quantidade de dias: ");
-		double valorDiaria = lerDouble("Valor diaria: ");
+		int quantidadeDias = lerInteiro("\nQuantidade de dias: ");
+		double valorDiaria = lerDouble("\nValor diaria: ");
 		
 		boolean resultado = controlador.cadastrarReserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaPagamento, diaSemana, quantidadeDias, valorDiaria);
 		if(resultado) {
-			return "Reserva cadastrada";
+			System.out.println("\nReserva cadastrada com sucesso!");;
+		} else {
+		System.out.println("\nNao foi possivel cadastrar reserva!!!");;
+			}
 		}
-		return "Nao foi possivel cadastrar reserva";
-	}
 	
 	public Quarto tipoQuarto() {
 		System.out.println("\nTipo do Quarto");
 	    System.out.println("1 - Luxo");
 	    System.out.println("2 - Comum");
-	    
-	    int opcao = lerInteiro("Quarto: ");
-	    
+	        
 	    Quarto tipoQuarto = null;
 	    
+	    while (tipoQuarto == null) {
+	    int opcao = lerInteiro("\nQuarto: ");
 	    switch (opcao) {
 		case 1: 
 			tipoQuarto = new QuartoLuxo("Quarto Luxo");
@@ -185,8 +188,9 @@ public class Console {
 			break;	
 			
 		default:
-			System.out.println("tipo invalido");
-		}
+			System.out.println("tipo invalido, tente novamente");
+			}
+	    }
 		return tipoQuarto;
 	}
 	
@@ -195,9 +199,10 @@ public class Console {
 	    System.out.println("1 - Cartao");
 	    System.out.println("2 - Boleto");
 	    System.out.println("3 - Pix");
-	    int opcao = lerInteiro("Pagamento: ");
 	    
 	    FormaDePagamento formaPagamento = null;
+	    while (formaPagamento == null) {
+	    int opcao = lerInteiro("\nPagamento: ");
 	    switch (opcao) {
 		case 1: 
 			formaPagamento = new PagamentoViaCartao();
@@ -212,13 +217,15 @@ public class Console {
 			break;
 			
 		default:
-			System.out.println("tipo invalido");
+			System.out.println("tipo invalido, tente novamente");
 		}
+	    }
 		return formaPagamento;
 	    
 	}
 	
 	public DiaSemana diaEntrada() {
+		
 		System.out.println("\nDia da Entrada");
 	    System.out.println("1 - Domingo");
 	    System.out.println("2 - Segunda");
@@ -227,10 +234,12 @@ public class Console {
 	    System.out.println("5 - Quinta");
 	    System.out.println("6 - Sexta");
 	    System.out.println("7 - Sabado");
-	    int opcao = lerInteiro("Pagamento: ");
+	
 	    
 	    DiaSemana diaEntrada = null;
 	    
+	    while (diaEntrada == null) {
+	    int opcao = lerInteiro("\nDia: ");
 	    switch (opcao) {
 		case 1: 
 			diaEntrada = DiaSemana.DOMINGO;
@@ -261,8 +270,9 @@ public class Console {
 			break;
 		
 		default:
-			System.out.println("Dia invalido");
-		}
+			System.out.println("Dia invalido, tente novamente");
+			}
+	    }
 	    
 	    return diaEntrada;
 	}
