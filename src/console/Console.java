@@ -173,7 +173,7 @@ public class Console {
 			;
 		} else {
 			System.out.println("\nNao foi possivel cadastrar reserva!!!");
-			;
+			
 		}
 	}
 
