@@ -119,8 +119,9 @@ public class Console {
 			return;
 		}
 
-		System.out.print("\n=== Caderno de Reservas do Hotel " + sistema.getNomeHotel() + " ===\n"
-				+ "\nQuantidade de Reservas: " + controlador.contarReservas() + controlador.exibirRelatorioDeReservas());
+		System.out.print(
+				"\n=== Caderno de Reservas do Hotel " + sistema.getNomeHotel() + " ===\n" + "\nQuantidade de Reservas: "
+						+ controlador.contarReservas() + controlador.exibirRelatorioDeReservas());
 
 	}
 
@@ -148,11 +149,12 @@ public class Console {
 	}
 
 	public void opcaoAnotarNovaReserva() {
-		String codigo = lerTexto("Codigo: ");
-
 		if (controlador.estaCheio(sistema.getCapacidadeMaxima())) {
-			System.out.println( "Nao foi possivel cadastrar: capacidade maxima de reservas atingida.");
+			System.out.println("Nao foi possivel cadastrar: capacidade maxima de reservas atingida.");
+			return;
 		}
+
+		String codigo = lerTexto("Codigo: ");
 
 		Quarto tipoQuarto = tipoQuarto();
 		String numeroQuarto = lerTexto("Numero do quarto: ");
@@ -162,14 +164,13 @@ public class Console {
 		int quantidadeDias = lerInteiro("Quantidade de dias: ");
 		double valorDiaria = lerDouble("Valor diaria: ");
 
-		
 		boolean resultado = controlador.cadastrarReserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaPagamento,
 				diaSemana, quantidadeDias, valorDiaria);
-	
+
 		if (resultado) {
 			System.out.println("Reserva cadastrada");
-		}else {
-		System.out.println("Nao foi possivel cadastrar reserva");
+		} else {
+			System.out.println("Nao foi possivel cadastrar reserva");
 		}
 	}
 
