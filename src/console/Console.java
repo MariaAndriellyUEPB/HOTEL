@@ -163,13 +163,8 @@ public class Console {
 		String nomeHospede = lerTexto("\nNome Hospede: ");
 		FormaDePagamento formaPagamento = formaPagamento();
 		DiaSemana diaSemana = diaEntrada();
-
 		int quantidadeDias = lerInteiro("\nQuantidade de dias: ");
 		double valorDiaria = lerDouble("\nValor diaria: ");
-		int quantidadeDias = lerInteiro("Quantidade de dias: ");
-		double valorDiaria = lerDouble("Valor diaria: ");
-
-<<<<<<< HEAD
 
 		boolean resultado = controlador.cadastrarReserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaPagamento, diaSemana, quantidadeDias, valorDiaria);
 		if(resultado) {
@@ -178,18 +173,6 @@ public class Console {
 		System.out.println("\nNao foi possivel cadastrar reserva!!!");;
 			}
 		}
-=======
-		
-		boolean resultado = controlador.cadastrarReserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaPagamento,
-				diaSemana, quantidadeDias, valorDiaria);
-	
-		if (resultado) {
-			System.out.println("Reserva cadastrada");
-		}else {
-		System.out.println("Nao foi possivel cadastrar reserva");
-		}
-	}
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
 
 	public Quarto tipoQuarto() {
 		
