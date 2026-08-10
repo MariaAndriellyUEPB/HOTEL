@@ -51,15 +51,14 @@ public class ControladorSistemaHotelTest {
 		Quarto quarto = new QuartoLuxo("Luxo");
 		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
-
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
-
+		
 		assertNotNull(reserva);
 		assertEquals("100", reserva.getCodigo());
 		assertEquals("Luxo", reserva.getTipoQuarto().getNomedoquarto());
 		assertEquals(1, reserva.getQuantidadeDias());
 		assertEquals("Maria", reserva.getNomeHospede());
-		assertTrue(reserva.getFormaDePagamento() instanceof PagamentoViaCartao);
+		assertEquals("Cartao", reserva.getFormaDePagamento().toString());
 		assertEquals(DiaSemana.SEGUNDA, reserva.getDiaEntrada());
 		assertEquals("1", reserva.getNumeroQuarto());
 		assertEquals(100.0, reserva.getValorDiaria(), 0.001);
