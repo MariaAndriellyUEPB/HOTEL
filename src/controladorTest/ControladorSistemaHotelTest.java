@@ -256,7 +256,7 @@ public class ControladorSistemaHotelTest {
 		
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento,
 				DiaSemana.SEGUNDA, 1, 100.0);
-		
+		 
 		String esperada = controlador.exibirRelatorioDeReservas();
 		
 		assertTrue(esperada.contains("100"));
