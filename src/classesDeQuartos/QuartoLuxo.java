@@ -2,7 +2,7 @@ package classesDeQuartos;
 
 public class QuartoLuxo extends Quarto {
 
-	private static double ACRESCIMO = 0.30; // atributo estatico
+	private static double ACRESCIMO = 0.30; 
 
 	public QuartoLuxo(String nomeDoQuarto) {
 		super(nomeDoQuarto);
