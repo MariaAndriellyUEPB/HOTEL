@@ -16,7 +16,9 @@ public class Reserva {
 	public Reserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede,
 			FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) throws Exception {
 		validaNomeHospede(nomeHospede, "Nenhum nome foi digitado.");
-		validaValorDiaria(valorDiaria, "Valor da diária inválido");
+		validaValorMenorQueZero(valorDiaria, "Valor da diária inválido");
+		validaValorMenorQueZero(valorDiaria, "Valor da diária inválido");
+        validaValorMenorQueZero(quantidadeDias, "Valor de quantidade de dias.");
 
 		this.codigo = codigo;
 		this.tipoQuarto = tipoQuarto;
@@ -61,7 +63,7 @@ public class Reserva {
 		return valorDiaria;
 	}
 	
-	private void validaValorDiaria(double valor, String mensagem) throws Exception {
+	private void validaValorMenorQueZero(double valor, String mensagem) throws Exception {
 		if(valor < 0) {
 			throw new Exception(mensagem);
 		}
