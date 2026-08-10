@@ -201,6 +201,7 @@ public class Console {
 	    System.out.println("3 - Pix");
 	    
 	    FormaDePagamento formaPagamento = null;
+	    while (formaPagamento == null) {
 	 	int opcao = lerInteiro("\nPagamento: ");
 	    switch (opcao) {
 		case 1: 
@@ -217,8 +218,8 @@ public class Console {
 			
 		default:
 			System.out.println("tipo invalido, tente novamente");
-		}
-	  
+			}
+	    }
 		return formaPagamento;
 	    
 	}
