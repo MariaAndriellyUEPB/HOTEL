@@ -73,7 +73,7 @@ public class Console {
 			break;
 
 		case 2:
-			opcaoVerLivroDeRegistro();
+			opcaoExibirReservas();
 			break;
 
 		case 3:
@@ -81,7 +81,7 @@ public class Console {
 			break;
 
 		case 4:
-			opcaoBuscarReservaPorHospede();
+			opcaoBuscarReservaPorCodigo();
 			break;
 
 		case 5:
@@ -113,7 +113,7 @@ public class Console {
 		}
 	}
 
-	public void opcaoVerLivroDeRegistro() { // OK
+	public void opcaoExibirReservas() { // OK
 		if (controlador.estaVazio()) {
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
@@ -124,13 +124,13 @@ public class Console {
 
 	}
 
-	public void opcaoBuscarReservaPorHospede() { // Ok
+	public void opcaoBuscarReservaPorCodigo() { // Ok
 		if (controlador.estaVazio()) {
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
 		}
 
-		System.out.println("\n-- Buscar reserva Do Hóspede --");
+		System.out.println("\n-- Buscar reserva Por Codigo --");
 
 		String codigo = lerTexto("Digite o código da reserva que deseja buscar: ");
 		Reserva reserva = controlador.buscarReservasPorCodigo(codigo);
