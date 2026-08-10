@@ -169,6 +169,7 @@ public class Console {
 		if (resultado) {
 			System.out.println("Reserva cadastrada");
 		}
+		
 		System.out.println("Nao foi possivel cadastrar reserva");
 	}
 
