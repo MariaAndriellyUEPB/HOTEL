@@ -250,9 +250,8 @@ public class Console {
 
 		DiaSemana diaEntrada = null;
 
-		int opcao = lerInteiro("Pagamento: ");
-
 		while (diaEntrada == null) {
+		int opcao = lerInteiro("\nDia: ");
 		switch (opcao) {
 		case 1:
 			diaEntrada = DiaSemana.DOMINGO;
