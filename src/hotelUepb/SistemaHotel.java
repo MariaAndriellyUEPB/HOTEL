@@ -9,7 +9,7 @@ public class SistemaHotel {
 	private ArrayList<Reserva> reservasAtivas;
 	private String nomeHotel;
 	private int capacidadeMaxima;
-
+ 
 	public SistemaHotel() {
 		this.reservasAtivas = new ArrayList<Reserva>();
 		this.nomeHotel = "Raio de Sol";
