@@ -91,7 +91,7 @@ public class Reserva {
 
 	public String toString() {
 		return "\n================================================================\n--- Dados do Hóspedes ---"
-				+ "\n Código:  " + codigo + "\n Nome do hóspede:  " + nomeHospede + "\n Forma de pagamento: "
+				+ "\nCódigo: " + codigo + "\nNome do hóspede: " + nomeHospede + "\n Forma de pagamento: "
 				+ formaDePagamento.toString() + "\n Quantidades de dias: " + quantidadeDias + "\n\n---Dados do Quarto---"
 				+ "\n Tipo do Quarto: " + tipoQuarto.getNomedoquarto() + "\n Número do quarto: " + numeroQuarto
 				+ "\n Valor da diária: R$ " + valorDiaria + "\n Total a pagar: R$ " + calcularDiariaTotal()

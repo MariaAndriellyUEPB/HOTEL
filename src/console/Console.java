@@ -252,6 +252,7 @@ public class Console {
 
 		int opcao = lerInteiro("Pagamento: ");
 
+		while (diaEntrada == null) {
 		switch (opcao) {
 		case 1:
 			diaEntrada = DiaSemana.DOMINGO;
@@ -283,6 +284,7 @@ public class Console {
 
 		default:
 			System.out.println("Dia invalido, tente novamente");
+			}
 		}
 		return diaEntrada;
 	}
