@@ -81,7 +81,6 @@ public class ControladorSistemaHotelTest {
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
-		// Standard sem acréscimo (100) + taxa de SEGUNDA (0) + 5% do cartão = 105.0
 		assertEquals(105.0, reserva.calcularDiariaTotal(), 0.001);
 	}
 
