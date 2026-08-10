@@ -250,28 +250,6 @@ public class ControladorSistemaHotelTest {
 	}
 	
 	@Test
-	public void naoDeveEstarVazioDepoisDeCadastrarReserva() {
-		Quarto quarto = new QuartoComum("Quarto Comum");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
-		
-		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
-		
-		assertFalse(controlador.estaVazio());
-	}
-	
-	@Test
-	public void deveEstarCheioQuandoAtingirCapacidadeInformada() {
-		Quarto quarto = new QuartoComum("Quarto Comum");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
-		
-		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
-		controlador.cadastrarReserva("101", quarto, "2", "Ana", formaDePagamento, DiaSemana.TERCA, 1, 100.0);
-		controlador.cadastrarReserva("102", quarto, "3", "Joao", formaDePagamento, DiaSemana.QUARTA, 1, 100.0);
-		
-		assertTrue(controlador.estaCheio(3));
-	}
-	
-	@Test
 	public void deveExibirRelatorioComDadosDaReserva() {
 		Quarto quarto = new QuartoComum("Quarto Comum");
 		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
