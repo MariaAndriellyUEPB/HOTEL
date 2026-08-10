@@ -17,7 +17,7 @@ public class Reserva {
 			FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) throws Exception {
 		validaNomeHospede(nomeHospede, "Nenhum nome foi digitado.");
 		validaValorMenorQueZero(valorDiaria, "Valor da diária inválido");
-		validaValorMenorQueZero(quantidadeDias, "Valor de quantidade de dias.");
+        validaValorMenorQueZero(quantidadeDias, "Valor de quantidade de dias.");
 
 		this.codigo = codigo;
 		this.tipoQuarto = tipoQuarto;
@@ -83,10 +83,10 @@ public class Reserva {
 
 	        double diaria = tipoQuarto.calcularValorBase(valorDiaria);
 	        total += (diaria + diaAtual.getTaxa());
-	       	 
 	    }
-	    
+
 	    return formaDePagamento.aplicarTaxa(total);
+	    
 	}
 
 	public String toString() {
