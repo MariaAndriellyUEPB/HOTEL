@@ -76,7 +76,7 @@ public class Reserva {
 		
 	public double calcularDiariaTotal() {
 	    double total = 0;
-	    int indice = diaEntrada.ordinal(); //retorna a posicao do enum, exemplo se a reserva comeca na terca o indice vai ser 1
+	    int indice = diaEntrada.ordinal(); 
 
 	    for (int i = 0; i < quantidadeDias; i++) {
 	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7];

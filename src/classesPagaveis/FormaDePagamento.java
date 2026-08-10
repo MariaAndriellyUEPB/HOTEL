@@ -2,6 +2,5 @@ package classesPagaveis;
 
 public interface FormaDePagamento {
 	
-	double aplicarTaxa(double valor);
-	
+	double aplicarTaxa(double valor);	
 }

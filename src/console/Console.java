@@ -98,7 +98,7 @@ public class Console {
 
 	}
 
-	public void opcaoApagarReserva() { // OK
+	public void opcaoApagarReserva() { 
 		if (controlador.estaVazio()) {
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
@@ -113,7 +113,7 @@ public class Console {
 		}
 	}
 
-	public void opcaoExibirReservas() { // OK
+	public void opcaoExibirReservas() { 
 		if (controlador.estaVazio()) {
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
@@ -125,7 +125,7 @@ public class Console {
 
 	}
 
-	public void opcaoBuscarReservaPorCodigo() { // Ok
+	public void opcaoBuscarReservaPorCodigo() { 
 		if (controlador.estaVazio()) {
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
