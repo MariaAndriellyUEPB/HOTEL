@@ -91,10 +91,9 @@ public class SistemaHotel {
 	}
 
 	public boolean estaVazio() {
-		if (reservasAtivas.size() == 0) {
+		if (reservasAtivas.isEmpty()) {
 			return true;
-		} else {
-			return false;
-		}
+		} 
+		return false;
 	}
 }
