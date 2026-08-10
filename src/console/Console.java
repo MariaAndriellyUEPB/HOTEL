@@ -120,7 +120,7 @@ public class Console {
 		}
 
 		System.out.print("\n=== Caderno de Reservas do Hotel " + sistema.getNomeHotel() + " ===\n"
-				+ controlador.exibirRelatorioDeReservas());
+				+ "\nQuantidade de Reservas: " + controlador.contarReservas() + controlador.exibirRelatorioDeReservas());
 
 	}
 
@@ -168,9 +168,9 @@ public class Console {
 	
 		if (resultado) {
 			System.out.println("Reserva cadastrada");
-		}
-		
+		}else {
 		System.out.println("Nao foi possivel cadastrar reserva");
+		}
 	}
 
 	public Quarto tipoQuarto() {
