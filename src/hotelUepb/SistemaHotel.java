@@ -1,14 +1,16 @@
 package hotelUepb;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import classesDeQuartos.Quarto;
 import classesPagaveis.FormaDePagamento;
 
 public class SistemaHotel {
-	private ArrayList<Reserva> reservasAtivas;
+	private List<Reserva> reservasAtivas;
 	private String nomeHotel;
 	private int capacidadeMaxima;
+
  
 	public SistemaHotel() {
 		this.reservasAtivas = new ArrayList<Reserva>();

@@ -76,10 +76,10 @@ public class Reserva {
 		
 	public double calcularDiariaTotal() {
 	    double total = 0;
-	    int indice = diaEntrada.ordinal(); 
+	    int indice = diaEntrada.ordinal(); // 
 
-	    for (int i = 0; i < quantidadeDias; i++) {
-	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7];
+	    for (int i = 0; i < quantidadeDias; i++) { 
+	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7]; 
 
 	        double diaria = tipoQuarto.calcularValorBase(valorDiaria);
 	        total += (diaria + diaAtual.getTaxa());
