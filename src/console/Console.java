@@ -147,11 +147,11 @@ public class Console {
 		System.out.println("R$ " + controlador.calcularPatrimonioTotal());
 	}
 
-	public String opcaoAnotarNovaReserva() {
+	public void opcaoAnotarNovaReserva() {
 		String codigo = lerTexto("Codigo: ");
 
 		if (controlador.estaCheio(sistema.getCapacidadeMaxima())) {
-			return "Nao foi possivel cadastrar: capacidade maxima de reservas atingida.";
+			System.out.println( "Nao foi possivel cadastrar: capacidade maxima de reservas atingida.");
 		}
 
 		Quarto tipoQuarto = tipoQuarto();
@@ -167,9 +167,9 @@ public class Console {
 				diaSemana, quantidadeDias, valorDiaria);
 	
 		if (resultado) {
-			return "Reserva cadastrada";
+			System.out.println("Reserva cadastrada");
 		}
-		return "Nao foi possivel cadastrar reserva";
+		System.out.println("Nao foi possivel cadastrar reserva");
 	}
 
 	public Quarto tipoQuarto() {

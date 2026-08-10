@@ -83,11 +83,8 @@ public class Reserva {
 	        DiaSemana diaAtual = DiaSemana.values()[(indice + i) % 7];
 
 	        double diaria = tipoQuarto.calcularValorBase(valorDiaria);
-	        total += diaria;
+	        total += (diaria + diaAtual.getTaxa());
 
-	        if (diaAtual.getTaxa() > 0) {
-	            total += diaAtual.getTaxa();
-	        }
 	    }
 	    return formaDePagamento.aplicarTaxa(total);
 	}
