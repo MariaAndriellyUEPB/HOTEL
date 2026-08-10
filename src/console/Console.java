@@ -153,7 +153,6 @@ public class Console {
 			System.out.println("Nao foi possivel cadastrar: capacidade maxima de reservas atingida.");
 			return;
 		}
-
 		String codigo = lerTexto("Codigo: ");
 
 		Quarto tipoQuarto = tipoQuarto();
