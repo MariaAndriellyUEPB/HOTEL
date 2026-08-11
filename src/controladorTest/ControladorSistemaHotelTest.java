@@ -27,24 +27,22 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void deveCadastrarReserva() {
 
-		Quarto quarto = new QuartoLuxo("Luxo");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
-		assertTrue(controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1,
-				100.0));
+		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+		assertTrue(controlador.cadastrarReserva("100", "1", formaDePagamento, DiaSemana.SEGUNDA, 1));
 		assertEquals(1, controlador.contarReservas());
 	}
 
 	@Test
 	public void naoDeveCadastrarDuasReservasComMesmoCodigo() {
-		Quarto quarto = new QuartoLuxo("Luxo");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
-		assertTrue(controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1,
-				100.0));
+		
+		Quarto quarto = new QuartoLuxo("Luxo", "3", 100.0);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+		assertTrue(controlador.cadastrarReserva("100", "Lara", formaDePagamento, DiaSemana.SEGUNDA, 1));
 
-		Quarto quarto2 = new QuartoLuxo("Luxo");
-		FormaDePagamento formaDePagamento2 = new PagamentoViaCartao();
-		assertFalse(controlador.cadastrarReserva("100", quarto2, "12", "Amalia", formaDePagamento2, DiaSemana.TERCA, 1,
-				120.0));
+		Quarto quarto2 = new QuartoLuxo("Luxo", "2", 100);
+		EstrategiaPagavel formaDePagamento2 = new PagamentoViaCartao();
+		assertFalse(controlador.cadastrarReserva("100", "Maria", formaDePagamento2, DiaSemana.TERCA, 1));
 	}
 
 	@Test
@@ -192,10 +190,10 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void deveCalcularTaxaDeSexta() {
-		Quarto quarto = new QuartoComum("Quarto Comum");
+		Quarto quarto = new QuartoComum("Quarto Comum", "3", 1);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
-		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEXTA, 1, 100.0);
+		controlador.cadastrarReserva("100", "Fabiola", formaDePagamento, DiaSemana.SEXTA, 1);
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
@@ -207,7 +205,7 @@ public class ControladorSistemaHotelTest {
 		Quarto quarto = new QuartoComum("Quarto Comum", "1", 0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
-		controlador.cadastrarReserva("100", quarto, "1", formaDePagamento, DiaSemana.SABADO, 1, 100.0);
+		controlador.cadastrarReserva("1", "Lara", formaDePagamento, DiaSemana.SABADO, 1);
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
@@ -219,7 +217,7 @@ public class ControladorSistemaHotelTest {
 		Quarto quarto = new QuartoComum("Quarto Comum", null, 0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
-		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.DOMINGO, 1, 100.0);
+		controlador.cadastrarReserva("3", "Ana", formaDePagamento, DiaSemana.DOMINGO, 1);
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
