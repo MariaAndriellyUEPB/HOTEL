@@ -312,19 +312,11 @@ public class Console {
 		DiaSemana diaEntrada = null;
 
 		while (diaEntrada == null) {
-<<<<<<< HEAD
 		int opcao = lerInteiro("\nDia: ");
-		switch (opcao) {
-		case 1:
-			diaEntrada = DiaSemana.DOMINGO;
-			break;
-=======
-			int opcao = lerInteiro("Dia: ");
 			switch (opcao) {
 			case 1:
 				diaEntrada = DiaSemana.DOMINGO;
 				break;
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
 
 			case 2:
 				diaEntrada = DiaSemana.SEGUNDA;
