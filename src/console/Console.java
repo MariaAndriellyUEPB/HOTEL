@@ -177,12 +177,12 @@ public class Console {
 		}
 
 		System.out.println("Reserva cadastrada com sucesso!");
-		adicionarQuartoNaReserva(codigo);
+		(codigo);
 
 		String resposta = lerTexto("\nDeseja adicionar outro quarto? (Sim/Nao): ");
 		if ((resposta.equalsIgnoreCase("Sim")))
 			do {
-				adicionarQuartoNaReserva(codigo);
+				(codigo);
 				resposta = lerTexto("\nDeseja adicionar outro quarto? (Sim/Nao): ");
 			} while (resposta.equalsIgnoreCase("Sim"));
 
@@ -206,24 +206,12 @@ public class Console {
 			return;
 		}
 
-		adicionarQuartoNaReserva(codigo);
-	}
-
-	private void adicionarQuartoNaReserva(String codigoReserva) throws Exception {
-		Quarto quarto = criarQuarto();
-		boolean resultado = controlador.adicionarQuartoNaReserva(codigoReserva, quarto);
-
-		if (resultado) {
-			System.out.println("Quarto adicionado com sucesso!");
-		} else {
-			System.out.println("Não foi possível adicionar: já existe um quarto com esse número nessa reserva.");
-		}
+		(codigo);
 	}
 
 	public void opcaoAlterarFormaPagamento() throws Exception {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
-			return;
+		if(naoHaReservas()) {
+			
 		}
 
 		String codigo = lerTexto("Código da reserva: ");
@@ -242,6 +230,17 @@ public class Console {
 			System.out.println("Forma de pagamento alterada com sucesso!");
 		} else {
 			System.out.println("Não foi possível alterar a forma de pagamento.");
+		}
+	}
+	
+	private void adicionarQuartoNaReserva(String codigoReserva) throws Exception {
+		Quarto quarto = criarQuarto();
+		boolean resultado = controlador.adicionarQuartoNaReserva(codigoReserva, quarto);
+
+		if (resultado) {
+			System.out.println("Quarto adicionado com sucesso!");
+		} else {
+			System.out.println("Não foi possível adicionar: já existe um quarto com esse número nessa reserva.");
 		}
 	}
 
