@@ -1,4 +1,4 @@
-         package hotelUepb;
+package hotelUepb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,14 +49,12 @@ public class SistemaHotel {
 			return false;
 		}
 		try {
-			reserva.adicionarQuarto(quarto);
-			return true;
+			return reserva.adicionarQuarto(quarto);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return false;
 		}
 	}
-	
 
 	public boolean alterarFormaPagamento(String codigoReserva, EstrategiaPagavel novaEstrategia) throws Exception {
 		Reserva reserva = buscarReservasPorCodigo(codigoReserva);

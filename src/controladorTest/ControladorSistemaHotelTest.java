@@ -2,6 +2,7 @@ package controladorTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -69,6 +70,7 @@ public class ControladorSistemaHotelTest {
 		assertNull(controlador.buscarReservasPorCodigo("999"));
 	}
 	
+	@Test
 	public void deveAdicionarQuartoNaReserva() throws Exception {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", "Maria", estrategia, DiaSemana.SEGUNDA, 1);
@@ -101,9 +103,12 @@ public class ControladorSistemaHotelTest {
 	
 	@Test
 	public void naoDeveCadastrarQuandoValorDiariaInvalida() throws Exception {
-		Quarto quarto = new QuartoLuxo("Luxo", "1", -1);
-		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
-		controlador.cadastrarReserva("100", "Fabiola", formaDePagamento, DiaSemana.SEGUNDA, 1);
+		try {
+			new QuartoLuxo("Luxo", "1", -1);
+			fail("Deveria lançar exceção para valor de diária inválido.");
+		} catch (Exception e) {
+			assertEquals("valor da diaria invalido.", e.getMessage());
+		}
 
 		assertEquals(0, controlador.contarReservas());
 	}
@@ -126,11 +131,10 @@ public class ControladorSistemaHotelTest {
 	}
 
 	@Test
-	public void retornaFalsoQuandoValorDiariaInvalido() throws Exception {
-		Quarto quarto = new QuartoLuxo("Luxo", "10", -1);
+	public void retornaFalsoQuandoQuantidadeDiasInvalida() throws Exception {
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertFalse(
-				controlador.cadastrarReserva("100", "", formaDePagamento, DiaSemana.SEGUNDA, 1));
+				controlador.cadastrarReserva("100", "Maria", formaDePagamento, DiaSemana.SEGUNDA, -1));
 	}
 
 	@Test

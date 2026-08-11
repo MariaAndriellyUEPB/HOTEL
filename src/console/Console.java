@@ -170,7 +170,6 @@ public class Console {
 		int quantidadeDias = lerInteiro("\nQuantidade de dias: ");
 
 		boolean resultado = controlador.cadastrarReserva(codigo, nomeHospede, estrategiaPagamento, diaEntrada, quantidadeDias);
-		adicionarQuartoNaReserva(codigo);
 
 		if (resultado == false) {
 			System.out.println("\nNao foi possivel cadastrar reserva!!!");
@@ -178,6 +177,7 @@ public class Console {
 		}
 
 		System.out.println("Reserva cadastrada com sucesso!");
+		adicionarQuartoNaReserva(codigo);
 
 		String resposta = lerTexto("\nDeseja adicionar outro quarto? (Sim/Nao): ");
 		if ((resposta.equalsIgnoreCase("Sim")))
