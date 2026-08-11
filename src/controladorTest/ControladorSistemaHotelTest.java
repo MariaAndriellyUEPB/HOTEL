@@ -275,6 +275,48 @@ public class ControladorSistemaHotelTest {
 
 		assertEquals(157.50, reserva.calcularDiariaTotal(),0.001);
 	}
+	
+	@Test
+	public void deveCalcularValorDoQuartoDeLuxo() throws Exception {
+	    Quarto quarto = new QuartoLuxo("Quarto Luxo", "1", 100.0);
+	    double valorEsperado = 130.0; 
+	    assertEquals(valorEsperado, quarto.calcularValorBase(quarto.getValorDiaria()), 0.001);
+	}
+
+	@Test
+	public void deveCalcularOValorDoQuartoComum() throws Exception {
+	    Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
+	    double valorEsperado = 100.0;
+	    assertEquals(valorEsperado, quarto.calcularValorBase(quarto.getValorDiaria()), 0.001);
+	}
+	
+	@Test
+	public void deveAlterarFormaPagamento() throws Exception {
+	    Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
+	    EstrategiaPagavel cartao = new PagamentoViaCartao();
+	    EstrategiaPagavel boleto = new PagamentoViaBoleto();
+
+	    controlador.cadastrarReserva("100", "Maria", cartao, DiaSemana.SEGUNDA, 1);
+	    controlador.adicionarQuartoNaReserva("100", quarto);
+
+	    Reserva reserva = controlador.buscarReservasPorCodigo("100");
+
+	    assertEquals(105.0, reserva.calcularDiariaTotal(), 0.001);
+
+	    boolean resultado = controlador.alterarFormaPagamento("100", boleto);
+
+	    assertTrue(resultado);
+	    assertEquals(102.0, reserva.calcularDiariaTotal(), 0.001);
+	}
+	
+	@Test
+	public void naoDeveAlterarFormaPagamentoQuandoReservaNaoExiste() throws Exception {
+	    EstrategiaPagavel boleto = new PagamentoViaBoleto();
+
+	    boolean resultado = controlador.alterarFormaPagamento("999", boleto);
+
+	    assertFalse(resultado);
+	}
 
 	
 }
