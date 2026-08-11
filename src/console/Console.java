@@ -277,8 +277,7 @@ public class Console {
 			return new QuartoComum("Quarto Comum", numeroQuarto, valorDiaria);
 
 		default:
-			System.out.println("Tipo inválido, cadastrando como Comum por padrão.");
-			return new QuartoComum("Quarto Comum", numeroQuarto, valorDiaria);
+			throw new Exception("Opção de quarto inválida!");
 		}
 	}
 	
