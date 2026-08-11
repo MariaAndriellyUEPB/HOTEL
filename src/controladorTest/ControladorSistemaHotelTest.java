@@ -254,7 +254,7 @@ public class ControladorSistemaHotelTest {
 	public void deveExibirRelatorioComDadosDaReserva() {
 		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
-		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
+		controlador.cadastrarReserva("100", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1);
 		String esperada = "\n================================================================\n"
 				+ "--- Dados do Hóspedes ---" + "\nCódigo: 100" + "\nNome do hóspede: Maria"
 				+ "\nForma de pagamento: Cartao" + "\nQuantidades de dias: 1" + "\n\n---Dados do Quarto---"
