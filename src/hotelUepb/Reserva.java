@@ -62,10 +62,6 @@ public class Reserva {
 		return true;
 	}
 
-	public boolean removerQuarto(String numeroQuarto) {
-		return quartos.remove(numeroQuarto) != null;
-	}
-
 	public void setEstrategiaPagamento(EstrategiaPagavel novaEstrategia) throws Exception {
 		Validador.validaEstrategia(novaEstrategia, "estrategia invalida.");
 		this.estrategiaPagamento = novaEstrategia;
