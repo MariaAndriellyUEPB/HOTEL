@@ -26,7 +26,7 @@ public class SistemaHotel {
 	}
 
 	public boolean cadastrarReserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento,
-			DiaSemana diaEntrada, int quantidadeDias) {
+			DiaSemana diaEntrada, int quantidadeDias)  {
 		for (Reserva reserva : reservasAtivas) {
 			if (reserva.getCodigo().equals(codigo)) {
 				return false;
@@ -43,7 +43,7 @@ public class SistemaHotel {
 		}
 	}
 
-	public boolean adicionarQuartoNaReserva(String codigoReserva, Quarto quarto) {
+	public boolean adicionarQuartoNaReserva(String codigoReserva, Quarto quarto)  {
 		Reserva reserva = buscarReservasPorCodigo(codigoReserva);
 		if (reserva == null) {
 			return false;
