@@ -56,6 +56,7 @@ public class Reserva {
 	public boolean adicionarQuarto(Quarto quarto) {
 		if (quartos.containsKey(quarto.getNumeroQuarto())) {
 			return false;
+			
 		}
 		quartos.put(quarto.getNumeroQuarto(), quarto);
 		return true;
