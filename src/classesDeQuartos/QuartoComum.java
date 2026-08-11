@@ -2,7 +2,7 @@ package classesDeQuartos;
 
 public class QuartoComum extends Quarto{
 	
-	public QuartoComum(String nomeDoQuarto, String numeroQuarto, double valorDiaria) {
+	public QuartoComum(String nomeDoQuarto) {
 		super(nomeDoQuarto, numeroQuarto, valorDiaria);
 	}
 

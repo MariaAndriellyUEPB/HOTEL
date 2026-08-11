@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 import classesDeQuartos.Quarto;
 import classesDeQuartos.QuartoComum;
 import classesDeQuartos.QuartoLuxo;
+import classesPagaveis.EstrategiaPagavel;
 import classesPagaveis.FormaDePagamento;
 import classesPagaveis.PagamentoViaBoleto;
 import classesPagaveis.PagamentoViaCartao;
@@ -96,7 +97,7 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void naoDeveCadastrarQuandoNomeVazio() {
 		Quarto quarto = new QuartoLuxo("Luxo");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 
 		assertEquals(0, controlador.contarReservas());
@@ -104,24 +105,24 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void retornaFalsoQuandoNomeVazio() {
-		Quarto quarto = new QuartoLuxo("Luxo");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertFalse(
 				controlador.cadastrarReserva("100", quarto, "1", "", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0));
 	}
 
 	@Test
 	public void retornaFalsoQuandoValorDiariaInvalido() {
-		Quarto quarto = new QuartoLuxo("Luxo");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		Quarto quarto = new QuartoLuxo("Luxo", "10", -1);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertFalse(
 				controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, -1));
 	}
 
 	@Test
 	public void deveRemoverReservaPorCodigo() {
-		Quarto quarto = new QuartoLuxo("Luxo");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 
 		boolean reserva = controlador.removerReservaPorCodigo("100");
@@ -132,7 +133,7 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void deveRetornarFalseSeCodigoNaoEncontrado() {
-		Quarto quarto = new QuartoLuxo("Luxo");
+		Quarto quarto = new QuartoLuxo("Luxo", "1" , 0);
 		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 
@@ -145,11 +146,11 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void deveCalcularPatrimonioTotal() {
 		Quarto quarto = new QuartoComum("Quarto Comum");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 
 		Quarto quarto2 = new QuartoComum("Quarto Comum");
-		FormaDePagamento formaDePagamento2 = new PagamentoViaCartao();
+		EstrategiaPagavel formaDePagamento2 = new PagamentoViaCartao();
 		controlador.cadastrarReserva("101", quarto2, "12", "Amalia", formaDePagamento2, DiaSemana.TERCA, 1, 100.0);
 
 		double esperado = controlador.buscarReservasPorCodigo("100").calcularDiariaTotal()
@@ -160,11 +161,11 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void deveContarReservas() {
 		Quarto quarto = new QuartoComum("Quarto Comum");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 
 		Quarto quarto2 = new QuartoComum("Quarto Comum");
-		FormaDePagamento formaDePagamento2 = new PagamentoViaCartao();
+		EstrategiaPagavel formaDePagamento2 = new PagamentoViaCartao();
 		controlador.cadastrarReserva("101", quarto2, "12", "Amalia", formaDePagamento2, DiaSemana.TERCA, 1, 100.0);
 
 		assertEquals(2, controlador.contarReservas());
@@ -172,19 +173,19 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void deveAplicarDescontoNoPix() {
-		FormaDePagamento formaDePagamento = new PagamentoViaPix();
+		EstrategiaPagavel formaDePagamento = new PagamentoViaPix();
 		assertEquals(95.0, formaDePagamento.aplicarTaxa(100), 0.001);
 	}
 
 	@Test
 	public void deveAplicarTaxaNoCartao() {
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertEquals(105.0, formaDePagamento.aplicarTaxa(100), 0.001);
 	}
 
 	@Test
 	public void deveAplicarTaxaNoBoleto() {
-		FormaDePagamento formaDePagamento = new PagamentoViaBoleto();
+		EstrategiaPagavel formaDePagamento = new PagamentoViaBoleto();
 
 		assertEquals(102.0, formaDePagamento.aplicarTaxa(100.0), 0.001);
 	}
@@ -192,7 +193,7 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void deveCalcularTaxaDeSexta() {
 		Quarto quarto = new QuartoComum("Quarto Comum");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEXTA, 1, 100.0);
 
@@ -204,7 +205,7 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void deveCalcularTaxaDeSabado() {
 		Quarto quarto = new QuartoComum("Quarto Comum");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SABADO, 1, 100.0);
 
@@ -216,7 +217,7 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void deveCalcularTaxaDeDomingo() {
 		Quarto quarto = new QuartoComum("Quarto Comum");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.DOMINGO, 1, 100.0);
 
@@ -227,7 +228,7 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void deveCalcularValorDoQuartoLuxo() {
-		Quarto quarto = new QuartoLuxo("Luxo");
+		Quarto quarto = new QuartoLuxo("Luxo", "105", 100);
 
 		assertEquals(130.0, quarto.calcularValorBase(100.0), 0.001);
 	}
@@ -252,7 +253,7 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void deveExibirRelatorioComDadosDaReserva() {
 		Quarto quarto = new QuartoComum("Quarto Comum");
-		FormaDePagamento formaDePagamento = new PagamentoViaCartao();
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 		String esperada = "\n================================================================\n"
 				+ "--- Dados do Hóspedes ---" + "\nCódigo: 100" + "\nNome do hóspede: Maria"
