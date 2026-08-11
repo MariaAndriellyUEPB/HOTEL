@@ -177,12 +177,12 @@ public class Console {
 		}
 
 		System.out.println("Reserva cadastrada com sucesso!");
-		adicionarQuartoNaReserva(codigo);
+		opcaoAdicionarQuartoNaReserva(codigo);
 
 		String resposta = lerTexto("\nDeseja adicionar outro quarto? (Sim/Nao): ");
 		if ((resposta.equalsIgnoreCase("Sim")))
 			do {
-				adicionarQuartoNaReserva(codigo);
+				opcaoAdicionarQuartoNaReserva(codigo);
 				resposta = lerTexto("\nDeseja adicionar outro quarto? (Sim/Nao): ");
 			} while (resposta.equalsIgnoreCase("Sim"));
 
@@ -206,10 +206,10 @@ public class Console {
 			return;
 		}
 
-		adicionarQuartoNaReserva(codigo);
+		opcaoAdicionarQuartoNaReserva(codigo);
 	}
 
-	private void adicionarQuartoNaReserva(String codigoReserva) throws Exception {
+	private void opcaoAdicionarQuartoNaReserva(String codigoReserva) throws Exception {
 		Quarto quarto = criarQuarto();
 		boolean resultado = controlador.adicionarQuartoNaReserva(codigoReserva, quarto);
 
