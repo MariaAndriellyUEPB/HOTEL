@@ -9,13 +9,13 @@ public enum DiaSemana {
 	SABADO(0.5), 
 	DOMINGO(0.5);
 	
-	private double Taxa;
+	private double taxa;
 	
-	private DiaSemana(double Taxa){
-		this.Taxa = Taxa;
+	private DiaSemana(double taxa){
+		this.taxa = taxa;
 	}
 
 	public double getTaxa() {
-		return Taxa;
+		return taxa;
 	}
 }
