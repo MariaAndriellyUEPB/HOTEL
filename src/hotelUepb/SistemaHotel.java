@@ -48,8 +48,15 @@ public class SistemaHotel {
 		if (reserva == null) {
 			return false;
 		}
-		return reserva.adicionarQuarto(quarto);
+		try {
+			reserva.adicionarQuarto(quarto);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
 	}
+	
 
 	public boolean alterarFormaPagamento(String codigoReserva, EstrategiaPagavel novaEstrategia) throws Exception {
 		Reserva reserva = buscarReservasPorCodigo(codigoReserva);
