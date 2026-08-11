@@ -210,7 +210,14 @@ public class Console {
 	}
 
 	private void opcaoAdicionarQuartoNaReserva(String codigoReserva) throws Exception {
-		Quarto quarto = criarQuarto();
+		Quarto quarto;
+		try {
+			quarto = criarQuarto();
+		} catch (Exception e) {
+			System.out.println("Não foi possível criar o quarto: " + e.getMessage());
+			return;
+		}
+
 		boolean resultado = controlador.adicionarQuartoNaReserva(codigoReserva, quarto);
 
 		if (resultado) {
