@@ -104,14 +104,15 @@ public class Reserva {
 	}
 
 	public String toString() {
-		String infoQuartos = quartos.values().stream()
-				.map(quarto -> "\n  - " + quarto.getNomeDoQuarto() + " (nº " + quarto.getNumeroQuarto() + ")")
-				.collect(Collectors.joining());
+		 String infoQuartos = "";
+		    for (Quarto quarto : quartos.values()) {
+		        infoQuartos += "\n" +" - " + quarto.getNomeDoQuarto() + " (nº " + quarto.getNumeroQuarto() + ")";
+		    }
 
 		return "\n================================================================\n--- Dados do Hóspede ---"
 				+ "\nCódigo: " + codigo + "\nNome do hóspede: " + nomeHospede + "\nForma de pagamento: "
 				+ estrategiaPagamento.getInfo() + "\nQuantidade de dias: " + quantidadeDias
-				+ "\n\n--- Quartos ---" + infoQuartos
+				+ "\n\n------------------ Quartos -------------------" + infoQuartos
 				+ "\n\nTotal a pagar: R$ " + calcularDiariaTotal()
 				+ "\n================================================================\n";
 	}
