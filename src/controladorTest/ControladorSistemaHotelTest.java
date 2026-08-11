@@ -304,5 +304,26 @@ public class ControladorSistemaHotelTest {
 
 	    assertFalse(resultado);
 	}
+	
+	@Test
+	public void deveExibirRelatorioComDadosDasReservas() throws Exception {
+	    Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
+	    EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+
+	    controlador.cadastrarReserva("100", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1);
+	    controlador.adicionarQuartoNaReserva("100", quarto);
+
+	    Reserva reserva = controlador.buscarReservasPorCodigo("100");
+
+	    String relatorio = reserva.toString();
+
+	    assertTrue(relatorio.contains("Código : 100"));
+	    assertTrue(relatorio.contains("Hóspede : Maria"));
+	    assertTrue(relatorio.contains("Forma de pagamento : Cartao"));
+	    assertTrue(relatorio.contains("Quantidade de dias : 1"));
+	    assertTrue(relatorio.contains("Quarto Comum"));
+	    assertTrue(relatorio.contains("Nº: 1"));
+	    assertTrue(relatorio.contains("Total a pagar : R$ 105.0"));
+	}
 
 }
