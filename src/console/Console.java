@@ -151,6 +151,7 @@ public class Console {
 		System.out.println("3 - Pix");
 
 		EstrategiaPagavel estrategiaPagamento = null;
+		
 		while (estrategiaPagamento == null) {
 			int opcao = lerInteiro("\nPagamento: ");
 			switch (opcao) {

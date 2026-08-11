@@ -21,10 +21,6 @@ public class SistemaHotel {
 		return nomeHotel;
 	}
 
-	public int getCapacidadeMaxima() {
-		return capacidadeMaxima;
-	}
-
 	public boolean cadastrarReserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento, DiaSemana diaEntrada, int quantidadeDias) {
 		if(estaCheio()) {
 			return false;

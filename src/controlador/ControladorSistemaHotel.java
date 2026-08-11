@@ -56,8 +56,4 @@ public class ControladorSistemaHotel {
 	public String getNomeHotel() {
 		return sistema.getNomeHotel();
 	}
-
-	public int getCapacidadeMaxima() {
-		return sistema.getCapacidadeMaxima();
-	}
 }
