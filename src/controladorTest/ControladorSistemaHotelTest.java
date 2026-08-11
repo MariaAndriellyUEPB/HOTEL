@@ -2,7 +2,6 @@ package controladorTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -29,7 +28,6 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void deveCadastrarReserva() throws Exception {
 
-		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertTrue(controlador.cadastrarReserva("100", "1", formaDePagamento, DiaSemana.SEGUNDA, 1));
 		assertEquals(1, controlador.contarReservas());
@@ -38,11 +36,9 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void naoDeveCadastrarDuasReservasComMesmoCodigo() throws Exception {
 
-		Quarto quarto = new QuartoLuxo("Luxo", "3", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertTrue(controlador.cadastrarReserva("100", "Lara", formaDePagamento, DiaSemana.SEGUNDA, 1));
 
-		Quarto quarto2 = new QuartoLuxo("Luxo", "2", 100);
 		EstrategiaPagavel formaDePagamento2 = new PagamentoViaCartao();
 		assertFalse(controlador.cadastrarReserva("100", "Maria", formaDePagamento2, DiaSemana.TERCA, 1));
 	}
@@ -111,7 +107,6 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void naoDeveCadastrarQuandoNomeVazio() throws Exception {
-		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", "", formaDePagamento, DiaSemana.SEGUNDA, 1);
 
@@ -120,7 +115,6 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void retornaFalsoQuandoNomeVazio() throws Exception {
-		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertFalse(controlador.cadastrarReserva("100", "", formaDePagamento, DiaSemana.SEGUNDA, 1));
 	}
