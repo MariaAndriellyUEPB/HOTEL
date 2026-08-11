@@ -12,7 +12,6 @@ import classesDeQuartos.Quarto;
 import classesDeQuartos.QuartoComum;
 import classesDeQuartos.QuartoLuxo;
 import classesPagaveis.EstrategiaPagavel;
-import classesPagaveis.FormaDePagamento;
 import classesPagaveis.PagamentoViaBoleto;
 import classesPagaveis.PagamentoViaCartao;
 import classesPagaveis.PagamentoViaPix;
