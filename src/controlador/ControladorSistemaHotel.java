@@ -21,7 +21,7 @@ public class ControladorSistemaHotel {
 		return sistema.adicionarQuartoNaReserva(codigoReserva, quarto);
 	}
 
-	public boolean alterarFormaPagamento(String codigoReserva, EstrategiaPagavel novaEstrategia) {
+	public boolean alterarFormaPagamento(String codigoReserva, EstrategiaPagavel novaEstrategia) throws Exception {
 		return sistema.alterarFormaPagamento(codigoReserva, novaEstrategia);
 	}
 

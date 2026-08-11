@@ -17,6 +17,7 @@ public class Reserva {
 
 	public Reserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento, DiaSemana diaEntrada, int quantidadeDias) throws Exception {
 		validaNomeHospede(nomeHospede, "Nenhum nome foi digitado.");
+		validaEstrategia(estrategiaPagamento, "estrategia invalida.");
 		validaValorMenorQueZero(quantidadeDias, "Valor de quantidade de dias.");
 
 		this.codigo = codigo;
@@ -25,6 +26,24 @@ public class Reserva {
 		this.diaEntrada = diaEntrada;
 		this.quantidadeDias = quantidadeDias;
 		this.quartos = new HashMap<String, Quarto>();
+	}
+	
+	private void validaValorMenorQueZero(double valor, String mensagem) throws Exception {
+		if (valor < 0) {
+			throw new Exception(mensagem);
+		}
+	}
+
+	private void validaNomeHospede(String nome, String mensagem) throws Exception {
+		if (nome.isBlank()) {
+			throw new Exception(mensagem);
+		}
+	}
+	
+	private void validaEstrategia(EstrategiaPagavel estrategiaPagavel, String mensagem) throws Exception {
+		if(estrategiaPagavel == null) {
+			throw new Exception(mensagem);
+		}
 	}
 
 	public String getCodigo() {
@@ -51,18 +70,6 @@ public class Reserva {
 		return quartos;
 	}
 
-	private void validaValorMenorQueZero(double valor, String mensagem) throws Exception {
-		if (valor < 0) {
-			throw new Exception(mensagem);
-		}
-	}
-
-	private void validaNomeHospede(String nome, String mensagem) throws Exception {
-		if (nome.isBlank()) {
-			throw new Exception(mensagem);
-		}
-	}
-
 	public boolean adicionarQuarto(Quarto quarto) {
 		if (quartos.containsKey(quarto.getNumeroQuarto())) {
 			return false;
@@ -75,12 +82,9 @@ public class Reserva {
 		return quartos.remove(numeroQuarto) != null;
 	}
 
-	public boolean alterarEstrategiaPagamento(EstrategiaPagavel novaEstrategia) {
-		if (novaEstrategia == null) {
-			return false;
-		}
+	public void setEstrategiaPagamento(EstrategiaPagavel novaEstrategia) throws Exception {
+		validaEstrategia(novaEstrategia, "estrategia invalida.");
 		this.estrategiaPagamento = novaEstrategia;
-		return true;
 	}
 
 	public double calcularDiariaTotal() {

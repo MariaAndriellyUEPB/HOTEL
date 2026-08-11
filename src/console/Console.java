@@ -36,7 +36,7 @@ public class Console {
 		return valorDouble;
 	}
 
-	public void iniciar() {
+	public void iniciar() throws Exception {
 		int opcao;
 
 		do {
@@ -66,7 +66,7 @@ public class Console {
 		System.out.println("0 - Sair");
 	}
 
-	private void executarOpcao(int opcao) {
+	private void executarOpcao(int opcao) throws Exception {
 		switch (opcao) {
 		case 1:
 			opcaoAnotarNovaReserva();
@@ -221,7 +221,7 @@ public class Console {
 		}
 	}
 
-	public void opcaoAlterarFormaPagamento() {
+	public void opcaoAlterarFormaPagamento() throws Exception {
 		if (controlador.estaVazio()) {
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;

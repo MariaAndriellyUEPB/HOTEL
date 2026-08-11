@@ -25,7 +25,8 @@ public class SistemaHotel {
 		return capacidadeMaxima;
 	}
 
-	public boolean cadastrarReserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento, DiaSemana diaEntrada, int quantidadeDias) {
+	public boolean cadastrarReserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento,
+			DiaSemana diaEntrada, int quantidadeDias) {
 		for (Reserva reserva : reservasAtivas) {
 			if (reserva.getCodigo().equals(codigo)) {
 				return false;
@@ -50,12 +51,18 @@ public class SistemaHotel {
 		return reserva.adicionarQuarto(quarto);
 	}
 
-	public boolean alterarFormaPagamento(String codigoReserva, EstrategiaPagavel novaEstrategia) {
+	public boolean alterarFormaPagamento(String codigoReserva, EstrategiaPagavel novaEstrategia) throws Exception {
 		Reserva reserva = buscarReservasPorCodigo(codigoReserva);
 		if (reserva == null) {
 			return false;
 		}
-		return reserva.alterarEstrategiaPagamento(novaEstrategia);
+		try {
+			reserva.setEstrategiaPagamento(novaEstrategia);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
 	}
 
 	public boolean removerReservaPorCodigo(String codigo) {
