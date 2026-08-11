@@ -106,7 +106,8 @@ public class Console {
 	}
 
 	public void opcaoApagarReserva() {
-		if (naoHaReservas()) {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
 		}
 
@@ -120,7 +121,8 @@ public class Console {
 	}
 
 	public void opcaoExibirReservas() {
-		if (naoHaReservas()) {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
 		}
 
@@ -130,7 +132,8 @@ public class Console {
 	}
 
 	public void opcaoBuscarReservaPorCodigo() {
-		if (naoHaReservas()) {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
 		}
 
@@ -166,8 +169,7 @@ public class Console {
 		DiaSemana diaEntrada = escolherDiaEntrada();
 		int quantidadeDias = lerInteiro("\nQuantidade de dias: ");
 
-		boolean resultado = controlador.cadastrarReserva(codigo, nomeHospede, estrategiaPagamento, diaEntrada,
-				quantidadeDias);
+		boolean resultado = controlador.cadastrarReserva(codigo, nomeHospede, estrategiaPagamento, diaEntrada, quantidadeDias);
 
 		if (resultado == false) {
 			System.out.println("\nNao foi possivel cadastrar reserva!!!");
@@ -191,22 +193,20 @@ public class Console {
 		}
 	}
 
-	public void opcaoAdicionarQuarto(String codigo) throws Exception {
-		Quarto quarto;
-		try {
-			quarto = criarQuarto();
-		} catch (Exception e) {
-			System.out.println("Não foi possível criar o quarto: " + e.getMessage());
+	public void opcaoAdicionarQuarto() throws Exception {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
 		}
 
-		boolean resultado = controlador.adicionarQuartoNaReserva(codigo, quarto);
+		String codigo = lerTexto("Código da reserva: ");
 
-		if (resultado) {
-			System.out.println("Quarto adicionado com sucesso!");
-		} else {
-			System.out.println("Não foi possível adicionar: já existe um quarto com esse número nessa reserva.");
+		if (controlador.buscarReservasPorCodigo(codigo) == null) {
+			System.out.println("Reserva não encontrada.");
+			return;
 		}
+
+		opcaoAdicionarQuartoNaReserva(codigo);
 	}
 
 	private void opcaoAdicionarQuartoNaReserva(String codigoReserva) throws Exception {
@@ -221,7 +221,8 @@ public class Console {
 	}
 
 	public void opcaoAlterarFormaPagamento() throws Exception {
-		if (naoHaReservas()) {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
 		}
 
@@ -241,25 +242,6 @@ public class Console {
 			System.out.println("Forma de pagamento alterada com sucesso!");
 		} else {
 			System.out.println("Não foi possível alterar a forma de pagamento.");
-		}
-	}
-	
-	private boolean naoHaReservas() {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
-			return true;
-		}
-		return false;
-	}
-
-	private void adicionarQuartoNaReserva(String codigoReserva) throws Exception {
-		Quarto quarto = criarQuarto();
-		boolean resultado = controlador.adicionarQuartoNaReserva(codigoReserva, quarto);
-
-		if (resultado) {
-			System.out.println("Quarto adicionado com sucesso!");
-		} else {
-			System.out.println("Não foi possível adicionar: já existe um quarto com esse número nessa reserva.");
 		}
 	}
 
@@ -329,7 +311,7 @@ public class Console {
 		DiaSemana diaEntrada = null;
 
 		while (diaEntrada == null) {
-			int opcao = lerInteiro("\nDia: ");
+		int opcao = lerInteiro("\nDia: ");
 			switch (opcao) {
 			case 1:
 				diaEntrada = DiaSemana.DOMINGO;
