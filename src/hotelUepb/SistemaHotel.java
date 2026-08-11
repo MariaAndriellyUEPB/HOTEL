@@ -106,8 +106,8 @@ public class SistemaHotel {
 		return reservasAtivas.size();
 	}
 
-	public boolean estaCheio(int capacidadeMaxima) {
-		return reservasAtivas.size() >= capacidadeMaxima;
+	public boolean estaCheio() {
+		return reservasAtivas.size() >= this.capacidadeMaxima;
 	}
 
 	public boolean estaVazio() {

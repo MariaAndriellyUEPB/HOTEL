@@ -45,8 +45,8 @@ public class ControladorSistemaHotel {
 		return sistema.contarReservas();
 	}
 
-	public boolean estaCheio(int capacidadeMaxima) {
-		return sistema.estaCheio(capacidadeMaxima);
+	public boolean estaCheio() {
+		return sistema.estaCheio();
 	}
 
 	public boolean estaVazio() {

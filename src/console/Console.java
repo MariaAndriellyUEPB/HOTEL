@@ -158,7 +158,7 @@ public class Console {
 
 		System.out.println("======= Cadastrando nova reserva =======");
 
-		if (controlador.estaCheio(controlador.getCapacidadeMaxima())) {
+		if (controlador.estaCheio()) {
 			System.out.println("Nao foi possivel cadastrar: capacidade maxima de reservas atingida.");
 			return;
 		}
