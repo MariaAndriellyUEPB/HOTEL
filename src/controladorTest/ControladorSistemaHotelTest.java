@@ -56,7 +56,7 @@ public class ControladorSistemaHotelTest {
 		assertNotNull(reserva);
 		assertEquals("100", reserva.getCodigo());
 		assertEquals("Maria", reserva.getNomeHospede());
-		assertEquals("Cartao", reserva.getEstrategiaPagamento().toString());
+		assertEquals("Cartao", reserva.getEstrategiaPagamento().getInfo());
 		assertEquals(DiaSemana.SEGUNDA, reserva.getDiaEntrada());
 		assertEquals(1, reserva.getQuantidadeDias());
 	}
