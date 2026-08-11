@@ -169,7 +169,8 @@ public class Console {
 		DiaSemana diaEntrada = escolherDiaEntrada();
 		int quantidadeDias = lerInteiro("\nQuantidade de dias: ");
 
-		boolean resultado = controlador.cadastrarReserva(codigo, nomeHospede, estrategiaPagamento, diaEntrada, quantidadeDias);
+		boolean resultado = controlador.cadastrarReserva(codigo, nomeHospede, estrategiaPagamento, diaEntrada,
+				quantidadeDias);
 
 		if (resultado == false) {
 			System.out.println("\nNao foi possivel cadastrar reserva!!!");
@@ -177,12 +178,12 @@ public class Console {
 		}
 
 		System.out.println("Reserva cadastrada com sucesso!");
-		(codigo);
+		opcaoAdicionarQuartoNaReserva(codigo);
 
 		String resposta = lerTexto("\nDeseja adicionar outro quarto? (Sim/Nao): ");
 		if ((resposta.equalsIgnoreCase("Sim")))
 			do {
-				(codigo);
+				opcaoAdicionarQuartoNaReserva(codigo);
 				resposta = lerTexto("\nDeseja adicionar outro quarto? (Sim/Nao): ");
 			} while (resposta.equalsIgnoreCase("Sim"));
 
@@ -205,13 +206,23 @@ public class Console {
 			System.out.println("Reserva não encontrada.");
 			return;
 		}
+		opcaoAdicionarQuartoNaReserva(codigo);
+	}
 
-		(codigo);
+	private void opcaoAdicionarQuartoNaReserva(String codigoReserva) throws Exception {
+		Quarto quarto = criarQuarto();
+		boolean resultado = controlador.adicionarQuartoNaReserva(codigoReserva, quarto);
+
+		if (resultado) {
+			System.out.println("Quarto adicionado com sucesso!");
+		} else {
+			System.out.println("Não foi possível adicionar: já existe um quarto com esse número nessa reserva.");
+		}
 	}
 
 	public void opcaoAlterarFormaPagamento() throws Exception {
-		if(naoHaReservas()) {
-			
+		if (naoHaReservas()) {
+
 		}
 
 		String codigo = lerTexto("Código da reserva: ");
@@ -232,7 +243,7 @@ public class Console {
 			System.out.println("Não foi possível alterar a forma de pagamento.");
 		}
 	}
-	
+
 	private void adicionarQuartoNaReserva(String codigoReserva) throws Exception {
 		Quarto quarto = criarQuarto();
 		boolean resultado = controlador.adicionarQuartoNaReserva(codigoReserva, quarto);
@@ -310,7 +321,7 @@ public class Console {
 		DiaSemana diaEntrada = null;
 
 		while (diaEntrada == null) {
-		int opcao = lerInteiro("\nDia: ");
+			int opcao = lerInteiro("\nDia: ");
 			switch (opcao) {
 			case 1:
 				diaEntrada = DiaSemana.DOMINGO;
