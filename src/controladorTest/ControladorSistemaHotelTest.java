@@ -98,6 +98,40 @@ public class ControladorSistemaHotelTest {
 		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
 		assertFalse(controlador.adicionarQuartoNaReserva("999", quarto));
 	}
+	
+	@Test
+	public void naoDeveCadastrarQuandoValorDiariaInvalida() {
+		Quarto quarto = new QuartoLuxo("Luxo", "1", -1);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+		controlador.cadastrarReserva("100", "Fabiola", formaDePagamento, DiaSemana.SEGUNDA, 1);
+
+		assertEquals(0, controlador.contarReservas());
+	}
+
+	@Test
+	public void naoDeveCadastrarQuandoNomeVazio() {
+		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+		controlador.cadastrarReserva("100", "", formaDePagamento, DiaSemana.SEGUNDA, 1);
+
+		assertEquals(0, controlador.contarReservas());
+	}
+
+	@Test
+	public void retornaFalsoQuandoNomeVazio() {
+		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+		assertFalse(
+				controlador.cadastrarReserva("100", "", formaDePagamento, DiaSemana.SEGUNDA, 1));
+	}
+
+	@Test
+	public void retornaFalsoQuandoValorDiariaInvalido() {
+		Quarto quarto = new QuartoLuxo("Luxo", "10", -1);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+		assertFalse(
+				controlador.cadastrarReserva("100", "", formaDePagamento, DiaSemana.SEGUNDA, 1));
+	}
 
 	@Test
 	public void deveRetornarCalculoDiariaTotalComUmQuarto() {
@@ -177,6 +211,61 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void deveEstarVazioQuandoNaoPossuiReservas() {
 		assertTrue(controlador.estaVazio());
+	}
+	
+	@Test
+	public void deveAplicarDescontoNoPix() {
+		EstrategiaPagavel formaDePagamento = new PagamentoViaPix();
+		assertEquals(95.0, formaDePagamento.aplicarTaxa(100), 0.001);
+	}
+
+	@Test
+	public void deveAplicarTaxaNoCartao() {
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+		assertEquals(105.0, formaDePagamento.aplicarTaxa(100), 0.001);
+	}
+
+	@Test
+	public void deveAplicarTaxaNoBoleto() {
+		EstrategiaPagavel formaDePagamento = new PagamentoViaBoleto();
+
+		assertEquals(102.0, formaDePagamento.aplicarTaxa(100.0), 0.001);
+	}
+
+	@Test
+	public void deveCalcularTaxaDeSexta() {
+		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+
+		controlador.cadastrarReserva("100", "1", formaDePagamento, DiaSemana.SEXTA, 1);
+
+		Reserva reserva = controlador.buscarReservasPorCodigo("100");
+
+		assertEquals(131.25, reserva.calcularDiariaTotal(), 0.001);
+	}
+
+	@Test
+	public void deveCalcularTaxaDeSabado() {
+		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+
+		controlador.cadastrarReserva("100", "Lara", formaDePagamento, DiaSemana.SABADO, 1);
+
+		Reserva reserva = controlador.buscarReservasPorCodigo("100");
+
+		assertEquals(157.50, reserva.calcularDiariaTotal(), 0.001);
+	}
+
+	@Test
+	public void deveCalcularTaxaDeDomingo() {
+		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+
+		controlador.cadastrarReserva("100", "Maria", formaDePagamento, DiaSemana.DOMINGO, 1);
+
+		Reserva reserva = controlador.buscarReservasPorCodigo("100");
+
+		assertEquals(157.50, reserva.calcularDiariaTotal(), 0.001);
 	}
 
 	
