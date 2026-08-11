@@ -204,10 +204,10 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void deveCalcularTaxaDeSabado() {
-		Quarto quarto = new QuartoComum("Quarto Comum");
+		Quarto quarto = new QuartoComum("Quarto Comum", "1", 0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
-		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SABADO, 1, 100.0);
+		controlador.cadastrarReserva("100", quarto, "1", formaDePagamento, DiaSemana.SABADO, 1, 100.0);
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
@@ -216,7 +216,7 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void deveCalcularTaxaDeDomingo() {
-		Quarto quarto = new QuartoComum("Quarto Comum");
+		Quarto quarto = new QuartoComum("Quarto Comum", null, 0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.DOMINGO, 1, 100.0);
@@ -235,7 +235,7 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void deveCalcularValorDoQuartoComum() {
-		Quarto quarto = new QuartoComum("Quarto Comum");
+		Quarto quarto = new QuartoComum("Quarto Comum", "105", 100.0);
 
 		assertEquals(100.0, quarto.calcularValorBase(100.0), 0.001);
 	}
@@ -252,7 +252,7 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void deveExibirRelatorioComDadosDaReserva() {
-		Quarto quarto = new QuartoComum("Quarto Comum");
+		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", quarto, "1", "Maria", formaDePagamento, DiaSemana.SEGUNDA, 1, 100.0);
 		String esperada = "\n================================================================\n"

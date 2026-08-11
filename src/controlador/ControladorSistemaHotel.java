@@ -13,7 +13,7 @@ public class ControladorSistemaHotel {
 		this.sistema = new SistemaHotel();
 	}
 
-	public boolean cadastrarReserva(String codigo, Quarto quarto, String nomeHospede, String string, EstrategiaPagavel estrategiaPagamento, DiaSemana diaEntrada, int quantidadeDias, double d) {
+	public boolean cadastrarReserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento, DiaSemana diaEntrada, int quantidadeDias, double d) {
 		return sistema.cadastrarReserva(codigo, nomeHospede, estrategiaPagamento, diaEntrada, quantidadeDias);
 	}
 
