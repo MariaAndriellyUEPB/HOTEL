@@ -191,18 +191,22 @@ public class Console {
 		}
 	}
 
-	public void opcaoAdicionarQuarto() throws Exception {
-		if (naoHaReservas()) {
+	public void opcaoAdicionarQuarto(String codigo) throws Exception {
+		Quarto quarto;
+		try {
+			quarto = criarQuarto();
+		} catch (Exception e) {
+			System.out.println("Não foi possível criar o quarto: " + e.getMessage());
 			return;
 		}
 
-		String codigo = lerTexto("Código da reserva: ");
+		boolean resultado = controlador.adicionarQuartoNaReserva(codigo, quarto);
 
-		if (controlador.buscarReservasPorCodigo(codigo) == null) {
-			System.out.println("Reserva não encontrada.");
-			return;
+		if (resultado) {
+			System.out.println("Quarto adicionado com sucesso!");
+		} else {
+			System.out.println("Não foi possível adicionar: já existe um quarto com esse número nessa reserva.");
 		}
-		opcaoAdicionarQuartoNaReserva(codigo);
 	}
 
 	private void opcaoAdicionarQuartoNaReserva(String codigoReserva) throws Exception {
