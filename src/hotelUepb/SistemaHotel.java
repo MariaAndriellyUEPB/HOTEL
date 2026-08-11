@@ -1,4 +1,4 @@
-package hotelUepb;
+         package hotelUepb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class SistemaHotel {
 	}
 
 	public boolean cadastrarReserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento,
-			DiaSemana diaEntrada, int quantidadeDias)  {
+			DiaSemana diaEntrada, int quantidadeDias) {
 		for (Reserva reserva : reservasAtivas) {
 			if (reserva.getCodigo().equals(codigo)) {
 				return false;
@@ -43,23 +43,19 @@ public class SistemaHotel {
 		}
 	}
 
-	public boolean adicionarQuartoNaReserva(String codigoReserva, Quarto quarto)  {
+	public boolean adicionarQuartoNaReserva(String codigoReserva, Quarto quarto) {
 		Reserva reserva = buscarReservasPorCodigo(codigoReserva);
 		if (reserva == null) {
 			return false;
 		}
-<<<<<<< HEAD
 		try {
 			return reserva.adicionarQuarto(quarto);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return false;
 		}
-=======
-		return reserva.adicionarQuarto(quarto);
-
->>>>>>> branch 'master' of https://github.com/MariaAndriellyUEPB/HOTEL
 	}
+	
 
 	public boolean alterarFormaPagamento(String codigoReserva, EstrategiaPagavel novaEstrategia) throws Exception {
 		Reserva reserva = buscarReservasPorCodigo(codigoReserva);
