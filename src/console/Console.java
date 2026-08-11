@@ -106,8 +106,7 @@ public class Console {
 	}
 
 	public void opcaoApagarReserva() {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
+		if (naoHaReservas()) {
 			return;
 		}
 
@@ -121,8 +120,7 @@ public class Console {
 	}
 
 	public void opcaoExibirReservas() {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
+		if (naoHaReservas()) {
 			return;
 		}
 
@@ -132,8 +130,7 @@ public class Console {
 	}
 
 	public void opcaoBuscarReservaPorCodigo() {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
+		if (naoHaReservas()) {
 			return;
 		}
 
@@ -195,8 +192,7 @@ public class Console {
 	}
 
 	public void opcaoAdicionarQuarto() throws Exception {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
+		if (naoHaReservas()) {
 			return;
 		}
 
@@ -222,7 +218,7 @@ public class Console {
 
 	public void opcaoAlterarFormaPagamento() throws Exception {
 		if (naoHaReservas()) {
-
+			return;
 		}
 
 		String codigo = lerTexto("Código da reserva: ");
@@ -242,6 +238,14 @@ public class Console {
 		} else {
 			System.out.println("Não foi possível alterar a forma de pagamento.");
 		}
+	}
+	
+	private boolean naoHaReservas() {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return true;
+		}
+		return false;
 	}
 
 	private void adicionarQuartoNaReserva(String codigoReserva) throws Exception {
