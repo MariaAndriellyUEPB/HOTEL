@@ -237,9 +237,9 @@ public class ControladorSistemaHotelTest {
 		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
-		controlador.cadastrarReserva("100", "1", formaDePagamento, DiaSemana.SEXTA, 1);
+		controlador.cadastrarReserva("105", "1", formaDePagamento, DiaSemana.SEXTA, 1);
 		
-		controlador.adicionarQuartoNaReserva("100", quarto);  
+		controlador.adicionarQuartoNaReserva("105", quarto);  
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
@@ -265,9 +265,9 @@ public class ControladorSistemaHotelTest {
 		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
-		controlador.cadastrarReserva("100", "Maria", formaDePagamento, DiaSemana.DOMINGO, 1);
+		controlador.cadastrarReserva("200", "Maria", formaDePagamento, DiaSemana.DOMINGO, 1);
 		
-		controlador.adicionarQuartoNaReserva("100", quarto);  
+		controlador.adicionarQuartoNaReserva("200", quarto);  
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
