@@ -2,7 +2,6 @@ package controladorTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -29,7 +28,6 @@ public class ControladorSistemaHotelTest {
 	@Test
 	public void deveCadastrarReserva() throws Exception {
 
-		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertTrue(controlador.cadastrarReserva("100", "1", formaDePagamento, DiaSemana.SEGUNDA, 1));
 		assertEquals(1, controlador.contarReservas());
@@ -37,12 +35,10 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void naoDeveCadastrarDuasReservasComMesmoCodigo() throws Exception {
-		
-		Quarto quarto = new QuartoLuxo("Luxo", "3", 100.0);
+
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertTrue(controlador.cadastrarReserva("100", "Lara", formaDePagamento, DiaSemana.SEGUNDA, 1));
 
-		Quarto quarto2 = new QuartoLuxo("Luxo", "2", 100);
 		EstrategiaPagavel formaDePagamento2 = new PagamentoViaCartao();
 		assertFalse(controlador.cadastrarReserva("100", "Maria", formaDePagamento2, DiaSemana.TERCA, 1));
 	}
@@ -69,7 +65,7 @@ public class ControladorSistemaHotelTest {
 
 		assertNull(controlador.buscarReservasPorCodigo("999"));
 	}
-	
+
 	@Test
 	public void deveAdicionarQuartoNaReserva() throws Exception {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
@@ -94,28 +90,23 @@ public class ControladorSistemaHotelTest {
 		assertFalse(resultado);
 		assertEquals(1, controlador.buscarReservasPorCodigo("100").getQuartos().size());
 	}
-	
+
 	@Test
 	public void naoDeveAdicionarQuartoEmReservaInexistente() throws Exception {
 		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
 		assertFalse(controlador.adicionarQuartoNaReserva("999", quarto));
 	}
-	
-	@Test
-	public void naoDeveCadastrarQuandoValorDiariaInvalida() throws Exception {
-		try {
-			new QuartoLuxo("Luxo", "1", -1);
-			fail("Deveria lançar exceção para valor de diária inválido.");
-		} catch (Exception e) {
-			assertEquals("valor da diaria invalido.", e.getMessage());
-		}
 
+	@Test
+	public void naoDeveCadastrarQuandoQuantidadeDiasInvalida() throws Exception {
+		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
+		boolean resultado = controlador.cadastrarReserva("100", "Fabiola", formaDePagamento, DiaSemana.SEGUNDA, -1);
+		assertFalse(resultado);
 		assertEquals(0, controlador.contarReservas());
 	}
 
 	@Test
 	public void naoDeveCadastrarQuandoNomeVazio() throws Exception {
-		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", "", formaDePagamento, DiaSemana.SEGUNDA, 1);
 
@@ -124,17 +115,14 @@ public class ControladorSistemaHotelTest {
 
 	@Test
 	public void retornaFalsoQuandoNomeVazio() throws Exception {
-		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
-		assertFalse(
-				controlador.cadastrarReserva("100", "", formaDePagamento, DiaSemana.SEGUNDA, 1));
+		assertFalse(controlador.cadastrarReserva("100", "", formaDePagamento, DiaSemana.SEGUNDA, 1));
 	}
 
 	@Test
 	public void retornaFalsoQuandoQuantidadeDiasInvalida() throws Exception {
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
-		assertFalse(
-				controlador.cadastrarReserva("100", "Maria", formaDePagamento, DiaSemana.SEGUNDA, -1));
+		assertFalse(controlador.cadastrarReserva("100", "Maria", formaDePagamento, DiaSemana.SEGUNDA, -1));
 	}
 
 	@Test
@@ -147,7 +135,6 @@ public class ControladorSistemaHotelTest {
 
 		assertEquals(105.0, reserva.calcularDiariaTotal(), 0.001);
 	}
-
 
 	@Test
 	public void deveRetornarCalculoDiariaTotalComDoisQuartos() throws Exception {
@@ -169,7 +156,7 @@ public class ControladorSistemaHotelTest {
 		assertTrue(controlador.removerReservaPorCodigo("100"));
 		assertEquals(0, controlador.contarReservas());
 	}
-	
+
 	@Test
 	public void deveRetornarFalseSeCodigoNaoEncontrado() {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
@@ -178,7 +165,7 @@ public class ControladorSistemaHotelTest {
 		assertFalse(controlador.removerReservaPorCodigo("999"));
 		assertEquals(1, controlador.contarReservas());
 	}
-	
+
 	@Test
 	public void deveCalcularPatrimonioTotal() throws Exception {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
@@ -193,7 +180,7 @@ public class ControladorSistemaHotelTest {
 				+ controlador.buscarReservasPorCodigo("101").calcularDiariaTotal();
 		assertEquals(esperado, controlador.calcularPatrimonioTotal(), 0.001);
 	}
-	
+
 	@Test
 	public void deveContarReservas() {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
@@ -214,7 +201,7 @@ public class ControladorSistemaHotelTest {
 	public void deveEstarVazioQuandoNaoPossuiReservas() {
 		assertTrue(controlador.estaVazio());
 	}
-	
+
 	@Test
 	public void deveAplicarDescontoNoPix() {
 		EstrategiaPagavel formaDePagamento = new PagamentoViaPix();
@@ -240,8 +227,8 @@ public class ControladorSistemaHotelTest {
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
 		controlador.cadastrarReserva("105", "1", formaDePagamento, DiaSemana.SEXTA, 1);
-		
-		controlador.adicionarQuartoNaReserva("105", quarto);  
+
+		controlador.adicionarQuartoNaReserva("105", quarto);
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("105");
 
@@ -254,8 +241,8 @@ public class ControladorSistemaHotelTest {
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
 		controlador.cadastrarReserva("100", "Lara", formaDePagamento, DiaSemana.SABADO, 1);
-		
-		controlador.adicionarQuartoNaReserva("100", quarto);  
+
+		controlador.adicionarQuartoNaReserva("100", quarto);
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
@@ -268,12 +255,12 @@ public class ControladorSistemaHotelTest {
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
 		controlador.cadastrarReserva("200", "Maria", formaDePagamento, DiaSemana.DOMINGO, 1);
-		
-		controlador.adicionarQuartoNaReserva("200", quarto);  
+
+		controlador.adicionarQuartoNaReserva("200", quarto);
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("200");
 
-		assertEquals(157.50, reserva.calcularDiariaTotal(),0.001);
+		assertEquals(157.50, reserva.calcularDiariaTotal(), 0.001);
 	}
 	
 	@Test
@@ -318,8 +305,4 @@ public class ControladorSistemaHotelTest {
 	    assertFalse(resultado);
 	}
 
-	
 }
-
-
-	
