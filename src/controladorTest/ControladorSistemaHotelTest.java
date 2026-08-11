@@ -239,7 +239,7 @@ public class ControladorSistemaHotelTest {
 		
 		controlador.adicionarQuartoNaReserva("105", quarto);  
 
-		Reserva reserva = controlador.buscarReservasPorCodigo("100");
+		Reserva reserva = controlador.buscarReservasPorCodigo("105");
 
 		assertEquals(131.25, reserva.calcularDiariaTotal(), 0.001);
 	}
@@ -267,7 +267,7 @@ public class ControladorSistemaHotelTest {
 		
 		controlador.adicionarQuartoNaReserva("200", quarto);  
 
-		Reserva reserva = controlador.buscarReservasPorCodigo("100");
+		Reserva reserva = controlador.buscarReservasPorCodigo("200");
 
 		assertEquals(157.50, reserva.calcularDiariaTotal(),0.001);
 	}

@@ -79,7 +79,7 @@ public class Reserva {
 
 			for (int i = 0; i < quantidadeDias; i++) {
 				DiaSemana diaAtual = DiaSemana.values()[(entradaReserva + i) % 7];
-				total += diariaQuarto + diaAtual.getTaxa();
+				total += diariaQuarto * (1+diaAtual.getTaxa());
 			}
 		}
 
