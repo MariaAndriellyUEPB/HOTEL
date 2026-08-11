@@ -5,9 +5,9 @@ public enum DiaSemana {
 	TERCA(0), 
 	QUARTA(0), 
 	QUINTA(0), 
-	SEXTA(25), 
-	SABADO(50), 
-	DOMINGO(50);
+	SEXTA(0.25), 
+	SABADO(0.5), 
+	DOMINGO(0.5);
 	
 	private double Taxa;
 	
