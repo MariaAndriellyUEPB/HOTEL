@@ -26,14 +26,14 @@ public class SistemaHotel {
 	}
 
 	public boolean cadastrarReserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento, DiaSemana diaEntrada, int quantidadeDias) {
+		if(estaCheio()) {
+			return false;
+		}
+		
 		for (Reserva reserva : reservasAtivas) {
 			if (reserva.getCodigo().equals(codigo)) {
 				return false;
 			}
-		}
-
-		if(estaCheio()) {
-			return false;
 		}
 
 		try {
