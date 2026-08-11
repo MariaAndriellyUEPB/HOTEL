@@ -2,7 +2,6 @@ package hotelUepb;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import classesDeQuartos.Quarto;
 import classesPagaveis.EstrategiaPagavel;
