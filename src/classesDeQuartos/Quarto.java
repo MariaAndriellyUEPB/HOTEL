@@ -2,16 +2,30 @@ package classesDeQuartos;
 
 public abstract class Quarto {  
 	private String nomeDoQuarto;
+	private String numeroQuarto;
+	private double valorDiaria;
 
-	public Quarto(String nomeDoQuarto) {
+	public Quarto(String nomeDoQuarto, String numeroQuarto, double valorDiaria) {
 		this.nomeDoQuarto = nomeDoQuarto;
-	}
-
-	public String getNomedoquarto() {
-		return nomeDoQuarto;
+		this.numeroQuarto = numeroQuarto;
+		this.valorDiaria = valorDiaria;
 	}
 
 	public abstract double calcularValorBase(double valor);
+	
+	public String getNomeDoQuarto() {
+		return nomeDoQuarto;
+	}
 
+	public String getNumeroQuarto() {
+		return numeroQuarto;
+	}
 
+	public double getValorDiaria() {
+		return valorDiaria;
+	}
 }
+
+
+
+

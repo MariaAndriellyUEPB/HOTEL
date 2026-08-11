@@ -1,6 +1,6 @@
 package classesPagaveis;
 
-public class PagamentoViaBoleto implements FormaDePagamento {
+public class PagamentoViaBoleto implements EstrategiaPagavel {
 
 	@Override
 	public double aplicarTaxa(double valor) {
@@ -8,9 +8,7 @@ public class PagamentoViaBoleto implements FormaDePagamento {
 	}
 
 	@Override
-	public String toString() {
+	public String getInfo() {
 		return "Boleto";
 	}
-	
-	
 }
