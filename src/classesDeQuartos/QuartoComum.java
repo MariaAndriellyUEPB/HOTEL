@@ -1,9 +1,9 @@
 package classesDeQuartos;
 
 public class QuartoComum extends Quarto{
-
-	public QuartoComum(String nomeDoQuarto) {
-		super(nomeDoQuarto); 
+	
+	public QuartoComum(String nomeDoQuarto, String numeroQuarto, double valorDiaria) {
+		super(nomeDoQuarto, numeroQuarto, valorDiaria);
 	}
 
 	@Override

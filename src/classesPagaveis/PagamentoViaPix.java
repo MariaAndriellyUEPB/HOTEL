@@ -1,6 +1,6 @@
 package classesPagaveis;
 
-public class PagamentoViaPix implements FormaDePagamento{
+public class PagamentoViaPix implements EstrategiaPagavel{
 
 	@Override
 	public double aplicarTaxa(double valor) {
@@ -8,10 +8,7 @@ public class PagamentoViaPix implements FormaDePagamento{
 	}
 
 	@Override
-	public String toString() {
+	public String getInfo() {
 		return "Pix";
 	}
-	
-	
-
 }

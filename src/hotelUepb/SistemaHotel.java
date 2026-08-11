@@ -1,38 +1,40 @@
 package hotelUepb;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import classesDeQuartos.Quarto;
-import classesPagaveis.FormaDePagamento;
+import classesPagaveis.EstrategiaPagavel;
 
 public class SistemaHotel {
-	private ArrayList<Reserva> reservasAtivas;
+	private List<Reserva> reservasAtivas;
 	private String nomeHotel;
 	private int capacidadeMaxima;
- 
+
 	public SistemaHotel() {
 		this.reservasAtivas = new ArrayList<Reserva>();
 		this.nomeHotel = "Raio de Sol";
-		this.capacidadeMaxima = 3; 
+		this.capacidadeMaxima = 3;
 	}
-	
+
 	public String getNomeHotel() {
 		return nomeHotel;
 	}
-	
+
 	public int getCapacidadeMaxima() {
 		return capacidadeMaxima;
 	}
 
-	public boolean cadastrarReserva(String codigo, Quarto tipoQuarto, String numeroQuarto, String nomeHospede, FormaDePagamento formaDePagamento, DiaSemana diaEntrada, int quantidadeDias, double valorDiaria) {
-		for(Reserva reserva: reservasAtivas) {
-			if(reserva.getCodigo().equals(codigo)) {
+	public boolean cadastrarReserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento,
+			DiaSemana diaEntrada, int quantidadeDias) {
+		for (Reserva reserva : reservasAtivas) {
+			if (reserva.getCodigo().equals(codigo)) {
 				return false;
 			}
 		}
-		
+
 		try {
-			Reserva novaReserva = new Reserva(codigo, tipoQuarto, numeroQuarto, nomeHospede, formaDePagamento, diaEntrada, quantidadeDias, valorDiaria);
+			Reserva novaReserva = new Reserva(codigo, nomeHospede, estrategiaPagamento, diaEntrada, quantidadeDias);
 			reservasAtivas.add(novaReserva);
 			return true;
 		} catch (Exception e) {
@@ -41,9 +43,31 @@ public class SistemaHotel {
 		}
 	}
 
+	public boolean adicionarQuartoNaReserva(String codigoReserva, Quarto quarto) {
+		Reserva reserva = buscarReservasPorCodigo(codigoReserva);
+		if (reserva == null) {
+			return false;
+		}
+		return reserva.adicionarQuarto(quarto);
+	}
+
+	public boolean alterarFormaPagamento(String codigoReserva, EstrategiaPagavel novaEstrategia) throws Exception {
+		Reserva reserva = buscarReservasPorCodigo(codigoReserva);
+		if (reserva == null) {
+			return false;
+		}
+		try {
+			reserva.setEstrategiaPagamento(novaEstrategia);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
 	public boolean removerReservaPorCodigo(String codigo) {
-		for(int i = 0; i < reservasAtivas.size(); i++) {
-			if(reservasAtivas.get(i).getCodigo().equals(codigo)) {
+		for (int i = 0; i < reservasAtivas.size(); i++) {
+			if (reservasAtivas.get(i).getCodigo().equals(codigo)) {
 				reservasAtivas.remove(i);
 				return true;
 			}
@@ -54,7 +78,7 @@ public class SistemaHotel {
 	public Reserva buscarReservasPorCodigo(String codigo) {
 		for (Reserva minhaReserva : reservasAtivas) {
 			if (minhaReserva.getCodigo().equals(codigo)) {
-			    return minhaReserva;
+				return minhaReserva;
 			}
 		}
 		return null;
@@ -75,24 +99,16 @@ public class SistemaHotel {
 		}
 		return soma;
 	}
-	
+
 	public int contarReservas() {
 		return reservasAtivas.size();
 	}
-	
+
 	public boolean estaCheio(int capacidadeMaxima) {
-		if (reservasAtivas.size() >= capacidadeMaxima) {
-			return true;
-		} else {
-			return false;
-		}
+		return reservasAtivas.size() >= capacidadeMaxima;
 	}
 
 	public boolean estaVazio() {
-		if (reservasAtivas.size() == 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return reservasAtivas.isEmpty();
 	}
 }
