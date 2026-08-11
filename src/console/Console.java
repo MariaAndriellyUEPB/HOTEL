@@ -104,56 +104,7 @@ public class Console {
 			System.out.println("Opção inválida!! ");
 		}
 	}
-
-	public void opcaoApagarReserva() {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
-			return;
-		}
-
-		String codigo = lerTexto("Digite o código para remover: ");
-
-		if (controlador.removerReservaPorCodigo(codigo)) {
-			System.out.println("Reserva removida com sucesso.");
-		} else {
-			System.out.println("Reserva não encontrada.");
-		}
-	}
-
-	public void opcaoExibirReservas() {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
-			return;
-		}
-
-		System.out.print("\n=== Caderno de Reservas do Hotel " + controlador.getNomeHotel() + " ===\n"
-				+ "\nQuantidade de Reservas: " + controlador.contarReservas()
-				+ controlador.exibirRelatorioDeReservas());
-	}
-
-	public void opcaoBuscarReservaPorCodigo() {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
-			return;
-		}
-
-		System.out.println("\n-- Buscar reserva Por Codigo --");
-
-		String codigo = lerTexto("Digite o código da reserva que deseja buscar: ");
-		Reserva reserva = controlador.buscarReservasPorCodigo(codigo);
-
-		if (reserva != null) {
-			System.out.println(reserva);
-		} else {
-			System.out.println("Reserva não encontrada.");
-		}
-	}
-
-	public void opcaoPatrimonioHotel() {
-		System.out.println("\n-- Valor do patrimônio do Hotel --");
-		System.out.println("R$ " + controlador.calcularPatrimonioTotal());
-	}
-
+	
 	public void opcaoAnotarNovaReserva() throws Exception {
 
 		System.out.println("======= Cadastrando nova reserva =======");
@@ -177,12 +128,12 @@ public class Console {
 		}
 
 		System.out.println("Reserva cadastrada com sucesso!");
-		opcaoAdicionarQuartoNaReserva(codigo);
+		adicionarQuartoNaReserva(codigo);
 
 		String resposta = lerTexto("\nDeseja adicionar outro quarto? (Sim/Nao): ");
 		if ((resposta.equalsIgnoreCase("Sim")))
 			do {
-				opcaoAdicionarQuartoNaReserva(codigo);
+				adicionarQuartoNaReserva(codigo);
 				resposta = lerTexto("\nDeseja adicionar outro quarto? (Sim/Nao): ");
 			} while (resposta.equalsIgnoreCase("Sim"));
 
@@ -192,89 +143,7 @@ public class Console {
 			System.out.println("opcao invalida.");
 		}
 	}
-
-	public void opcaoAdicionarQuarto() throws Exception {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
-			return;
-		}
-
-		String codigo = lerTexto("Código da reserva: ");
-
-		if (controlador.buscarReservasPorCodigo(codigo) == null) {
-			System.out.println("Reserva não encontrada.");
-			return;
-		}
-
-		opcaoAdicionarQuartoNaReserva(codigo);
-	}
-
-	private void opcaoAdicionarQuartoNaReserva(String codigoReserva) throws Exception {
-		Quarto quarto;
-		try {
-			quarto = criarQuarto();
-		} catch (Exception e) {
-			System.out.println("Não foi possível criar o quarto: " + e.getMessage());
-			return;
-		}
-
-		boolean resultado = controlador.adicionarQuartoNaReserva(codigoReserva, quarto);
-
-		if (resultado) {
-			System.out.println("Quarto adicionado com sucesso!");
-		} else {
-			System.out.println("Não foi possível adicionar: já existe um quarto com esse número nessa reserva.");
-		}
-	}
-
-	public void opcaoAlterarFormaPagamento() throws Exception {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
-			return;
-		}
-
-		String codigo = lerTexto("Código da reserva: ");
-
-		if (controlador.buscarReservasPorCodigo(codigo) == null) {
-			System.out.println("Reserva não encontrada.");
-			return;
-		}
-
-		System.out.println("\nNova forma de pagamento:");
-		EstrategiaPagavel novaEstrategia = escolherFormaPagamento();
-
-		boolean resultado = controlador.alterarFormaPagamento(codigo, novaEstrategia);
-
-		if (resultado) {
-			System.out.println("Forma de pagamento alterada com sucesso!");
-		} else {
-			System.out.println("Não foi possível alterar a forma de pagamento.");
-		}
-	}
-
-	private Quarto criarQuarto() throws Exception {
-		System.out.println("\nTipo do Quarto");
-		System.out.println("1 - Luxo");
-		System.out.println("2 - Comum");
-
-		int opcao = lerInteiro("\nQuarto: ");
-
-		String numeroQuarto = lerTexto("\nNumero do quarto: ");
-		double valorDiaria = lerDouble("\nValor diaria: ");
-
-		switch (opcao) {
-		case 1:
-			return new QuartoLuxo("Quarto Luxo", numeroQuarto, valorDiaria);
-
-		case 2:
-			return new QuartoComum("Quarto Comum", numeroQuarto, valorDiaria);
-
-		default:
-			System.out.println("Tipo inválido, cadastrando como Comum por padrão.");
-			return new QuartoComum("Quarto Comum", numeroQuarto, valorDiaria);
-		}
-	}
-
+	
 	private EstrategiaPagavel escolherFormaPagamento() {
 		System.out.println("\nForma de pagamento");
 		System.out.println("1 - Cartao");
@@ -304,7 +173,7 @@ public class Console {
 
 		return estrategiaPagamento;
 	}
-
+	
 	private DiaSemana escolherDiaEntrada() {
 		System.out.println("\nDia da Entrada");
 		System.out.println("1 - Domingo");
@@ -354,4 +223,136 @@ public class Console {
 		}
 		return diaEntrada;
 	}
+	
+	public void opcaoAdicionarQuarto() throws Exception {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return;
+		}
+
+		String codigo = lerTexto("Código da reserva: ");
+
+		if (controlador.buscarReservasPorCodigo(codigo) == null) {
+			System.out.println("Reserva não encontrada.");
+			return;
+		}
+
+		adicionarQuartoNaReserva(codigo);
+	}
+	
+	private void adicionarQuartoNaReserva(String codigoReserva) throws Exception {
+		Quarto quarto;
+		try {
+			quarto = criarQuarto();
+		} catch (Exception e) {
+			System.out.println("Não foi possível criar o quarto: " + e.getMessage());
+			return;
+		}
+
+		boolean resultado = controlador.adicionarQuartoNaReserva(codigoReserva, quarto);
+
+		if (resultado) {
+			System.out.println("Quarto adicionado com sucesso!");
+		} else {
+			System.out.println("Não foi possível adicionar: já existe um quarto com esse número nessa reserva.");
+		}
+	}
+	
+	private Quarto criarQuarto() throws Exception {
+		System.out.println("\nTipo do Quarto");
+		System.out.println("1 - Luxo");
+		System.out.println("2 - Comum");
+
+		int opcao = lerInteiro("\nQuarto: ");
+
+		String numeroQuarto = lerTexto("\nNumero do quarto: ");
+		double valorDiaria = lerDouble("\nValor diaria: ");
+
+		switch (opcao) {
+		case 1:
+			return new QuartoLuxo("Quarto Luxo", numeroQuarto, valorDiaria);
+
+		case 2:
+			return new QuartoComum("Quarto Comum", numeroQuarto, valorDiaria);
+
+		default:
+			System.out.println("Tipo inválido, cadastrando como Comum por padrão.");
+			return new QuartoComum("Quarto Comum", numeroQuarto, valorDiaria);
+		}
+	}
+	
+	public void opcaoAlterarFormaPagamento() throws Exception {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return;
+		}
+
+		String codigo = lerTexto("Código da reserva: ");
+
+		if (controlador.buscarReservasPorCodigo(codigo) == null) {
+			System.out.println("Reserva não encontrada.");
+			return;
+		}
+
+		System.out.println("\nNova forma de pagamento:");
+		EstrategiaPagavel novaEstrategia = escolherFormaPagamento();
+
+		boolean resultado = controlador.alterarFormaPagamento(codigo, novaEstrategia);
+
+		if (resultado) {
+			System.out.println("Forma de pagamento alterada com sucesso!");
+		} else {
+			System.out.println("Não foi possível alterar a forma de pagamento.");
+		}
+	}
+	
+	public void opcaoExibirReservas() {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return;
+		}
+
+		System.out.print("\n=== Caderno de Reservas do Hotel " + controlador.getNomeHotel() + " ===\n"
+				+ "\nQuantidade de Reservas: " + controlador.contarReservas()
+				+ controlador.exibirRelatorioDeReservas());
+	}
+	
+	public void opcaoApagarReserva() {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return;
+		}
+
+		String codigo = lerTexto("Digite o código para remover: ");
+
+		if (controlador.removerReservaPorCodigo(codigo)) {
+			System.out.println("Reserva removida com sucesso.");
+		} else {
+			System.out.println("Reserva não encontrada.");
+		}
+	}
+
+	public void opcaoBuscarReservaPorCodigo() {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return;
+		}
+
+		System.out.println("\n-- Buscar reserva Por Codigo --");
+
+		String codigo = lerTexto("Digite o código da reserva que deseja buscar: ");
+		Reserva reserva = controlador.buscarReservasPorCodigo(codigo);
+
+		if (reserva != null) {
+			System.out.println(reserva);
+		} else {
+			System.out.println("Reserva não encontrada.");
+		}
+	}
+
+	public void opcaoPatrimonioHotel() {
+		System.out.println("\n-- Valor do patrimônio do Hotel --");
+		System.out.println("R$ " + controlador.calcularPatrimonioTotal());
+	}
+
 }
