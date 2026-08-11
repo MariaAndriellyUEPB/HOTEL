@@ -169,8 +169,7 @@ public class Console {
 		DiaSemana diaEntrada = escolherDiaEntrada();
 		int quantidadeDias = lerInteiro("\nQuantidade de dias: ");
 
-		boolean resultado = controlador.cadastrarReserva(codigo, nomeHospede, estrategiaPagamento, diaEntrada,
-				quantidadeDias);
+		boolean resultado = controlador.cadastrarReserva(codigo, nomeHospede, estrategiaPagamento, diaEntrada, quantidadeDias);
 		adicionarQuartoNaReserva(codigo);
 
 		if (resultado == false) {
