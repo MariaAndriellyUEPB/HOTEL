@@ -238,6 +238,8 @@ public class ControladorSistemaHotelTest {
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
 		controlador.cadastrarReserva("100", "1", formaDePagamento, DiaSemana.SEXTA, 1);
+		
+		controlador.adicionarQuartoNaReserva("100", quarto);  
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
@@ -250,6 +252,8 @@ public class ControladorSistemaHotelTest {
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
 		controlador.cadastrarReserva("100", "Lara", formaDePagamento, DiaSemana.SABADO, 1);
+		
+		controlador.adicionarQuartoNaReserva("100", quarto);  
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
@@ -262,10 +266,12 @@ public class ControladorSistemaHotelTest {
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
 		controlador.cadastrarReserva("100", "Maria", formaDePagamento, DiaSemana.DOMINGO, 1);
+		
+		controlador.adicionarQuartoNaReserva("100", quarto);  
 
 		Reserva reserva = controlador.buscarReservasPorCodigo("100");
 
-		assertEquals(157.50, reserva.calcularDiariaTotal(), 0.001);
+		assertEquals(157.50, reserva.calcularDiariaTotal(),0.001);
 	}
 
 	
