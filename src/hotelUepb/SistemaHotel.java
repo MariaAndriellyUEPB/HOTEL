@@ -48,12 +48,8 @@ public class SistemaHotel {
 		if (reserva == null) {
 			return false;
 		}
-		try {
-			return reserva.adicionarQuarto(quarto);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			return false;
-		}
+		return reserva.adicionarQuarto(quarto);
+		
 	}
 	
 
