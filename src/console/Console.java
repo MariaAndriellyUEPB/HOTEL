@@ -154,7 +154,7 @@ public class Console {
 		System.out.println("R$ " + controlador.calcularPatrimonioTotal());
 	}
 
-	public void opcaoAnotarNovaReserva() {
+	public void opcaoAnotarNovaReserva() throws Exception {
 
 		System.out.println("======= Cadastrando nova reserva =======");
 
@@ -193,7 +193,7 @@ public class Console {
 		}
 	}
 
-	public void opcaoAdicionarQuarto() {
+	public void opcaoAdicionarQuarto() throws Exception {
 		if (controlador.estaVazio()) {
 			System.out.println("\nNenhum hóspede cadastrado!!");
 			return;
@@ -209,7 +209,7 @@ public class Console {
 		adicionarQuartoNaReserva(codigo);
 	}
 
-	private void adicionarQuartoNaReserva(String codigoReserva) {
+	private void adicionarQuartoNaReserva(String codigoReserva) throws Exception {
 		Quarto quarto = criarQuarto();
 		boolean resultado = controlador.adicionarQuartoNaReserva(codigoReserva, quarto);
 
@@ -245,7 +245,7 @@ public class Console {
 		}
 	}
 
-	private Quarto criarQuarto() {
+	private Quarto criarQuarto() throws Exception {
 		System.out.println("\nTipo do Quarto");
 		System.out.println("1 - Luxo");
 		System.out.println("2 - Comum");

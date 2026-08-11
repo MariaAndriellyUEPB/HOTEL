@@ -26,7 +26,7 @@ public class ControladorSistemaHotelTest {
 	private ControladorSistemaHotel controlador = new ControladorSistemaHotel();
 
 	@Test
-	public void deveCadastrarReserva() {
+	public void deveCadastrarReserva() throws Exception {
 
 		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
@@ -35,7 +35,7 @@ public class ControladorSistemaHotelTest {
 	}
 
 	@Test
-	public void naoDeveCadastrarDuasReservasComMesmoCodigo() {
+	public void naoDeveCadastrarDuasReservasComMesmoCodigo() throws Exception {
 		
 		Quarto quarto = new QuartoLuxo("Luxo", "3", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
@@ -69,7 +69,7 @@ public class ControladorSistemaHotelTest {
 		assertNull(controlador.buscarReservasPorCodigo("999"));
 	}
 	
-	public void deveAdicionarQuartoNaReserva() {
+	public void deveAdicionarQuartoNaReserva() throws Exception {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", "Maria", estrategia, DiaSemana.SEGUNDA, 1);
 
@@ -82,7 +82,7 @@ public class ControladorSistemaHotelTest {
 	}
 
 	@Test
-	public void naoDeveAdicionarQuartoComMesmoNumeroNaMesmaReserva() {
+	public void naoDeveAdicionarQuartoComMesmoNumeroNaMesmaReserva() throws Exception {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", "Maria", estrategia, DiaSemana.SEGUNDA, 1);
 
@@ -94,13 +94,13 @@ public class ControladorSistemaHotelTest {
 	}
 	
 	@Test
-	public void naoDeveAdicionarQuartoEmReservaInexistente() {
+	public void naoDeveAdicionarQuartoEmReservaInexistente() throws Exception {
 		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
 		assertFalse(controlador.adicionarQuartoNaReserva("999", quarto));
 	}
 	
 	@Test
-	public void naoDeveCadastrarQuandoValorDiariaInvalida() {
+	public void naoDeveCadastrarQuandoValorDiariaInvalida() throws Exception {
 		Quarto quarto = new QuartoLuxo("Luxo", "1", -1);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", "Fabiola", formaDePagamento, DiaSemana.SEGUNDA, 1);
@@ -109,7 +109,7 @@ public class ControladorSistemaHotelTest {
 	}
 
 	@Test
-	public void naoDeveCadastrarQuandoNomeVazio() {
+	public void naoDeveCadastrarQuandoNomeVazio() throws Exception {
 		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", "", formaDePagamento, DiaSemana.SEGUNDA, 1);
@@ -118,7 +118,7 @@ public class ControladorSistemaHotelTest {
 	}
 
 	@Test
-	public void retornaFalsoQuandoNomeVazio() {
+	public void retornaFalsoQuandoNomeVazio() throws Exception {
 		Quarto quarto = new QuartoLuxo("Luxo", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertFalse(
@@ -126,7 +126,7 @@ public class ControladorSistemaHotelTest {
 	}
 
 	@Test
-	public void retornaFalsoQuandoValorDiariaInvalido() {
+	public void retornaFalsoQuandoValorDiariaInvalido() throws Exception {
 		Quarto quarto = new QuartoLuxo("Luxo", "10", -1);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 		assertFalse(
@@ -134,7 +134,7 @@ public class ControladorSistemaHotelTest {
 	}
 
 	@Test
-	public void deveRetornarCalculoDiariaTotalComUmQuarto() {
+	public void deveRetornarCalculoDiariaTotalComUmQuarto() throws Exception {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", "Maria", estrategia, DiaSemana.SEGUNDA, 1);
 		controlador.adicionarQuartoNaReserva("100", new QuartoComum("Quarto Comum", "1", 100.0));
@@ -147,7 +147,7 @@ public class ControladorSistemaHotelTest {
 
 
 	@Test
-	public void deveRetornarCalculoDiariaTotalComDoisQuartos() {
+	public void deveRetornarCalculoDiariaTotalComDoisQuartos() throws Exception {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", "Maria", estrategia, DiaSemana.SEGUNDA, 1);
 		controlador.adicionarQuartoNaReserva("100", new QuartoComum("Quarto Comum", "1", 100.0));
@@ -178,7 +178,7 @@ public class ControladorSistemaHotelTest {
 	}
 	
 	@Test
-	public void deveCalcularPatrimonioTotal() {
+	public void deveCalcularPatrimonioTotal() throws Exception {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
 		controlador.cadastrarReserva("100", "Maria", estrategia, DiaSemana.SEGUNDA, 1);
 		controlador.adicionarQuartoNaReserva("100", new QuartoComum("Quarto Comum", "1", 100.0));
@@ -233,7 +233,7 @@ public class ControladorSistemaHotelTest {
 	}
 
 	@Test
-	public void deveCalcularTaxaDeSexta() {
+	public void deveCalcularTaxaDeSexta() throws Exception {
 		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
@@ -247,7 +247,7 @@ public class ControladorSistemaHotelTest {
 	}
 
 	@Test
-	public void deveCalcularTaxaDeSabado() {
+	public void deveCalcularTaxaDeSabado() throws Exception {
 		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 
@@ -261,7 +261,7 @@ public class ControladorSistemaHotelTest {
 	}
 
 	@Test
-	public void deveCalcularTaxaDeDomingo() {
+	public void deveCalcularTaxaDeDomingo() throws Exception {
 		Quarto quarto = new QuartoComum("Quarto Comum", "1", 100.0);
 		EstrategiaPagavel formaDePagamento = new PagamentoViaCartao();
 

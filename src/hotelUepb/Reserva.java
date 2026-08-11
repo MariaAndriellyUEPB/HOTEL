@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import classesDeQuartos.Quarto;
 import classesPagaveis.EstrategiaPagavel;
+import validador.Validador;
 
 public class Reserva {
 	private String codigo;
@@ -16,9 +17,9 @@ public class Reserva {
 	private Map<String, Quarto> quartos;
 
 	public Reserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento, DiaSemana diaEntrada, int quantidadeDias) throws Exception {
-		validaNomeHospede(nomeHospede, "Nenhum nome foi digitado.");
-		validaEstrategia(estrategiaPagamento, "estrategia invalida.");
-		validaValorMenorQueZero(quantidadeDias, "Valor de quantidade de dias.");
+		Validador.validaNomeNuloOuVazio(nomeHospede, "Nenhum nome foi digitado.");
+		Validador.validaEstrategia(estrategiaPagamento, "estrategia invalida.");
+		Validador.validaValorMenorQueZero(quantidadeDias, "Valor de quantidade de dias.");
 
 		this.codigo = codigo;
 		this.nomeHospede = nomeHospede;
@@ -28,24 +29,6 @@ public class Reserva {
 		this.quartos = new HashMap<String, Quarto>();
 	}
 	
-	private void validaValorMenorQueZero(double valor, String mensagem) throws Exception {
-		if (valor < 0) {
-			throw new Exception(mensagem);
-		}
-	}
-
-	private void validaNomeHospede(String nome, String mensagem) throws Exception {
-		if (nome.isBlank()) {
-			throw new Exception(mensagem);
-		}
-	}
-	
-	private void validaEstrategia(EstrategiaPagavel estrategiaPagavel, String mensagem) throws Exception {
-		if(estrategiaPagavel == null) {
-			throw new Exception(mensagem);
-		}
-	}
-
 	public String getCodigo() {
 		return codigo;
 	}
@@ -83,7 +66,7 @@ public class Reserva {
 	}
 
 	public void setEstrategiaPagamento(EstrategiaPagavel novaEstrategia) throws Exception {
-		validaEstrategia(novaEstrategia, "estrategia invalida.");
+		Validador.validaEstrategia(novaEstrategia, "estrategia invalida.");
 		this.estrategiaPagamento = novaEstrategia;
 	}
 
