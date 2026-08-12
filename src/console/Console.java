@@ -226,8 +226,7 @@ public class Console {
 	}
 	
 	public void opcaoAdicionarQuarto() throws Exception {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
+		if (naoHaReservas()) {
 			return;
 		}
 
@@ -282,8 +281,7 @@ public class Console {
 	}
 	
 	public void opcaoAlterarFormaPagamento() throws Exception {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
+		if (naoHaReservas()) {
 			return;
 		}
 
@@ -307,8 +305,7 @@ public class Console {
 	}
 	
 	public void opcaoExibirReservas() {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
+		if (naoHaReservas()) {
 			return;
 		}
 
@@ -318,8 +315,7 @@ public class Console {
 	}
 	
 	public void opcaoApagarReserva() {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
+		if (naoHaReservas()) {
 			return;
 		}
 
@@ -333,8 +329,7 @@ public class Console {
 	}
 
 	public void opcaoBuscarReservaPorCodigo() {
-		if (controlador.estaVazio()) {
-			System.out.println("\nNenhum hóspede cadastrado!!");
+		if (naoHaReservas()) {
 			return;
 		}
 
@@ -353,6 +348,14 @@ public class Console {
 	public void opcaoPatrimonioHotel() {
 		System.out.println("\n-- Valor do patrimônio do Hotel --");
 		System.out.println("R$ " + controlador.calcularPatrimonioTotal());
+	}
+	
+	private boolean naoHaReservas() {
+		if (controlador.estaVazio()) {
+			System.out.println("\nNenhum hóspede cadastrado!!");
+			return true;
+		}
+		return false;
 	}
 
 }
