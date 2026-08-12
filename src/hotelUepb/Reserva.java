@@ -17,7 +17,7 @@ public class Reserva {
 
 	public Reserva(String codigo, String nomeHospede, EstrategiaPagavel estrategiaPagamento, DiaSemana diaEntrada, int quantidadeDias) throws Exception {
 		Validador.validaNomeNuloOuVazio(nomeHospede, "Nenhum nome foi digitado.");
-		Validador.validaValorMenorQueZero(quantidadeDias, "Valor de quantidade de dias.");
+		Validador.validaValorMenorIgualZero(quantidadeDias, "Valor de quantidade de dias.");
 
 		this.codigo = codigo;
 		this.nomeHospede = nomeHospede;
