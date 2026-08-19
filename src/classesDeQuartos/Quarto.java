@@ -8,7 +8,7 @@ public abstract class Quarto {
 	private double valorDiaria;
 
 	public Quarto(String nomeDoQuarto, String numeroQuarto, double valorDiaria) throws Exception {
-		Validador.validaValorMenorQueZero(valorDiaria, "valor da diaria invalido.");
+		Validador.validaValorNegativo(valorDiaria, "valor da diaria invalido.");
 		
 		this.nomeDoQuarto = nomeDoQuarto;
 		this.numeroQuarto = numeroQuarto;

@@ -3,8 +3,14 @@ package validador;
 import classesPagaveis.EstrategiaPagavel;
 
 public class Validador {
-	public static void validaValorMenorQueZero(double valor, String mensagem) throws Exception {
+	public static void validaValorNegativo(double valor, String mensagem) throws Exception {
 		if (valor < 0) {
+			throw new Exception(mensagem);
+		}
+	}
+	
+	public static void validaValorMenorIgualZero(double valor, String mensagem) throws Exception {
+		if (valor <= 0) {
 			throw new Exception(mensagem);
 		}
 	}
