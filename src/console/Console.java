@@ -255,7 +255,7 @@ public class Console {
 		if (resultado) {
 			System.out.println("Quarto adicionado com sucesso!");
 		} else {
-			System.out.println("Não foi possível adicionar: já existe um quarto com esse número nessa reserva.");
+			System.out.println("Número de quarto indisponível: já existe uma reserva no sistema.");
 		}
 	}
 	
