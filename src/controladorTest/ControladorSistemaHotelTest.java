@@ -25,7 +25,6 @@ public class ControladorSistemaHotelTest {
 
 	private ControladorSistemaHotel controlador = new ControladorSistemaHotel();
 
-	// ===================== 10 TESTES PRINCIPAIS (APRESENTAÇÃO) =====================
 
 	@Test
 	public void deveCadastrarReserva() throws Exception {
@@ -148,9 +147,6 @@ public class ControladorSistemaHotelTest {
 	    assertTrue(relatorio.contains("Nº: 1"));
 	    assertTrue(relatorio.contains("Total a pagar : R$ 105.0"));
 	}
-
-	// ===================== DEMAIS TESTES =====================
-
 	@Test
 	public void deveBuscarReservaPorCodigo() {
 		EstrategiaPagavel estrategia = new PagamentoViaCartao();
